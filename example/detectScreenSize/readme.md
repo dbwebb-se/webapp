@@ -1,0 +1,1 @@
+Detect the screen size

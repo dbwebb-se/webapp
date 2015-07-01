@@ -1,0 +1,1 @@
+Standard bottom menu in a mobile app.

@@ -1,0 +1,1 @@
+HTML5 api localstorage save stuff.
