@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>HTML5 APP - Detect screen size</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="minimal-ui, user-scalable=no, width=device-width" />
+</head>
+
+<body>
+    <div id="content"></div>
+
+    <script type="text/javascript">
+        var width = window.screen.width;
+        var height = window.screen.height;
+        document.getElementById('content').innerHTML = '<h1>Screen size</h1><p>Width: ' + width + ' height: ' + height + '</p>';
+
+    </script>
+</body>
+</html>
