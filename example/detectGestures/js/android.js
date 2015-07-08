@@ -48,30 +48,37 @@ $(document).ready(function() {
         var xUp = event.touches[0].clientX;
         var yUp = event.touches[0].clientY;
 
+
         var xDiff = xDown - xUp;
         var yDiff = yDown - yUp;
+
+        var node = document.createElement('p');
 
         if (Math.abs(xDiff) > Math.abs(yDiff)) {
             if (xDiff > 0) {
                 // Left swipe
                 console.log('LEFT SWIPE');
-                $('#content').append('<p>Swipe left<p>');
+                node.innerHTML = 'Left swipe';
+                document.getElementById('content').appendChild(node);
 
             } else {
                 // Right swipe
                 console.log('RIGHT SWIPE');
-                $('#content').append('<p>Swipe right<p>');
+                node.innerHTML = 'Right swipe';
+                document.getElementById('content').appendChild(node);
             }
         } else {
             if (yDiff > 0) {
                 // Up swipe
                 console.log('UP SWIPE');
-                $('#content').append('<p>Swipe up<p>');
+                node.innerHTML = 'Up swipe';
+                document.getElementById('content').appendChild(node);
 
             } else {
                 // Down swipe
                 console.log('DOWN SWIPE');
-                $('#content').append('<p>Swipe down<p>');
+                node.innerHTML = 'Down swipe';
+                document.getElementById('content').appendChild(node);
             }
         }
 
