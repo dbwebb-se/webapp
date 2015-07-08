@@ -14,4 +14,35 @@ $(document).ready(function() {
     }
 
     $('.leftButton').on('click', toggleMenu);
+
+    $('html').on('swipe', function(event) {
+        console.log('swipe');
+    });
+
+    $('html').on('swiperight', function(event) {
+        $('#content').html('Swipe right');
+        console.log('swipe right');
+    });
+
+    $('html').on('swipeleft', function(event) {
+        console.log('swipe left');
+        $('#content').html('Swipe left');
+    });
+
+    // Offline/online
+    window.addEventListener('load', function() {
+        var status = document.getElementById("status");
+
+        function updateOnlineStatus(event) {
+            var condition = navigator.onLine ? "online" : "offline";
+
+            status.className = condition;
+            status.innerHTML = condition.toUpperCase();
+
+            log.insertAdjacentHTML("beforeend", "Event: " + event.type + "; Status: " + condition);
+        }
+
+        window.addEventListener('online',  updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+    });
 });
