@@ -1,12 +1,15 @@
 $(document).ready(function() {
     if (window.innerWidth && window.innerWidth <= 480) {
 
-        /*$('#header ul').addClass('hide');
-        $('#header').append('<div class="leftButton">Menu</div>');*/
+        $('#header ul').addClass('hide');
+        $('#header').append('<div class="leftButton">Menu</div>');
+
     }
 
     // Print online/offline
-    document.getElementById('content').innerHTML = navigator.onLine ? 'You are online!!' : 'You are offline......';
+    var node = document.createElement('h4');
+    node.innerHTML = 'Internet status: ' + (navigator.onLine ? 'online!!' : 'offline');
+    document.getElementById('internetStatus').appendChild(node);
 
     function toggleMenu() {
         $('#header ul').toggleClass('hide');
@@ -14,23 +17,13 @@ $(document).ready(function() {
     }
 
     $('.leftButton').on('click', toggleMenu);
+    $('.leftButton').on('swiperight', toggleMenu);
+    $('#nav').on('swipeleft', toggleMenu);
 
-    $('html').on('swipe', function(event) {
-        console.log('swipe');
-    });
 
-    $('html').on('swiperight', function(event) {
-        $('#content').html('Swipe right');
-        console.log('swipe right');
-    });
-
-    $('html').on('swipeleft', function(event) {
-        console.log('swipe left');
-        $('#content').html('Swipe left');
-    });
 
     // Offline/online
-    window.addEventListener('load', function() {
+    /*window.addEventListener('load', function() {
         var status = document.getElementById("status");
 
         function updateOnlineStatus(event) {
@@ -44,5 +37,5 @@ $(document).ready(function() {
 
         window.addEventListener('online',  updateOnlineStatus);
         window.addEventListener('offline', updateOnlineStatus);
-    });
+    });*/
 });
