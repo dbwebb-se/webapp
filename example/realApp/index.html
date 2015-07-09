@@ -37,16 +37,25 @@
         </div>
 
         <script id="blog-list-template" type="text/x-handlebars-template">
+            <ul id="blog-list" data-role="listview">
+                {{#.}}
+                    <li><a href="#post?{{@index}}">{{title}}</a></li>
+                {{/.}}
+            </ul>
+        </script>
+
+        <script id="twitter-list-template" type="text/x-handlebars-template">
             {{#.}}
-                <li><a href="#post?{{@index}}">{{title}}</a></li>
+                <li>id: {{id}} - {{body}}</li>
             {{/.}}
         </script>
 
         <div id="content" role="main" class="ui-content">
             <h2>About</h2>
 
-            <ul id="blog-list" data-role="listview">
-            </ul>
+
+
+            <ul id="twitter-list" data-role="listview"></ul>
 
             <div id="internetStatus"></div>
             <p>Page <a href="#two" data-transition="none">2</a></p>

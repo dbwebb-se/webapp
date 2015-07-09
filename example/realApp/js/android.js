@@ -70,12 +70,79 @@ $(document).ready(function() {
         });
     }
 
+
+    app.addPage(spots);
+    app.addPage(spot);
     app.init();
 
 });
 
 
+var spots = {
+    init: function(){
+        // add handlers;
+        $("#spots li a").on("click", function(e){
+            e.preventDefault();
+            spot.load($(e.target).attr("data-id"));
+        });
+    },
+
+    load: function() {
+        //showSpinner();
+        $.ajax({
+            url: "http://jsonplaceholder.typicode.com/posts/1",
+            complete: function() {
+                //hideSpinner();
+                transition("#spots", "fade");
+            }
+        });
+    },
+};
+
+function transition(toPage, type, reverse) {
+    var toPage = $(toPage),
+    fromPage = $("#pages .current"),
+    reverse = reverse ? "reverse" : "";
+
+    if (toPage.hasClass("current") || toPage === fromPage) {
+        return;
+    };
+
+    toPage
+        .addClass("current " + type + " in " + reverse)
+        .one("webkitAnimationEnd", function(){
+            fromPage.removeClass("current " + type + " out " + reverse);
+            toPage.removeClass(type + " in " + reverse);
+        });
+
+    fromPage.addClass(type + " out " + reverse);
+}
+
+
+
+
+var spot = {
+    init: function() {
+        $("#spot-back").click(function() {
+            transition("#spots", "push", true);
+        });
+    },
+
+    load: function(id) {
+        $.ajax({
+            url: "/http://jsonplaceholder.typicode.com/posts/" + id,
+            complete: function(){
+                // Set the header
+                $("#spot .page-header h1").text(id);
+                transition("#spot", "push");
+            }
+        });
+    }
+};
+
 var app = {
+
+    pages: [],
 
     data: [
         { title: 'Test', body: 'Are you ready?' },
@@ -84,32 +151,74 @@ var app = {
 
     postTemplate: {},
     blogTemplate: {},
+    twitterTemplate: {},
 
     init: function() {
         console.log('Init app');
-
-
 
         $('#blog-list li a').on('click', function(event) {
             var id = this.href.slice(-1);
             app.postBeforeShow(event, id);
         });
 
-
-
         // Compile with handlebars
         this.postTemplate = Handlebars.compile($('#post-template').html());
         this.blogTemplate = Handlebars.compile($('#blog-list-template').html());
+        this.twitterTemplate = Handlebars.compile($('#twitter-list-template').html());
 
-        console.log(window.location.href);
+
         if (window.location.href === 'http://localhost:8000/') {
             app.homeBeforeCreate();
         }
+
+        // From the book
+        $.each(this.pages, function() {
+            this.init && this.init();
+        });
+
+        if (this.pages.length) {
+            this.pages[0].load();
+        }
     },
 
+    addPage: function(page) {
+        this.pages.push(page);
+    },
+    loadPage: function(page, data) {
+        page.load(data);
+    },
+
+    // fungerar inte.
+    /*loadTwitter: function() {
+        var twitQuery = "celeb+spotting",
+            twitUrl = "http://search.twitter.com/search.json?q=";
+
+        var url = 'http://jsonplaceholder.typicode.com/posts/2';
+        $.getJSON(url, function(data){
+            console.log(data);
+            $('twitter-list').html(this.twitterTemplate);
+        });
+    },*/
+
     homeBeforeCreate: function(event, args) {
-        var that = app;
-        $('#blog-list').html(that.blogTemplate(that.data));
+        this.getApiData();
+    },
+
+    getApiData: function() {
+        var that = this;
+        $.get('https://app-o-mat.com/videofeed/', function(data) {
+
+            // Parse xml bullshit.
+            that.data = $(data).find("item").map(function(i, item) {
+                return {
+                    title: $(item).find("title").text(),
+                    body: $(item).find("description").text(),
+                };
+            }).toArray();
+
+            $('#content').html(that.blogTemplate(that.data));
+            $('#content').enhanceWithin();
+        });
     },
 
     postBeforeShow: function(event, args) {
