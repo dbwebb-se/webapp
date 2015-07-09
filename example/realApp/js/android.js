@@ -1,8 +1,9 @@
 $(document).ready(function() {
     if (window.innerWidth && window.innerWidth <= 480) {
-
+        /*
         $('#header ul').addClass('hide');
-        $('#header').append('<div class="leftButton">Menu</div>');
+        $('#header').prepend('<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext leftButton"></a>');
+        */
 
     }
 
@@ -21,6 +22,11 @@ $(document).ready(function() {
     $('#nav').on('swipeleft', toggleMenu);
 
 
+    var connection = navigator.connection || navigator.webkitConnection || navigator.mozConnection;
+    console.log(connection);
+    /*navigator.connection.addEventListener('change', function() {
+
+    });*/
 
     // Offline/online
     /*window.addEventListener('load', function() {
@@ -38,4 +44,32 @@ $(document).ready(function() {
         window.addEventListener('online',  updateOnlineStatus);
         window.addEventListener('offline', updateOnlineStatus);
     });*/
+
+
+    $('#footer-summary').on('click', function(event) {
+        ajaxStuff(1);
+    });
+
+    $('#footer-favs').on('click', function(event) {
+        ajaxStuff(2);
+    });
+
+    $('#footer-gear').on('click', function(event) {
+        ajaxStuff(3);
+    });
+
+    function ajaxStuff(id) {
+        var root = 'http://jsonplaceholder.typicode.com';
+
+        $.ajax({
+            url: root + '/posts/' + id,
+            method: 'GET'
+        }).then(function(data) {
+            console.log(data);
+            $('#content').html('<h1>' + data.title + '</h1>' + '<p>' + data.body + '</p>');
+        });
+    }
+
 });
+
+
