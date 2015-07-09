@@ -158,6 +158,7 @@ var app = {
 
         $('#blog-list li a').on('click', function(event) {
             var id = this.href.slice(-1);
+            console.log(id);
             app.postBeforeShow(event, id);
         });
 
@@ -203,6 +204,7 @@ var app = {
 
     homeBeforeCreate: function(event, args) {
         this.getApiData();
+
     },
 
     getApiData: function() {
@@ -218,13 +220,23 @@ var app = {
             }).toArray();
 
             $('#content').html(that.blogTemplate(that.data));
+
+            $('#blog-list li a').on('click', function(event) {
+                var id = this.href.slice(-1);
+                console.log(id);
+                app.postBeforeShow(event, id);
+            });
+
             $('#content').enhanceWithin();
         });
     },
 
     postBeforeShow: function(event, args) {
         var post = app.data[args];
-        $('#content').html(this.postTemplate(post));
+        console.log('kör');
+
+        console.log(post);
+        $('#post-content').html(this.postTemplate(post));
     },
 
     // "#post[?](\\d+)$" -> handler postBeforeShow.
