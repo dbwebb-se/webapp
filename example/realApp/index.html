@@ -29,13 +29,26 @@
             </ul>
         </div>
 
+
+
         <div id="header" data-role="header">
             <h1><a href="./">HTML WEB APP</a></h1>
             <a href="#nav" class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext leftButton"></a>
         </div>
 
+        <script id="blog-list-template" type="text/x-handlebars-template">
+            {{#.}}
+                <li><a href="#post?{{@index}}">{{title}}</a></li>
+            {{/.}}
+        </script>
+
         <div id="content" role="main" class="ui-content">
             <h2>About</h2>
+
+            <ul id="blog-list" data-role="listview">
+                <li><a href="#post?1">asdf</a></li>
+            </ul>
+
             <div id="internetStatus"></div>
             <p>Page <a href="#two" data-transition="none">2</a></p>
             <p>
@@ -93,8 +106,14 @@
         </div>
     </div>
 
+    <script id="post-template" type="text/x-handlebars-template">
+        <h2>{{title}}</h2>
+        <p>{{body}}</p>
+    </script>
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
     <script type="text/javascript" src="js/sidebar.js"></script>
     <script type="text/javascript" src="js/android.js"></script>
 </body>

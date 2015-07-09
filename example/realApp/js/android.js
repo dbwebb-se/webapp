@@ -23,7 +23,7 @@ $(document).ready(function() {
 
 
     var connection = navigator.connection || navigator.webkitConnection || navigator.mozConnection;
-    console.log(connection);
+    console.log('Connection', connection);
     /*navigator.connection.addEventListener('change', function() {
 
     });*/
@@ -70,6 +70,35 @@ $(document).ready(function() {
         });
     }
 
+    app.init();
+
 });
 
 
+var app = {
+
+    data: [
+        { title: 'Test', body: 'Are you ready?' },
+        { title: 'Test2', body: 'Another' },
+    ],
+
+    postTemplate: {},
+    blogTemplate: {},
+
+    init: function() {
+        console.log('Init app');
+
+        this.postTemplate = Handlebars.compile($('#post-template').html());
+
+        $('#blog-list li a').on('click', function(event) {
+            app.postBeforeShow(event, 0);
+        });
+    },
+
+    postBeforeShow: function(event, args) {
+        var post = app.data[0];
+        $('#content').html(this.postTemplate(post));
+    },
+
+    // "#post[?](\\d+)$" -> handler postBeforeShow.
+};
