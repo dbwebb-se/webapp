@@ -167,9 +167,10 @@ var app = {
         this.twitterTemplate = Handlebars.compile($('#twitter-list-template').html());
 
 
-        if (window.location.href === 'http://localhost:8000/') {
+        $('#examples').on('click', function() {
             app.homeBeforeCreate();
-        }
+        });
+
 
         // From the book
         $.each(this.pages, function() {
