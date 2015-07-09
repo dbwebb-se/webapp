@@ -88,15 +88,32 @@ var app = {
     init: function() {
         console.log('Init app');
 
-        this.postTemplate = Handlebars.compile($('#post-template').html());
+
 
         $('#blog-list li a').on('click', function(event) {
-            app.postBeforeShow(event, 0);
+            var id = this.href.slice(-1);
+            app.postBeforeShow(event, id);
         });
+
+
+
+        // Compile with handlebars
+        this.postTemplate = Handlebars.compile($('#post-template').html());
+        this.blogTemplate = Handlebars.compile($('#blog-list-template').html());
+
+        console.log(window.location.href);
+        if (window.location.href === 'http://localhost:8000/') {
+            app.homeBeforeCreate();
+        }
+    },
+
+    homeBeforeCreate: function(event, args) {
+        var that = app;
+        $('#blog-list').html(that.blogTemplate(that.data));
     },
 
     postBeforeShow: function(event, args) {
-        var post = app.data[0];
+        var post = app.data[args];
         $('#content').html(this.postTemplate(post));
     },
 
