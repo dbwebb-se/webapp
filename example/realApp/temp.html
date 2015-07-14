@@ -6,7 +6,15 @@
 
   <script type="text/javascript" src="js/dependencies/template-engine.js"></script>
   <script type="text/javascript" src="js/dependencies/router.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
+  <script type="text/javascript">
+    $.mobile.ajaxEnabled = false;
+    $.mobile.linkBindingEnabled = false;
+    $.mobile.hashListeningEnabled = false;
+    $.mobile.pushStateEnabled = false;
+  </script>
 
   <script type="text/html" id="home">
     <h1>Router FTW!</h1>
@@ -28,14 +36,13 @@
     <li><a href="#/page1">Page 1</a></li>
     <li><a href="#/page2">Page 2</a></li>
     <li><a href="#/lol/kalle">Page55</a></li>
+    <li><a href="#/notARoute">Should be 404</a></li>
   </ul>
   <div id="view"></div>
 
   <script type="text/html" id="template55">
     <h1>Page 2: <%= heading %></h1>
-
-    <%= variable %>
-
+    <%= dataBody %>
     <p>Lorem asdasdasdasdsa...</p>
   </script>
 
@@ -46,7 +53,18 @@
 
     route('/lol/kalle', 'template55', function() {
         this.heading = 'Temp';
-        this.variable = 'Loading...........................asdasdas';
+        this.dataBody = 'Loading....';
+
+        var root = 'http://jsonplaceholder.typicode.com';
+        var that = this;
+
+
+        $.ajax({
+            url: root + '/posts/1',
+            method: 'GET'
+        }).then(function(data) {
+            that.dataBody = data.body;
+        });
 
     });
 
@@ -65,6 +83,7 @@
     });
 
   </script>
+
 
 </body>
 </html>
