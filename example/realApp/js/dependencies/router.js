@@ -1,3 +1,4 @@
+
 var routes = {};
 //
 function route (path, templateId, controller) {
@@ -15,7 +16,10 @@ function router () {
     // Do we have both a view and a route?
     if (el && route.controller) {
         // Render route template with John Resig's template engine:
-        el.innerHTML = tmpl(route.templateId, new route.controller());
+        //el.innerHTML = tmpl(route.templateId, new route.controller());
+
+        // Mustache..
+        el.innerHTML = Mustache.render(document.getElementById(route.templateId).innerHTML, new route.controller());
     }
 }
 // Listen on hash change:

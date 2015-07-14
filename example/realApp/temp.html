@@ -16,32 +16,40 @@
 <body>
     <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#/page1">Page 1</a></li>
-        <li><a href="#/page2">Page 2</a></li>
-        <li><a href="#/lol/kalle">Ajax loading</a></li>
-        <li><a href="#/notARoute">Should be 404</a></li>
+        <li><a href="#/ajax">Ajax loading</a></li>
+        <li><a href="#/about">About</a></li>
     </ul>
 
     <div id="view"></div>
 
-    <script type="text/html" id="home">
-        <h1>Router FTW!</h1>
+    <script id="home" type="x-tmpl-mustache">
+        Hello {{ name }}!
     </script>
 
-    <script type="text/html" id="template1">
-        <h1>Page 1: <%= greeting %></h1>
-        <p><%= moreText %></p>
+
+    <!--<script type="text/html" id="home">
+        <h1>Home</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem dolores quod quidem nulla aut voluptatem modi et at totam placeat beatae iste explicabo, provident minus eaque maxime nihil, natus officia.
+        </p>
+
+    </script>-->
+
+    <script type="x-tmpl-mustache" id="about">
+        <h1>Page: {{title}}</h1>
+        <p>{{text}}</p>
     </script>
 
-    <script type="text/html" id="template2">
-        <h1>Page 2: <%= heading %></h1>
-        <p>Lorem ipsum...</p>
-    </script>
-
-    <script type="text/html" id="template55">
-        <h1>Page 55: <%= heading %></h1>
+    <!--<script type="text/html" id="ajaxLoading">
+        <h1>Page: <%= heading %></h1>
         <%= dataBody %>
         <p>Lorem asdasdasdasdsa...</p>
+    </script>-->
+
+    <script type="x-tmpl-mustache" id="ajaxLoading">
+        <h1>{{heading}}</h1>
+        <p>Hello mustache....</p>
+        {{dataBody}}
     </script>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -53,8 +61,9 @@
         $.mobile.hashListeningEnabled = false;
         $.mobile.pushStateEnabled = false;
     </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
-    <script type="text/javascript" src="js/dependencies/template-engine.js"></script>
+
+    <!--<script type="text/javascript" src="js/dependencies/template-engine.js"></script>-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
     <script type="text/javascript" src="js/dependencies/router.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
 
