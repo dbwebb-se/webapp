@@ -4,20 +4,27 @@ var app = {
 
     init: function() {
         console.log('Init app');
-        this.routes();
+        //this.routes();
     },
 
-    routes: function() {
-        route('/', 'home', function () {
+    // The routes for the app, a self invoking anon function..
+    routes: (function() {
 
+        route('/', 'home', function() {
+
+            this.name = 'Anonymous';
+            console.log('Home route');
         });
 
-        route('/lol/kalle', 'template55', function() {
-            this.heading = 'Temp';
-            this.dataBody = 'Loading....';
+        route('/about', 'about', function() {
+            console.log('About route');
+            this.title = 'About';
+            this.text = 'yoloasdasjdlkjaslkdjasl';
+        });
 
-            var that = this;
-            console.log(this);
+        route('/ajax', 'ajaxLoading', function() {
+            this.heading = 'ajax loading';
+            this.dataBody = 'Loading....';
 
             var root = 'http://jsonplaceholder.typicode.com';
             // A real ajax call.
@@ -26,33 +33,17 @@ var app = {
                 method: 'GET'
             }).done(function(data) {
 
-                $('#view').html(tmpl('template55', {
-                    heading: 'funkar',
+                $('#view').html(Mustache.render($('#ajaxLoading').html(), {
+                    heading: 'Ajax load',
                     dataBody: data.body
-                }))
+                }));
 
             }).fail(function() {
                 alert("error loading json data");
             });
-
-            console.log(this);
-
         });
+    })(),
 
-        route('/page1', 'template1', function () {
-          this.greeting = 'Hello world!';
-          this.moreText = 'Loading...';
-
-          // Simulating an Ajax call which take 0.5 s
-          setTimeout(function () {
-            this.moreText = 'Bacon ipsum...';
-          }.bind(this), 500);
-        });
-
-        route('/page2', 'template2', function () {
-          this.heading = 'I\'m page two!';
-        });
-    }
 };
 
 $(document).ready(function() {
