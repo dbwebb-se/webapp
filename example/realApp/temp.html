@@ -1,89 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Building a router</title>
-
-  <script type="text/javascript" src="js/dependencies/template-engine.js"></script>
-  <script type="text/javascript" src="js/dependencies/router.js"></script>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script type="text/javascript" src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
-  <script type="text/javascript">
-    $.mobile.ajaxEnabled = false;
-    $.mobile.linkBindingEnabled = false;
-    $.mobile.hashListeningEnabled = false;
-    $.mobile.pushStateEnabled = false;
-  </script>
-
-  <script type="text/html" id="home">
-    <h1>Router FTW!</h1>
-  </script>
-
-  <script type="text/html" id="template1">
-    <h1>Page 1: <%= greeting %></h1>
-    <p><%= moreText %></p>
-  </script>
-
-  <script type="text/html" id="template2">
-    <h1>Page 2: <%= heading %></h1>
-    <p>Lorem ipsum...</p>
-  </script>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" type="text/css" href="style/android.css" media="only screen and (max-width: 480px)">
+    <link rel="stylesheet" type="text/css" href="style/desktop.css" media="screen and (min-width: 481px)">
+    <title>HTML5 APP</title>
+    <link rel="apple-touch-icon-precomposed" href="image/myCustomIcon.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="minimal-ui, user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 </head>
 <body>
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#/page1">Page 1</a></li>
-    <li><a href="#/page2">Page 2</a></li>
-    <li><a href="#/lol/kalle">Page55</a></li>
-    <li><a href="#/notARoute">Should be 404</a></li>
-  </ul>
-  <div id="view"></div>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#/page1">Page 1</a></li>
+        <li><a href="#/page2">Page 2</a></li>
+        <li><a href="#/lol/kalle">Ajax loading</a></li>
+        <li><a href="#/notARoute">Should be 404</a></li>
+    </ul>
 
-  <script type="text/html" id="template55">
-    <h1>Page 2: <%= heading %></h1>
-    <%= dataBody %>
-    <p>Lorem asdasdasdasdsa...</p>
-  </script>
+    <div id="view"></div>
 
-  <script>
-    route('/', 'home', function () {
+    <script type="text/html" id="home">
+        <h1>Router FTW!</h1>
+    </script>
 
-    });
+    <script type="text/html" id="template1">
+        <h1>Page 1: <%= greeting %></h1>
+        <p><%= moreText %></p>
+    </script>
 
-    route('/lol/kalle', 'template55', function() {
-        this.heading = 'Temp';
-        this.dataBody = 'Loading....';
+    <script type="text/html" id="template2">
+        <h1>Page 2: <%= heading %></h1>
+        <p>Lorem ipsum...</p>
+    </script>
 
-        var root = 'http://jsonplaceholder.typicode.com';
-        var that = this;
+    <script type="text/html" id="template55">
+        <h1>Page 55: <%= heading %></h1>
+        <%= dataBody %>
+        <p>Lorem asdasdasdasdsa...</p>
+    </script>
 
-
-        $.ajax({
-            url: root + '/posts/1',
-            method: 'GET'
-        }).then(function(data) {
-            that.dataBody = data.body;
-        });
-
-    });
-
-    route('/page1', 'template1', function () {
-      this.greeting = 'Hello world!';
-      this.moreText = 'Loading...';
-
-      // Simulating an Ajax call which take 0.5 s
-      setTimeout(function () {
-        this.moreText = 'Bacon ipsum...';
-      }.bind(this), 500);
-    });
-
-    route('/page2', 'template2', function () {
-      this.heading = 'I\'m page two!';
-    });
-
-  </script>
-
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <!--Disable jquery mobile navigation-->
+    <script type="text/javascript">
+        $.mobile.ajaxEnabled = false;
+        $.mobile.linkBindingEnabled = false;
+        $.mobile.hashListeningEnabled = false;
+        $.mobile.pushStateEnabled = false;
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
+    <script type="text/javascript" src="js/dependencies/template-engine.js"></script>
+    <script type="text/javascript" src="js/dependencies/router.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
 
 </body>
 </html>
