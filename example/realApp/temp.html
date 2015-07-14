@@ -16,13 +16,30 @@
 <body>
 
     <div data-role="page" id="container">
-        <ul data-role="listview">
-            <li><a href="#">Home</a></li>
-            <li><a href="#/ajax">Ajax loading</a></li>
-            <li><a href="#/about">About</a></li>
-        </ul>
+        <div id="header" data-role="header">
+            <h1><a href="./">HTML WEB APP</a></h1>
+            <a href="#nav" class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext leftButton"></a>
+        </div>
 
-        <div id="view"></div>
+        <div data-role="panel" id="nav">
+            <ul data-role="listview">
+                <li><a href="#">Home</a></li>
+                <li><a href="#/ajax">Ajax loading</a></li>
+                <li><a href="#/about">About</a></li>
+            </ul>
+        </div>
+
+        <div id="view" role="main" class="ui-content"></div>
+
+        <div id="footer" data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a id="footer-summary" data-icon="grid" href="#">Summary</a></li>
+                    <li><a id="footer-favs" data-icon="star" href="#">Favs</a></li>
+                    <li><a id="footer-gear" data-icon="gear" href="#">Setup</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <script id="home" type="x-tmpl-mustache">
