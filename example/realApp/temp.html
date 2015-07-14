@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Building a router</title>
+
+  <script type="text/javascript" src="js/dependencies/template-engine.js"></script>
+  <script type="text/javascript" src="js/dependencies/router.js"></script>
+
+
+  <script type="text/html" id="home">
+    <h1>Router FTW!</h1>
+  </script>
+
+  <script type="text/html" id="template1">
+    <h1>Page 1: <%= greeting %></h1>
+    <p><%= moreText %></p>
+  </script>
+
+  <script type="text/html" id="template2">
+    <h1>Page 2: <%= heading %></h1>
+    <p>Lorem ipsum...</p>
+  </script>
+</head>
+<body>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#/page1">Page 1</a></li>
+    <li><a href="#/page2">Page 2</a></li>
+    <li><a href="#/lol/kalle">Page55</a></li>
+  </ul>
+  <div id="view"></div>
+
+  <script type="text/html" id="template55">
+    <h1>Page 2: <%= heading %></h1>
+
+    <%= variable %>
+
+    <p>Lorem asdasdasdasdsa...</p>
+  </script>
+
+  <script>
+    route('/', 'home', function () {
+
+    });
+
+    route('/lol/kalle', 'template55', function() {
+        this.heading = 'Temp';
+        this.variable = 'Loading...........................asdasdas';
+
+    });
+
+    route('/page1', 'template1', function () {
+      this.greeting = 'Hello world!';
+      this.moreText = 'Loading...';
+
+      // Simulating an Ajax call which take 0.5 s
+      setTimeout(function () {
+        this.moreText = 'Bacon ipsum...';
+      }.bind(this), 500);
+    });
+
+    route('/page2', 'template2', function () {
+      this.heading = 'I\'m page two!';
+    });
+
+  </script>
+
+</body>
+</html>
