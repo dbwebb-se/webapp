@@ -5,14 +5,10 @@ var fs   = require('fs');
 // Imports the main router
 var router = new Router();
 
-router.get('/', (req, res) => {
-    res.plain(fs.readFileSync('readme.md', 'utf8'), 200);
-});
-
 router.group('/api', () => {
     router.group('/v1', () => {
         router.get('/', (req, res) => {
-            res.plain('Hello world');
+            res.plain(fs.readFileSync(path.join(__dirname, 'readme.md'), 'utf8'));
         });
 
         router.group('/examples', () => {
@@ -25,6 +21,23 @@ router.group('/api', () => {
                 });
             });
 
+            router.get('/:exampleName', (req, res) => {
+                var ext = path.extname(req.params.exampleName).replace('.', '');
+                var fileContent;
+                var fileToLoad = path.join(__dirname, '../', req.params.exampleName, 'index.html');
+                try {
+                    fileContent = fs.readFileSync(fileToLoad, 'utf-8');
+                    res.html(fileContent);
+                } catch (e) {
+                    res.json({
+                        code: 500,
+                        msg: e.message,
+                    });
+                }
+            });
+        });
+
+        router.group('/views', () => {
             router.get('/:filename', (req, res) => {
                 var ext = path.extname(req.params.filename).replace('.', '');
                 var fileContent;
@@ -46,11 +59,11 @@ router.group('/api', () => {
                     });
                 }
             });
-        });
-
+        })
     });
 });
 
 require('http').createServer((req, res) => {
     router.route(req, res);
 }).listen(1337);
+console.log('Listening on port 1337');
