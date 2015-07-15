@@ -75,12 +75,20 @@ class Router {
     }
 
     /**
+     * Shorthand PUT route
+     * @param  String   path    The path to the route
+     * @param  Function handler The function for the route.
+     */
+    put(path, handler) {
+        this.add('PUT', path, handler);
+    }
+
+    /**
      * Route
      * @param  Object req HTTP request object
-     * @param  {[type]} res HTTP response object
+     * @param  Object res HTTP response object
      */
     route(req, res) {
-
         // Extend request and response object.
         req = buildRequest(req, res);
         res = buildResponse(req, res);
@@ -94,7 +102,7 @@ class Router {
 
         // Filter out the routes to process..
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-        var routesToProcess = this.routes.filter(function (r) {
+        var routesToProcess = this.routes.filter((r) => {
             // remove trailing slash from the current path, if they exist.
             r.path = trimSlashes(r.path);
 
@@ -107,7 +115,7 @@ class Router {
             }
 
             // Get params.
-            var currentParams = params.filter(function (p) {
+            var currentParams = params.filter((p) => {
                 return p.includes(':');
             });
 
@@ -146,13 +154,8 @@ class Router {
             return;
         }
 
-        /*console.log('--------------');
-        console.log('Routes to process: ', routesToProcess);
-        console.log('--------------');*/
-
-
         // Handle the request.
-        routesToProcess.forEach(function (route) {
+        routesToProcess.forEach((route) => {
             // Calling the function.
             route.handler(req, res);
         });
@@ -165,22 +168,6 @@ class Router {
     nrOfRoutes() {
         return this.routes.length;
     }
-
-    /**
-     * Group routes
-     * @param  {[type]} path   [description]
-     * @param  {[type]} routes [description]
-     * @return {[type]}        [description]
-     */
-    /*group(path, router) {
-        router.routes.forEach((obj, index) => {
-            // set the new path.
-            obj.path = path + obj.path;
-
-            // add the new routes to this.routes.
-            this.routes.push(obj);
-        });
-    }*/
 
     /**
      * Group routes
