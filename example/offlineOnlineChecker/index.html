@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5 APP - Detect screen size</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="minimal-ui, user-scalable=no, width=device-width" />
+
+    <style>
+        #status {
+            position: fixed;
+            width: 100%;
+            font: bold 1em sans-serif;
+            color: #FFF;
+            padding: 0.5em;
+        }
+
+        #log {
+            padding: 2.5em 0.5em 0.5em;
+            font: 1em sans-serif;
+        }
+
+        .online {
+            background: green;
+        }
+
+        .offline {
+            background: red;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id='status'></div>
+    <div id='log'></div>
+    <p>This is a test for online/offline</p>
+
+    <script>
+        window.addEventListener('load', function() {
+            console.log('Hello world');
+            console.log()
+            var status = document.getElementById("status");
+            var log = document.getElementById('log');
+
+            function updateOnlineStatus(event) {
+                var condition = navigator.onLine ? "online" : "offline";
+                console.log(condition);
+                status.className = condition;
+                status.innerHTML = condition.toUpperCase();
+            }
+
+            updateOnlineStatus();
+
+            window.addEventListener('online',  updateOnlineStatus);
+            window.addEventListener('offline', updateOnlineStatus);
+        });
+    </script>
+</body>
+</html>
