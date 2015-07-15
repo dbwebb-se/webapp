@@ -42,6 +42,29 @@ var app = {
                 alert("error loading json data");
             });
         });
+
+        route('/examples', 'examples', function() {
+            // Load example template from file.
+            var data = [ "a", "b", "c", "d" ];
+            this.list = data;
+            var view = $('#view');
+
+            // get view.
+            $.get('views/examples.mustache', function(template) {
+                // get data.
+                $.get('http://localhost:1337/api/v1/examples', function(data) {
+                    var output = Mustache.render(template, {
+                        list: data
+                    });
+                    view.html(output);
+                });
+            });
+        });
+
+        route('/examples?name', 'examples', function() {
+            console.log('Yolo');
+        });
+
     })(),
 
 };

@@ -26,6 +26,8 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#/ajax">Ajax loading</a></li>
                 <li><a href="#/about">About</a></li>
+                <li data-role="list-divider"><a href="#/examples">Examples</a></li>
+                <li><a href="#/examples/test">uber fint exempel</a></li>
             </ul>
         </div>
 
@@ -54,6 +56,7 @@
 
     </script>-->
 
+
     <script type="x-tmpl-mustache" id="about">
         <h1>Page: {{title}}</h1>
         <p>{{text}}</p>
@@ -69,6 +72,17 @@
         <h1>{{heading}}</h1>
         <p>Hello mustache....</p>
         {{dataBody}}
+    </script>
+
+    <script type="x-tmpl-mustache" id="examples">
+        <h1>Examples</h1>
+        {{list}}
+
+        <ul>
+            {{#list}}
+                <li>{{.}}</li>
+            {{/list}}
+        </ul>
     </script>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
