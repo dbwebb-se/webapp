@@ -7,7 +7,10 @@ function route (path, templateId, controller) {
       controller = templateId;
       templateId = null;
     }
-    routes[path] = { templateId: templateId, controller: controller };
+    routes[path] = {
+        templateId: templateId,
+        controller: controller
+    };
 }
 var el = null;
 
@@ -21,6 +24,7 @@ function router () {
     var route = routes[url];
 
     console.log(route);
+    console.log(urlParams);
 
     if (route && !route.templateId) {
         return route.controller ? new route.controller : null;
@@ -30,12 +34,23 @@ function router () {
     if (el && route.controller) {
         // Render route template with John Resig's template engine:
         //el.innerHTML = tmpl(route.templateId, new route.controller());
-
         el.innerHTML = Mustache.render(document.getElementById(route.templateId).innerHTML, new route.controller());
-
     }
 }
 // Listen on hash change:
 window.addEventListener('hashchange', router);
 // Listen on page load:
 window.addEventListener('load', router);
+
+var urlParams;
+(window.onpopstate = function () {
+    var match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query  = window.location.search.substring(1);
+
+    urlParams = {};
+    while (match = search.exec(query))
+       urlParams[decode(match[1])] = decode(match[2]);
+})();
