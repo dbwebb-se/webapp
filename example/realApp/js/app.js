@@ -43,7 +43,7 @@ var app = {
             });
         });
 
-        route('/examples', 'examples', function() {
+        route('/examples', function() {
             // Load example template from file.
             var data = [ "a", "b", "c", "d" ];
             this.list = data;
@@ -51,8 +51,10 @@ var app = {
 
             // get view.
             $.get('views/examples.mustache', function(template) {
+                console.log('Tepmlate', template);
                 // get data.
                 $.get('http://localhost:1337/api/v1/examples', function(data) {
+                    console.log('data', data);
                     var output = Mustache.render(template, {
                         list: data
                     });
@@ -61,8 +63,12 @@ var app = {
             });
         });
 
-        route('/examples?name', 'examples', function() {
-            console.log('Yolo');
+        route('/examples/detectScreenSize', 'screensize', function () {
+            var url = 'http://localhost:1337/api/v1/examples/detectScreenSize';
+            $.get(url, function (data) {
+                console.log(data);
+                $('#view').html(data);
+            });
         });
 
     })(),
