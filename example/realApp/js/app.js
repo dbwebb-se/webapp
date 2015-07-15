@@ -10,7 +10,7 @@ var app = (function() {
         renderTemplateFromId('home', {
             name: name
         });
-    }
+    };
 
     var author = function () { console.log("author"); };
 
@@ -35,23 +35,23 @@ var app = (function() {
 
     var examples = function(slug) {
         console.log(slug);
-        var url = "http://localhost:1337/api/v1/examples/" + slug;
+        var url = "http://localhost:1337/api/v1/examples/" + slug + "?type=json";
         $.get(url, function (data) {
             console.log(data);
 
-            $('#view').html(data);
+            $('#view').html(data.body);
         });
     };
 
     var routes = {
         '/': function() { // TODO: FIX THIS.
-            renderTemplateFromId('about', { title: 'Home', text: 'lorem' });
+            renderTemplateFromId('index', { title: 'Index page' });
         },
         '/hello/?:name': hello,
         '/author': author,
         '/books': [ books, function() {
             var view = {
-                heading: 'hello',
+                heading: 'Books',
                 dataBody: 'yolo',
             };
             renderTemplateFromId('ajaxLoading', view);
@@ -79,9 +79,12 @@ var app = (function() {
 
     var options = {
         strict: false,
-    }
+    };
+
     var router = new Router(routes).configure(options);
+    console.log(router);
     router.init();
+
     var privates = {
 
     };
