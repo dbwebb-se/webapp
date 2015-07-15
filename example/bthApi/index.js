@@ -25,12 +25,25 @@ router.group('/api', () => {
             });
 
             router.get('/:exampleName', (req, res) => {
-                var ext = path.extname(req.params.exampleName).replace('.', '');
                 var fileContent;
                 var fileToLoad = path.join(__dirname, '../', req.params.exampleName, 'index.html');
                 try {
                     fileContent = fs.readFileSync(fileToLoad, 'utf-8');
-                    res.html(fileContent);
+                    if (req.query.type === 'json') {
+                        var styleSheets = fileContent.match(/<link.*type="text\/css".href=.+/g);
+                        var style = fileContent.match(/<style.*>[\s\S][\s\S]*<\/style>/g);
+                        var body  = fileContent.match(/<body.*>[\s\S][\s\S]*<\/body>/g);
+                        var scripts = fileContent.match(/<script.*><\/script>/g);
+                        res.json({
+                            code: 200,
+                            body: body,
+                            style: style,
+                            styleSheets: styleSheets,
+                            externJavascript: scripts
+                        });
+                    } else {
+                        res.html(fileContent);
+                    }
                 } catch (e) {
                     res.json({
                         code: 500,

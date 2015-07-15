@@ -38,8 +38,9 @@ Resource URL `dbwebb.se/webapp/api/v1/examples/:exampleName`
 | Name        | Required | Example value    | Description | 
 |:-----------:|:--------:|:----------------:|:------------|
 | exampleName | yes      | detectScreenSize | The name of the example to load. |
+| type        | no       | json             | Get the content of the example as json. |
 
-##### Example response
+##### Example response `Content-Type text/html`
 ```
 <!DOCTYPE html>
 <html>
@@ -77,6 +78,28 @@ Resource URL `dbwebb.se/webapp/api/v1/examples/:exampleName`
 </body>
 </html>
 ```
+
+#### Example response `Content-Type application/json`
+```json 
+{
+    "code": 200,
+    "body": [
+        "<body>\n<div id=\"content\">\n<h1>Gestures</h1>\n</div>\n<script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script type=\"text/javascript\" src=\"https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js\"></script>\n<script type=\"text/javascript\" src=\"js/android.js\"></script>\n</body>"
+    ],
+    "style": null,
+    "styleSheets": [
+        "<link rel=\"stylesheet\" type=\"text/css\" href=\"style/android.css\" media=\"only screen and (max-width: 480px)\">",
+        "<link rel=\"stylesheet\" type=\"text/css\" href=\"style/desktop.css\" media=\"screen and (min-width: 481px)\">",
+        "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css\">"
+    ],
+    "externJavascript": [
+        "<script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-2.1.4.min.js\"></script>",
+        "<script type=\"text/javascript\" src=\"https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js\"></script>",
+        "<script type=\"text/javascript\" src=\"js/android.js\"></script>"
+    ]
+}
+```
+
 
 # `Views`
 
