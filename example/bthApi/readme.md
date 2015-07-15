@@ -1,5 +1,27 @@
 # Webapp api-referance
 
+# `Users`
+
+### GET /users/
+Gets all the users
+
+Resource URL `dbwebb.se/webapp/api/v1/users/`
+
+### POST /users/
+Creates a new user
+
+Resource URL `dbwebb.se/webapp/api/v1/users/`
+
+### GET /users/:username
+Get all users matching usernamed passed
+
+Resource URL `dbwebb.se/webapp/api/v1/users/:username`
+
+#### Parameters
+| Name        | Required | Example value    | Description | 
+|:-----------:|:--------:|:----------------:|:------------|
+| username | yes      | foiki | The name of the username to search for. |
+
 # `Examples`
 
 ### GET /examples/
