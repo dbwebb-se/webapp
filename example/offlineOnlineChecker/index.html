@@ -34,15 +34,12 @@
 
 <body>
     <div id='status'></div>
-    <div id='log'></div>
-    <p>This is a test for online/offline</p>
 
     <script>
         window.addEventListener('load', function() {
-            console.log('Hello world');
-            console.log()
+
             var status = document.getElementById("status");
-            var log = document.getElementById('log');
+
 
             function updateOnlineStatus(event) {
                 var condition = navigator.onLine ? "online" : "offline";
