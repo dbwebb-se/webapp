@@ -33,6 +33,7 @@ router.group('/api', () => {
                         var styleSheets = fileContent.match(/<link.*type="text\/css".href=.+/g);
                         var style = fileContent.match(/<style.*>[\s\S][\s\S]*<\/style>/g);
                         var body  = fileContent.match(/<body.*>[\s\S][\s\S]*<\/body>/g);
+                        body = body[0].replace(/<body>|<\/body>/g, '');
                         var scripts = fileContent.match(/<script.*><\/script>/g);
                         res.json({
                             code: 200,

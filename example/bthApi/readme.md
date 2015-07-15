@@ -84,7 +84,7 @@ Resource URL `dbwebb.se/webapp/api/v1/examples/:exampleName`
 {
     "code": 200,
     "body": [
-        "<body>\n<div id=\"content\">\n<h1>Gestures</h1>\n</div>\n<script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script type=\"text/javascript\" src=\"https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js\"></script>\n<script type=\"text/javascript\" src=\"js/android.js\"></script>\n</body>"
+        "<div id=\"content\">\n<h1>Gestures</h1>\n</div>\n<script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-2.1.4.min.js\"></script>\n<script type=\"text/javascript\" src=\"https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js\"></script>\n<script type=\"text/javascript\" src=\"js/android.js\"></script>\n"
     ],
     "style": null,
     "styleSheets": [
