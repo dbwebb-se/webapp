@@ -58,6 +58,11 @@ Resource URL `dbwebb.se/webapp/api/v1/examples/:exampleName`
 
 # `Views`
 
+### GET /views/
+Retuns all avaliable views.
+
+Resource URL `dbwebb.se/webapp/api/v1/view/`
+
 ### GET /views/:name
 Retuns the view of name given.
 

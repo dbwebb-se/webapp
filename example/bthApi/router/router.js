@@ -103,13 +103,15 @@ class Router {
         // Filter out the routes to process..
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
         var routesToProcess = this.routes.filter((r) => {
-            // remove trailing slash from the current path, if they exist.
+            // remove trailing slash from the current path,
+            // if they exist.
             r.path = trimSlashes(r.path);
 
             // Split the current params.
             var params = r.path.split('/');
 
-            // If the parameters lenght is not the same, it's not the route we are looking for.
+            // If the parameters lenght is not the same,
+            // it's not the route we are looking for.
             if (params.length !== urlParams.length) {
                 return false;
             }
@@ -156,8 +158,16 @@ class Router {
 
         // Handle the request.
         routesToProcess.forEach((route) => {
-            // Calling the function.
-            route.handler(req, res);
+            if (method === 'POST') {
+                // Make sure that the request is finished before
+                // calling the handler
+                req.on('end', () => {
+                    route.handler(req, res);
+                });
+            } else {
+                // Calling the function.
+                route.handler(req, res);
+            }
         });
 
     }

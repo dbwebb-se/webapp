@@ -1,10 +1,13 @@
 import Router from './router/router';
+import Users  from './controllers/UserController'
+import User   from './models/User';
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/test');
 var path = require('path');
 var fs   = require('fs');
 
-// Imports the main router
 var router = new Router();
-
 router.group('/api', () => {
     router.group('/v1', () => {
         router.get('/', (req, res) => {
@@ -38,6 +41,12 @@ router.group('/api', () => {
         });
 
         router.group('/views', () => {
+            router.get('/', (req, res) => {
+                fs.readdir(path.join(__dirname, 'views'), (err, dirs) => {
+                    res.json(dirs, 200);
+                });
+            });
+
             router.get('/:filename', (req, res) => {
                 var ext = path.extname(req.params.filename).replace('.', '');
                 var fileContent;
@@ -59,7 +68,63 @@ router.group('/api', () => {
                     });
                 }
             });
-        })
+        });
+
+        router.group('/users', () => {
+            router.get('/', (req, res) => {
+                User.find({}, (err, users) => {
+                    if (err) {
+                        res.json({
+                            code: 500,
+                            msg: err.message
+                        }, 500);
+                    } else {
+                        res.json({
+                            code: 200,
+                            users: users
+                        });
+                    }
+                });
+            });
+
+            router.get('/:name', (req, res) => {
+                var name = req.params.name;
+                User.find({ username: name }, (err, user) => {
+                    if (err) {
+                        res.json({
+                            code: 500,
+                            msg: err.message
+                        }, 500);
+                    } else {
+                        res.json({
+                            code: 200,
+                            user: user
+                        }, 200);
+                    }
+                });
+            });
+
+            router.post('/', (req, res) => {
+                var newUser = new User({
+                    username: req.body.username
+                });
+
+                newUser.save((err) => {
+                    if (err) {
+                        res.json({
+                            code: 500,
+                            msg: err.message
+                        }, 500);
+                    } else {
+                        res.json({
+                            code: 201,
+                            msg: 'User created!',
+                            user: newUser
+                        }, 201);
+                    }
+                });
+            });
+        });
     });
 });
 
