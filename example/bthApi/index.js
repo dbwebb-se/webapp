@@ -76,9 +76,9 @@ router.group('/api', () => {
                             break;
                         default:
                             res.json({
-                                code: 501,
+                                code: 500,
                                 msg: 'Given extention is not yet supported.'
-                            }, 501);
+                            }, 500);
                     }
                 } catch (e) {
                     res.json({
