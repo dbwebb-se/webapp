@@ -17,17 +17,16 @@
 
     <div data-role="page" id="container">
         <div id="header" data-role="header">
-            <h1><a href="./">HTML WEB APP</a></h1>
+            <h1>HTML WEB APP</h1>
             <a href="#nav" class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext leftButton"></a>
         </div>
 
         <div data-role="panel" id="nav">
             <ul data-role="listview">
-                <li><a href="#">Home</a></li>
-                <li><a href="#/ajax">Ajax loading</a></li>
-                <li><a href="#/about">About</a></li>
-                <li data-role="list-divider"><a href="#/examples">Examples</a></li>
-                <li><a href="#/examples/test">uber fint exempel</a></li>
+                <li><a href="#/">Home</a></li>
+                <li><a href="#/hello">Hello</a></li>
+                <li><a href="#/books">Books</a></li>
+                <li><a href="#/examples">Examples</a></li>
             </ul>
         </div>
 
@@ -45,7 +44,7 @@
     </div>
 
     <script id="home" type="x-tmpl-mustache">
-        Hello {{ name }}!
+        <h1>Hello {{ name }}!</h1>
     </script>
 
     <!--<script type="text/html" id="home">
@@ -61,12 +60,6 @@
         <h1>Page: {{title}}</h1>
         <p>{{text}}</p>
     </script>
-
-    <!--<script type="text/html" id="ajaxLoading">
-        <h1>Page: <%= heading %></h1>
-        <%= dataBody %>
-        <p>Lorem asdasdasdasdsa...</p>
-    </script>-->
 
     <script type="x-tmpl-mustache" id="ajaxLoading">
         <h1>{{heading}}</h1>
