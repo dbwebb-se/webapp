@@ -66,13 +66,19 @@ router.group('/api', () => {
                 var fileToLoad = path.join(__dirname, 'views', req.params.filename);
                 try {
                     fileContent = fs.readFileSync(fileToLoad, 'utf-8');
-                    if (res[ext]) {
-                        res[ext](fileContent);
-                    } else {
-                        res.json({
-                            code: 501,
-                            msg: 'Given extention is not yet supported.'
-                        }, 501);
+                    switch (ext) {
+                        case 'html':
+                        case 'mustache':
+                            res.html(fileContent);
+                            break;
+                        case 'json':
+                            res.json(fileContent);
+                            break;
+                        default:
+                            res.json({
+                                code: 501,
+                                msg: 'Given extention is not yet supported.'
+                            }, 501);
                     }
                 } catch (e) {
                     res.json({
