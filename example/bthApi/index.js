@@ -1,5 +1,4 @@
 import Router from './router/router';
-import Users  from './controllers/UserController'
 import User   from './models/User';
 
 var mongoose = require('mongoose');
