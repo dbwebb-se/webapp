@@ -36,23 +36,25 @@
     <div id='status'></div>
 
     <script>
-        window.addEventListener('load', function() {
+        (function() {
+            window.addEventListener('load', function() {
 
-            var status = document.getElementById("status");
+                var status = document.getElementById("status");
 
 
-            function updateOnlineStatus(event) {
-                var condition = navigator.onLine ? "online" : "offline";
-                console.log(condition);
-                status.className = condition;
-                status.innerHTML = condition.toUpperCase();
-            }
+                function updateOnlineStatus(event) {
+                    var condition = navigator.onLine ? "online" : "offline";
+                    console.log(condition);
+                    status.className = condition;
+                    status.innerHTML = condition.toUpperCase();
+                }
 
-            updateOnlineStatus();
+                updateOnlineStatus();
 
-            window.addEventListener('online',  updateOnlineStatus);
-            window.addEventListener('offline', updateOnlineStatus);
-        });
+                window.addEventListener('online',  updateOnlineStatus);
+                window.addEventListener('offline', updateOnlineStatus);
+            });
+        })();
     </script>
 </body>
 </html>
