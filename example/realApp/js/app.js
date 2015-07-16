@@ -4,10 +4,20 @@
 
 var app = (function() {
 
+    // Nav panel closes on a link click
+    $('#nav ul li a').on('click', function() {
+        $('#nav').panel('close');
+    });
+
+    // Stupid fix for / route.
+    if (window.location.href.charAt(window.location.href.length - 1) === '/') {
+        window.location.replace('#/');
+    }
+
     var hello = function(name) {
         name = name || 'anonymous';
 
-        renderTemplateFromId('home', {
+        renderTemplate('home', {
             name: name
         });
     };
@@ -45,7 +55,9 @@ var app = (function() {
 
     var routes = {
         '/': function() { // TODO: FIX THIS.
-            renderTemplateFromId('index', { title: 'Index page' });
+            renderTemplate('index', { title: 'Index page' }); // Not specifying what view, defaults to 'view'.
+            //renderTemplate('view', 'index', { title: 'Index page' }); // Using templateId instead.
+            //renderTemplate('view', '<h1>{{title}}</h1>', { title: 'Index page yolo' }); // The real way to write.
         },
         '/hello/?:name': hello,
         '/author': author,
@@ -54,7 +66,7 @@ var app = (function() {
                 heading: 'Books',
                 dataBody: 'yolo',
             };
-            renderTemplateFromId('ajaxLoading', view);
+            renderTemplate('ajaxLoading', view);
         } ],
         '/books/view/:bookId': viewBook,
         '/examples': getExampleNames,
@@ -62,31 +74,48 @@ var app = (function() {
     };
 
     /**
-     * Render a mustache template
-     * @param  String templateId Id of the template
-     * @param  Object obj        The object
+     * Render mustache template to a view.
+     * @param  string viewId   Optional parameter, can be set to the elements Id, defaults to 'view'
+     * @param  string template A mustache template string or the ID of the mustache template.
+     * @param  Object obj      The values you want to transform into the template.
+     *
+     * Usage:
+     * renderTemplate('index', { title: 'Index page' }); // Not specifying what view, defaults to 'view'.
+     * renderTemplate('view', 'index', { title: 'Index page' }); // Using templateId instead.
+     * renderTemplate('view', '<h1>{{title}}</h1>', { title: 'Index page' }); // The real way to write, specifying all.
      */
-    var renderTemplateFromId = function(templateId, obj) {
-        var templateHTML = document.getElementById(templateId).innerHTML;
-        var div = document.getElementById('view');
-        div.innerHTML = Mustache.render(templateHTML, obj);
-    };
+    var renderTemplate = function (viewId, template, obj) {
 
-    var renderTemplate = function(template, obj) {
-        var div = document.getElementById('view');
-        div.innerHTML = Mustache.render(template, obj);
-    };
+        // Not specifiying view, sets it to 'view'
+        if (typeof obj === 'undefined') {
+            obj = template;
+            template = viewId;
+            viewId = 'view';
+        }
+
+        var templateHTML = '';
+        if (document.getElementById(template)) {
+            // Template is an ID. we must fetch the template from its id.
+            templateHTML = document.getElementById(template).innerHTML;
+        } else {
+            //template is a real template and we can use it directly
+            templateHTML = template;
+        }
+
+        var element = document.getElementById(viewId);
+        // Set element html to the rendered mustache template.
+        element.innerHTML = Mustache.render(templateHTML, obj);
+    }
 
     var options = {
         strict: false,
     };
 
     var router = new Router(routes).configure(options);
-    console.log(router);
     router.init();
 
     var privates = {
-
+        routes: routes,
     };
 
     return {};
