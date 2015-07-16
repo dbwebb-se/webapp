@@ -14,15 +14,17 @@
     </div>
 
     <script type="text/javascript">
-        var el = document.getElementById('content');
+        (function() {
+            var el = document.getElementById('content');
 
-        if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                el.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
-            });
-        } else {
-            el.innerHTML = 'Geolocation not supported by your browser';
-        }
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    el.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+                });
+            } else {
+                el.innerHTML = 'Geolocation not supported by your browser';
+            }
+        })();
     </script>
 </body>
 </html>
