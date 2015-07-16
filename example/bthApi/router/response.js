@@ -15,6 +15,11 @@ export function buildResponse(req, res) {
         res.body = body;
         res.headers = 'text/html';
 
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With');
+
+
+
         // Set the content type.
         if (contentType) {
             this.setHeader('Content-Type', contentType);
