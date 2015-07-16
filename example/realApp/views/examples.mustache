@@ -1,7 +1,13 @@
-<h1>Examples</h1>
+<div data-role="header">
+    <h1>Examples</h1>
+</div>
 
-<ul>
+<p>View the examples below, by clicking on one of them</p>
+
+<ul data-role="listview" data-inset="true" class="ui-nodisc-icon ui-alt-icon">
     {{#list}}
-        <li><a href="#/examples/{{.}}">{{.}}</a></li>
+        <li>
+            <a href="#/examples/{{.}}">{{.}}</a>
+        </li>
     {{/list}}
 </ul>

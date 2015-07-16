@@ -35,17 +35,22 @@ var app = (function() {
         $.get('views/examples.mustache', function(template) {
             console.log('Tepmlate', template);
             // get data.
-            $.get('http://localhost:1337/api/v1/examples', function(data) {
+            $.get('http://henrikolund.se:1337/api/v1/examples', function(data) {
                 renderTemplate(template, {
                     list: data
                 });
+            }).fail(function(xhr, status, error) {
+                $('#view').html("An AJAX error occured: " + status + "\nError: " + error);
             });
+        }).fail(function(xhr, status, error) {
+            $('#view').html("An AJAX error occured: " + status + "\nError: " + error);
         });
     };
 
     var examples = function(slug) {
         console.log(slug);
-        var url = "http://localhost:1337/api/v1/examples/" + slug + "?type=json";
+        //var url = "http://localhost:1337/api/v1/examples/" + slug + "?type=json";
+        var url = "http://henrikolund.se:1337/api/v1/examples/" + slug + "?type=json";
         $.get(url, function (data) {
             console.log(data);
 
@@ -105,7 +110,7 @@ var app = (function() {
         var element = document.getElementById(viewId);
         // Set element html to the rendered mustache template.
         element.innerHTML = Mustache.render(templateHTML, obj);
-    }
+    };
 
     var options = {
         strict: false,
@@ -120,4 +125,3 @@ var app = (function() {
 
     return {};
 })();
-

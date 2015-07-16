@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5 APP - Geolocation</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="minimal-ui, user-scalable=no, width=device-width" />
+</head>
+
+<body>
+    <div id="content">
+        <p>Getting your position....</p>
+        <div id="map"></div>
+    </div>
+
+    <script type="text/javascript">
+        (function() {
+
+            var map;
+
+            function init() {
+                var mapOptions = {
+                    zoom: 6,
+                };
+                map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var pos = new google.maps.LatLng(position.coords.latitude,
+                                                         position.coords.longitutde);
+
+                        var infowindow = new google.maps.InfoWindow({
+                            map: map,
+                            position: pos,
+                            content: 'Location found by html5 navigator API'
+                        });
+
+                        map.setCenter(pos);
+
+                    }, function () {
+                        handleNoGeolcation(true);
+                    });
+                } else {
+                    handleNoGeolcation(false);
+                }
+            }
+
+            function handleNoGeolcation(errorFlag) {
+                if (errorFlag) {
+                    var content = 'Error: The Geolocation service failed.';
+                } else {
+                    var content = 'Error: Your browser doesn\'t support geolocation.';
+                }
+
+                var options = {
+                    map: map,
+                    position: new google.maps.LatLng(60, 105),
+                    content: content
+                };
+
+                var infowindow = new google.maps.InfoWindow(options);
+                map.setCenter(options.position);
+            }
+
+            init();
+
+        })();
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+</body>
+</html>
