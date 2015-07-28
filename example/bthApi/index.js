@@ -18,6 +18,12 @@ router.group('/api', () => {
                 fs.readdir(path.join(__dirname, '../'), (err, dir) => {
                     dir = dir.filter((name) => {
                         return !name.includes('.');
+                    }).map((files) => {
+                        var split = files.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
+                        split = split.charAt(0).toUpperCase() + split.slice(1);
+
+                        console.log(split);
+                        return split;
                     });
                     res.json(dir, 200);
                 });
