@@ -16,16 +16,20 @@ router.group('/api', () => {
         router.group('/examples', () => {
             router.get('/', (req, res) => {
                 fs.readdir(path.join(__dirname, '../'), (err, dir) => {
+
+                    var examples = {};
                     dir = dir.filter((name) => {
                         return !name.includes('.');
-                    }).map((files) => {
+                    });
+                    examples.url = dir;
+
+                    examples.name = dir.map((files) => {
                         var split = files.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
                         split = split.charAt(0).toUpperCase() + split.slice(1);
 
-                        console.log(split);
                         return split;
                     });
-                    res.json(dir, 200);
+                    res.json(examples, 200);
                 });
             });
 
