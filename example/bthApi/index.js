@@ -17,19 +17,34 @@ router.group('/api', () => {
             router.get('/', (req, res) => {
                 fs.readdir(path.join(__dirname, '../'), (err, dir) => {
 
-                    var examples = {};
-                    dir = dir.filter((name) => {
+
+                    var folders = [];
+
+                    var url = dir.filter((name) => {
                         return !name.includes('.');
                     });
-                    examples.url = dir;
 
-                    examples.name = dir.map((files) => {
+                    var name = url.map((files) => {
                         var split = files.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
                         split = split.charAt(0).toUpperCase() + split.slice(1);
-
                         return split;
                     });
-                    res.json(examples, 200);
+
+                    url.forEach((a,b) => {
+                        folders.push({
+                            url: a,
+                            name: name[b]
+                        });
+                    });
+
+                    /*{
+                        folders: [
+                            { name: 'a', url: '/a' },
+                            { name: 'b', url: '/b' },
+                        ]
+                    }*/
+
+                    res.json(folders, 200);
                 });
             });
 
