@@ -10,43 +10,14 @@ var carl = (function() {
     var cache = {};
     var _c = {};
 
-    function groupBy(array, f) {
-        var groups = {};
-        array.forEach(function(o) {
-            var group = JSON.stringify(f(o));
-            groups[group] = groups[group] || [];
-            groups[group].push(o);
-        });
-        return Object.keys(groups).map(function(group) {
-            return groups[group];
-        });
-    }
-
-    /**
-     * [buildSection description]
-     * @param  {[type]} section [description]
-     * @param  {[type]} replace [description]
-     * @return {[type]}         [description]
-     */
-    function buildSection(section, replace) {
-        var ret = '';
-        console.log('section', section);
-        console.log('replace', replace);
-
-
-
-        return ret;
-    }
-
     /**
      * Gets the template
      * @param  {String} src
      * @return {String}     The unparsed template
      */
     _c.getTemplate = function(src) {
-        /*
         // tests if its is a url thats need loading
-        if (/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/g.test(src)) {
+        /*if (/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/g.test(src)) {
             // url given, should now load the file from given url
             return $.get(src);
         }*/
