@@ -36,9 +36,11 @@ var app = (function() {
             console.log('Tepmlate', template);
             // get data.
             $.get('http://henrikolund.se:1337/api/v1/examples', function(data) {
+                console.log(data);
                 renderTemplate(template, {
                     list: data
                 });
+
             }).fail(function(xhr, status, error) {
                 $('#view').html("An AJAX error occured: " + status + "\nError: " + error);
             });
@@ -48,16 +50,20 @@ var app = (function() {
     };
 
     var examples = function(slug) {
-        console.log(slug);
-        //var url = "http://localhost:1337/api/v1/examples/" + slug + "?type=json";
         var url = "http://henrikolund.se:1337/api/v1/examples/" + slug + "?type=json";
         $.get(url, function (data) {
-            console.log(data);
-
-            $('#view').html(data.body);
+            if (data.code === 500) {
+                $('#view').html(data.msg);
+            } else {
+                $('head').append(data.style);
+                $('head').append(data.externJavascript);
+                $('#view').html(data.body);
+            }
         });
     };
 
+
+    // Routing table.
     var routes = {
         '/': function() { // TODO: FIX THIS.
             renderTemplate('index', { title: 'Index page' }); // Not specifying what view, defaults to 'view'.
@@ -109,7 +115,9 @@ var app = (function() {
 
         var element = document.getElementById(viewId);
         // Set element html to the rendered mustache template.
-        element.innerHTML = Mustache.render(templateHTML, obj);
+        //element.innerHTML = Mustache.render(templateHTML, obj);
+        viewId = "#" + viewId;
+        $(viewId).html(Mustache.render(templateHTML, obj)).enhanceWithin();
     };
 
     var options = {
