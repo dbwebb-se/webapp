@@ -2,7 +2,7 @@
  * app.js
  */
 
-var app = (function() {
+var app = (function($, document) {
 
     // Nav panel closes on a link click
     $('#nav ul li a').on('click', function() {
@@ -14,74 +14,86 @@ var app = (function() {
         window.location.replace('#/');
     }
 
-    var hello = function(name) {
-        name = name || 'anonymous';
+    /**
+     * The routes for the app.
+     * @type {Object}
+     */
+    var routes = {
 
-        renderTemplate('home', {
-            name: name
-        });
-    };
+        hello: function(name) {
+            name = name || 'anonymous';
+            renderTemplate('home', {
+                name: name
+            });
+        },
 
-    var author = function () { console.log("author"); };
+        author: function () {
+            console.log("author");
+        },
 
-    var books = function () { console.log("books"); };
+        books: function () {
+            console.log("books");
+        },
 
-    var viewBook = function (bookId) {
-        console.log("viewBook: bookId is populated: " + bookId);
-    };
+        viewBook: function (bookId) {
+            console.log("viewBook: bookId is populated: " + bookId);
+        },
 
-    var getExampleNames = function() {
-        // get view.
-        $.get('views/examples.mustache', function(template) {
-            console.log('Tepmlate', template);
-            // get data.
-            $.get('http://henrikolund.se:1337/api/v1/examples', function(data) {
-                console.log(data);
-                renderTemplate(template, {
-                    list: data
+        getExampleNames: function() {
+            // get view.
+            $.get('views/examples.mustache', function(template) {
+                // get data.
+                $.get('http://henrikolund.se:1337/api/v1/examples', function(data) {
+                    renderTemplate(template, {
+                        list: data
+                    });
+                    //console.log(template);
+                    //console.log({ list:data });
+                    //console.log('Nya fina templaten', carl.compile(template, { list: data }));
+                    //$('#view').html(carl.compile(template, { list: data }));
+
+                }).fail(function(xhr, status, error) {
+                    $('#view').html("An AJAX error occured: " + status + "\nError: " + error);
                 });
-
             }).fail(function(xhr, status, error) {
                 $('#view').html("An AJAX error occured: " + status + "\nError: " + error);
             });
-        }).fail(function(xhr, status, error) {
-            $('#view').html("An AJAX error occured: " + status + "\nError: " + error);
-        });
-    };
-
-    var examples = function(slug) {
-        var url = "http://henrikolund.se:1337/api/v1/examples/" + slug + "?type=json";
-        $.get(url, function (data) {
-            if (data.code === 500) {
-                $('#view').html(data.msg);
-            } else {
-                $('head').append(data.style);
-                $('head').append(data.externJavascript);
-                $('#view').html(data.body);
-            }
-        });
-    };
-
-
-    // Routing table.
-    var routes = {
-        '/': function() { // TODO: FIX THIS.
-            renderTemplate('index', { title: 'Index page' }); // Not specifying what view, defaults to 'view'.
-            //renderTemplate('view', 'index', { title: 'Index page' }); // Using templateId instead.
-            //renderTemplate('view', '<h1>{{title}}</h1>', { title: 'Index page yolo' }); // The real way to write.
         },
-        '/hello/?:name': hello,
-        '/author': author,
-        '/books': [ books, function() {
+
+        examples: function(slug) {
+            var url = "http://henrikolund.se:1337/api/v1/examples/" + slug + "?type=json";
+            $.get(url, function (data) {
+                if (data.code === 500) {
+                    $('#view').html(data.msg);
+                } else {
+                    $('head').append(data.style);
+                    $('head').append(data.externJavascript);
+                    $('#view').html(data.body);
+                }
+            });
+        },
+    };
+
+    /**
+     * Routing table, match a route to a function (or write anon functions).
+     * @type {Object}
+     */
+    var routingTable = {
+        '/': function() {
+            renderTemplate('index', { title: 'Index page' });
+        },
+        '/hello/?:name': 'hello',
+        '/author': 'author',
+        '/books': [ 'books', function() {
             var view = {
                 heading: 'Books',
                 dataBody: 'yolo',
             };
             renderTemplate('ajaxLoading', view);
         } ],
-        '/books/view/:bookId': viewBook,
-        '/examples': getExampleNames,
-        '/examples/:slug': examples,
+        '/books/view/:bookId': 'viewBook',
+        '/examples': 'getExampleNames',
+        '/examples/:slug': 'examples',
     };
 
     /**
@@ -120,16 +132,19 @@ var app = (function() {
         $(viewId).html(Mustache.render(templateHTML, obj)).enhanceWithin();
     };
 
+
+    // Use the router.
     var options = {
         strict: false,
+        resource: routes,
     };
-
-    var router = new Router(routes).configure(options);
+    var router = new Router(routingTable).configure(options).init();
     router.init();
 
-    var privates = {
+    return {
+        router: router,
+        routingTable: routingTable,
         routes: routes,
     };
+})(jQuery, document);
 
-    return {};
-})();
