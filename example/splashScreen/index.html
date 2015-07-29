@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5 APP - Geolocation</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="minimal-ui, user-scalable=no, width=device-width" />
+
+    <style>
+        .splash-screen {
+            position:absolute;
+            top:0;
+            left:0;
+            bottom:0;
+            width:100%;
+            background-color:black;
+        }
+
+        .splash-screen p {
+            color: white;
+        }
+        #enter {
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="splash-screen">
+        <p>Hi this is a nice splash screen.</p>
+        <a id="enter">Enter the real website</a>
+    </div>
+
+    <div id="content">
+        <p>REAL WEBISTE HERE</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <script type="text/javascript">
+        (function() {
+            $('#enter').on('click', function() {
+                $(this).parent().fadeOut(1000);
+            });
+        })();
+    </script>
+</body>
+</html>
