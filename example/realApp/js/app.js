@@ -85,8 +85,11 @@ var app = (function($, document, config) {
                     // from unwanted stuff)
                     $('head style').not('.' + slug).remove();
                     $('head script').not('.' + slug).remove();
-
-                    $('#view').html(data.body).prepend('<div id="description">' + data.description + '</div>');
+                    var view = $('#view');
+                    view.html(data.body);
+                    if (data.description) {
+                        view.prepend('<div id="description">' + data.description + '</div>');
+                    }
                 }
             });
         },
