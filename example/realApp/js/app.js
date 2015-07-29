@@ -71,11 +71,18 @@ var app = (function($, document, config) {
                 if (data.code !== 200) {
                     $('#view').html(data.msg);
                 } else {
+                    data.style = data.style ? data.style.map(function(str) {
+                        return str.substr(0, 6) + ' class="' + slug + '"' + str.substr(6);
+                    }) : null;
+
+                    data.externJavascript = data.externJavascript ? data.externJavascript.map(function(str) {
+                        return str.substr(0, 6) + ' class="' + slug + '"' + str.substr(6);
+                    }) : null;
+
                     $('head').append(data.style);
                     $('head').append(data.externJavascript);
+                    $('.' + slug).remove();
                     $('#view').html(data.body).prepend('<div id="description">' + data.description + '</div>');
-                    console.log(data.description);
-
                 }
             });
         },
