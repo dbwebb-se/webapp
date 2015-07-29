@@ -73,7 +73,9 @@ var app = (function($, document, config) {
                 } else {
                     $('head').append(data.style);
                     $('head').append(data.externJavascript);
-                    $('#view').html(data.body);
+                    $('#view').html(data.body).prepend('<div id="description">' + data.description + '</div>');
+                    console.log(data.description);
+
                 }
             });
         },
