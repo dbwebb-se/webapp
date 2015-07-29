@@ -5,6 +5,12 @@
     <link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <link rel="stylesheet" type="text/css" href="style/android.css" media="only screen and (max-width: 480px)">
     <link rel="stylesheet" type="text/css" href="style/desktop.css" media="screen and (min-width: 481px)">
+    <link rel="stylesheet" type="text/css" href="style/highlight.default.css">
+
+
+    <!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad()</script>-->
     <title>HTML5 APP</title>
     <link rel="icon" type="image/pgn" href="image/myCustomIcon.png">
     <link rel="apple-touch-icon-precomposed" href="image/myCustomIcon.png">
@@ -37,8 +43,8 @@
             <div data-role="navbar">
                 <ul>
                     <li><a id="footer-summary" data-icon="grid" href="#/examples">Examples</a></li>
-                    <li><a id="footer-favs" data-icon="star" href="#">Favs</a></li>
-                    <li><a id="footer-gear" data-icon="gear" href="#">Setup</a></li>
+                    <li><a id="footer-favs" data-icon="star" href="#/hello/another">Favs</a></li>
+                    <li><a id="footer-gear" data-icon="gear" href="#/books">Setup</a></li>
                 </ul>
             </div>
         </div>
@@ -86,21 +92,21 @@
         {{body}}
     </script>
 
-
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <!--Disable jquery mobile navigation-->
-    <script type="text/javascript">
-        $.mobile.ajaxEnabled = false;
-        $.mobile.linkBindingEnabled = false;
-        $.mobile.hashListeningEnabled = false;
-        $.mobile.pushStateEnabled = false;
-    </script>
 
+    <!--Settings-->
+    <script type="text/javascript" src="js/settings.js"></script>
+
+    <!--Template engine-->
     <!--<script type="text/javascript" src="js/dependencies/template-engine.js"></script>-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
+
+    <!--Router-->
     <!--<script type="text/javascript" src="js/dependencies/router.js"></script>-->
-    <script src="https://rawgit.com/flatiron/director/master/build/director.min.js"></script>
+    <script src="js/dependencies/director.min.js"></script>
+
+    <!--Application-->
     <script type="text/javascript" src="js/app.js"></script>
 
 </body>

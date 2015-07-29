@@ -1,6 +1,24 @@
 import Router from './router/router';
 import User   from './models/User';
 
+// Markdown stuff.
+var hljs = require('highlight.js') // https://highlightjs.org/
+var md = require('markdown-it')({
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return hljs.highlight(lang, str).value;
+      } catch (__) {}
+    }
+
+    try {
+      return hljs.highlightAuto(str).value;
+    } catch (__) {}
+
+    return ''; // use external default escaping
+  }
+});
+
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
 var path = require('path');
@@ -16,7 +34,6 @@ router.group('/api', () => {
         router.group('/examples', () => {
             router.get('/', (req, res) => {
                 fs.readdir(path.join(__dirname, '../'), (err, dir) => {
-
 
                     var folders = [];
 
@@ -37,13 +54,6 @@ router.group('/api', () => {
                         });
                     });
 
-                    /*{
-                        folders: [
-                            { name: 'a', url: '/a' },
-                            { name: 'b', url: '/b' },
-                        ]
-                    }*/
-
                     res.json(folders, 200);
                 });
             });
@@ -51,20 +61,24 @@ router.group('/api', () => {
             router.get('/:exampleName', (req, res) => {
                 var fileContent;
                 var fileToLoad = path.join(__dirname, '../', req.params.exampleName, 'index.html');
+                var description = path.join(__dirname, '../', req.params.exampleName, 'readme.md');
                 try {
                     fileContent = fs.readFileSync(fileToLoad, 'utf-8');
+                    description = fs.readFileSync(description, 'utf-8');
                     if (req.query.type === 'json') {
                         var styleSheets = fileContent.match(/<link.*type="text\/css".href=.+/g);
                         var style = fileContent.match(/<style.*>[\s\S][\s\S]*<\/style>/g);
                         var body  = fileContent.match(/<body.*>[\s\S][\s\S]*<\/body>/g);
                         body = body[0].replace(/<body>|<\/body>/g, '');
                         var scripts = fileContent.match(/<script.*><\/script>/g);
+
                         res.json({
                             code: 200,
                             body: body,
                             style: style,
                             styleSheets: styleSheets,
-                            externJavascript: scripts
+                            externJavascript: scripts,
+                            description: md.render(description),
                         });
                     } else {
                         res.html(fileContent);

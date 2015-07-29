@@ -1,6 +1,6 @@
 Save and load using window.localStorage
 
-##Javascript
+## Javascript
 
 ```javascript
 // Check for compatability

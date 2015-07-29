@@ -86,3 +86,12 @@ body {
 #header div.pressed {
     color: cyan;
 }
+
+#description {
+    /*background: cornsilk;*/
+}
+
+/*#description::before {
+    content: "Description";
+    font-size: 24px;
+}*/
