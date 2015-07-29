@@ -2,9 +2,12 @@
  * app.js
  */
 
-var app = (function($, document) {
+var app = (function($, document, config) {
     // var apiUrl = 'http://henrikolund.se:1337/api/v1/examples'
     var apiUrl = 'http://localhost:1337/api/v1/examples/';
+
+    config = config || {};
+    config.googleApiKey = 'AIzaSyA3_KJy5tcyibc-JwYFQ4_660g2mEWsrps';
 
     // Nav panel closes on a link click
     $('#nav ul li a').on('click', function() {
@@ -141,11 +144,11 @@ var app = (function($, document) {
         resource: routes,
     };
     var router = new Router(routingTable).configure(options).init();
-    router.init();
 
     return {
         router: router,
         routingTable: routingTable,
         routes: routes,
+        config: config
     };
 })(jQuery, document);
