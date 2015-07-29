@@ -43,7 +43,10 @@ var app = (function($, document) {
             // get view.
             $.get('views/examples.mustache', function(template) {
                 // get data.
-                $.get('http://henrikolund.se:1337/api/v1/examples', function(data) {
+                //var url = "http://henrikolund.se:1337/api/v1/examples";
+                var url = "http://localhost:1337/api/v1/examples";
+
+                $.get(url, function(data) {
                     renderTemplate(template, {
                         list: data
                     });
@@ -61,7 +64,8 @@ var app = (function($, document) {
         },
 
         examples: function(slug) {
-            var url = "http://henrikolund.se:1337/api/v1/examples/" + slug + "?type=json";
+            //var url = "http://henrikolund.se:1337/api/v1/examples/" + slug + "?type=json";
+            var url = "http://localhost:1337/api/v1/examples/" + slug + "?type=json";
             $.get(url, function (data) {
                 if (data.code === 500) {
                     $('#view').html(data.msg);
