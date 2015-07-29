@@ -81,7 +81,11 @@ var app = (function($, document, config) {
 
                     $('head').append(data.style);
                     $('head').append(data.externJavascript);
-                    $('.' + slug).remove();
+                    // Removes style and script tags in he head not matching slug class (to keep the head clean
+                    // from unwanted stuff)
+                    $('head style').not('.' + slug).remove();
+                    $('head script').not('.' + slug).remove();
+
                     $('#view').html(data.body).prepend('<div id="description">' + data.description + '</div>');
                 }
             });
