@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5 APP - localStorage</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="minimal-ui, user-scalable=no, width=device-width" />
+
+    <style>
+        #saveResult {
+            padding-left: 10px;
+            font-size: 14px;
+        }
+
+        #loadResult {
+            padding-left: 10px;
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="top">
+        <h2>Enter some text in the field and press "Save".</h2>
+        <h4>Check the console to see localStorage</h4>
+    </div>
+
+    <div class="content">
+        <input type="text" id="saveText"><input type="button" id="btnSave" value="Save"><span id="saveResult"></span>
+        <br />
+        <br />
+        <h2>Click the button to load from localStorage</h2>
+        <input type="button" id="btnLoad" value="Load"><span id="loadResult"></span>
+    </div>
+
+    <script type="text/javascript">
+        (function() {
+            var btnSave = document.getElementById("btnSave"),
+                btnLoad = document.getElementById("btnLoad"),
+                saveText = document.getElementById("saveText"),
+                saveResult = document.getElementById("saveResult");
+
+            btnSave.addEventListener('click', function() {
+                window.localStorage.setItem("mySave", saveText.value);
+                window.setTimeout(function() {
+                    saveResult.innerHTML = "";
+                    window.location.reload();
+                }, 2000);
+                saveResult.innerHTML = "Saved in localStorage with the key: 'mySave'";
+                saveText.value = "";
+            });
+
+            btnLoad.addEventListener('click', function() {
+                loadResult.innerHTML = window.localStorage.getItem("mySave");
+            });
+
+            console.log(window.localStorage);
+        })();
+    </script>
+</body>
+</html>
