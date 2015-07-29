@@ -7,7 +7,6 @@ var app = (function($, document, config) {
     var apiUrl = 'http://localhost:1337/api/v1/examples/';
 
     config = config || {};
-    config.googleApiKey = 'AIzaSyA3_KJy5tcyibc-JwYFQ4_660g2mEWsrps';
 
     // Nav panel closes on a link click
     $('#nav ul li a').on('click', function() {
