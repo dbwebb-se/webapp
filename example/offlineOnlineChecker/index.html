@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <title>HTML5 APP - Detect screen size</title>
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="viewport" content="minimal-ui, user-scalable=no, width=device-width" />
+    <meta name='mobile-web-app-capable' content='yes'>
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='viewport' content='minimal-ui, user-scalable=no, width=device-width' />
 
     <style>
         #status {
@@ -36,15 +36,12 @@
     <div id='status'></div>
 
     <script>
-        (function() {
-            window.addEventListener('load', function() {
-
-                var status = document.getElementById("status");
-
+        (function checker() {
+                var status = document.getElementById('status');
 
                 function updateOnlineStatus(event) {
-                    var condition = navigator.onLine ? "online" : "offline";
-                    console.log(condition);
+                    var condition = navigator.onLine ? 'online' : 'offline';
+                    console.log('status: ' + condition);
                     status.className = condition;
                     status.innerHTML = condition.toUpperCase();
                 }
@@ -53,7 +50,6 @@
 
                 window.addEventListener('online',  updateOnlineStatus);
                 window.addEventListener('offline', updateOnlineStatus);
-            });
         })();
     </script>
 </body>
