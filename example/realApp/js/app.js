@@ -3,6 +3,8 @@
  */
 
 var app = (function($, document) {
+    // var apiUrl = 'http://henrikolund.se:1337/api/v1/examples'
+    var apiUrl = 'http://localhost:1337/api/v1/examples/';
 
     // Nav panel closes on a link click
     $('#nav ul li a').on('click', function() {
@@ -43,10 +45,7 @@ var app = (function($, document) {
             // get view.
             $.get('views/examples.mustache', function(template) {
                 // get data.
-                //var url = "http://henrikolund.se:1337/api/v1/examples";
-                var url = "http://localhost:1337/api/v1/examples";
-
-                $.get(url, function(data) {
+                $.get(apiUrl, function(data) {
                     renderTemplate(template, {
                         list: data
                     });
@@ -64,10 +63,9 @@ var app = (function($, document) {
         },
 
         examples: function(slug) {
-            //var url = "http://henrikolund.se:1337/api/v1/examples/" + slug + "?type=json";
-            var url = "http://localhost:1337/api/v1/examples/" + slug + "?type=json";
+            var url = apiUrl + slug + "?type=json";
             $.get(url, function (data) {
-                if (data.code === 500) {
+                if (data.code !== 200) {
                     $('#view').html(data.msg);
                 } else {
                     $('head').append(data.style);
@@ -151,4 +149,3 @@ var app = (function($, document) {
         routes: routes,
     };
 })(jQuery, document);
-
