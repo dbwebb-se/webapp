@@ -1,6 +1,4 @@
-Save and load using window.localStorage
-
-## Javascript
+# Save and load using window.localStorage
 
 ```javascript
 // Check for compatability

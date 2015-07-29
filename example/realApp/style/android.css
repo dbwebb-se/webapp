@@ -65,6 +65,11 @@ body {
     -webkit-border-bottom-right-radius: 8px;
 }
 
+#container {
+    min-height: 700px;
+}
+
+
 #content {
     /*background: #f9f9f9;*/
 }
@@ -88,7 +93,8 @@ body {
 }
 
 #description {
-    /*background: cornsilk;*/
+    border-bottom: 2px solid #03A9F4;
+    font-size: 12px;
 }
 
 /*#description::before {
