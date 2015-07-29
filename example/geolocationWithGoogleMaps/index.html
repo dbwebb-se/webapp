@@ -7,22 +7,21 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="minimal-ui, user-scalable=no, width=device-width" />
     <style>
-        html, body, #map-canvas {
-            height: 100%;
-            margin: 0;
-            padding: 0;
+        #map-canvas {
+            height: 300px;
+            margin:0 auto;
+            width: 300px;
         }
     </style>
 </head>
 
 <body>
 <div id="map-canvas"></div>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 <script>
 (function() {
     var map;
 
-    (function initialize() {
+    function initialize() {
         var mapOptions = {
             zoom: 10
         };
@@ -47,7 +46,7 @@
             // Browser doesn't support Geolocation
             handleNoGeolocation(false);
         }
-    })();
+    };
 
     function handleNoGeolocation(errorFlag) {
         if (errorFlag) {
@@ -65,9 +64,18 @@
         var infowindow = new google.maps.InfoWindow(options);
         map.setCenter(options.position);
     }
+    // Exports the initialize-func to window so google can find the callback
+    window.initialize = initialize;
 
-//    google.maps.event.addDomListener(window, 'load', initialize);
-
+    (function() {
+        // Make sure that we never include google maps files more than once
+        if (!document.getElementById('google-maps')) {
+        var s = document.createElement('script');
+        s.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&callback=initialize';
+        s.id = 'google-maps';
+        document.body.appendChild(s);
+    }
+    })();
 })();
 </script>
 </body>
