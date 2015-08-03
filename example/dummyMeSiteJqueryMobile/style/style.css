@@ -46,3 +46,7 @@ body {
     filter: FlipH;
     -ms-filter: "FlipH";
 }
+
+.more {
+    overflow-wrap: break-word;
+}
