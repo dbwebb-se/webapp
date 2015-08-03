@@ -1,9 +1,13 @@
 (function () {
     "use strict";
-    // Add shared header, footer as a toolbar.
-    $("[data-role='header'], [data-role='footer']").toolbar();
-})();
+    // Add shared header as a toolbar.
+    $("[data-role='header']").toolbar();
 
+    // Add shared panel as a panel.
+    $( "body>[data-role='panel']" ).panel();
+
+})();
+/*
 $(document).on('pagecontainerchange', function () {
 
     // Each of the pages in this demo has a data-title attribute
@@ -12,7 +16,7 @@ $(document).on('pagecontainerchange', function () {
     var current = $('.ui-page-active').jqmData('title');
 
     // Change the heading
-    $("[data-role='header'] h1").text(current);
+    //$("[data-role='header'] h1").text(current);
     //Remove active class from nav buttons
     $("[data-role='navbar'] a.ui-btn-active").removeClass('ui-btn-active');
     //Add active class to current nav button
@@ -21,4 +25,4 @@ $(document).on('pagecontainerchange', function () {
             $(this).addClass('ui-btn-active');
         }
     });
-});
+});*/

@@ -3,16 +3,28 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 
-    <title>Kmom01</title>
+    <title>Me-appen i webapp</title>
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
 
     <!--Shared header for all pages-->
     <div data-role="header" data-theme="a">
-        <h1>Webapp - Header</h1>
+        <h1>Me-appen i webapp</h1>
+        <a class="ui-btn ui-icon-bars ui-btn-icon-left" href="#menu"></a>
+    </div>
+
+    <!--Shared menu-->
+    <div id="menu" data-role="panel" data-theme="a">
+        <nav data-role="navbar">
+            <ul>
+                <li><a data-prefetch="true" data-transition="flip" href="#me">Me-sida</a></li>
+                <li><a data-prefetch="true" data-transition="fade" href="#report">Redovisningar</a></li>
+            </ul>
+        </nav>
     </div>
 
 
@@ -55,26 +67,14 @@
     <div id="report" data-role="page" data-title="Redovisningar">
         <div role="main" class="ui-content">
             <article>
-            <h1>Min Redovisnings-sida</h1>
+                <h1>Min Redovisnings-sida</h1>
+                <h2>Kmom01</h2>
+                <p>Här skriver du redovisningstext för kursmoment 01.</p>
 
-            <h2>Kmom01</h2>
-            <p>Här skriver du redovisningstext för kursmoment 01.</p>
-
-
-            <h2>Kmom02</h2>
-            <p>Här skriver du redovisningstext för kursmoment 02.</p>
+                <h2>Kmom02</h2>
+                <p>Här skriver du redovisningstext för kursmoment 02.</p>
             </article>
         </div>
-    </div>
-
-    <!--Shared Footer for all pages-->
-    <div data-role="footer" data-theme="a">
-        <nav data-role="navbar">
-            <ul>
-                <li><a data-prefetch="true" href="#me">Me-sida</a></li>
-                <li><a data-prefetch="true" href="#report">Redovisningar</a></li>
-            </ul>
-        </nav>
     </div>
 
 
