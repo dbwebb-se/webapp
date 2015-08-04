@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Me-appen i webapp</title>
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+    <!--Shared header for all pages-->
+    <div data-role="header" data-theme="a">
+        <h1>Me-appen i webapp</h1>
+        <a class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
+    </div>
+
+    <!--Shared menu-->
+    <div id="menu" data-role="panel" data-theme="a" data-display="overlay">
+        <ul data-role="listview">
+            <li><a data-prefetch="true" data-transition="flip" href="#me">Me-sida</a></li>
+            <li><a data-prefetch="true" data-transition="fade" href="#report">Redovisningar</a></li>
+        </ul>
+    </div>
+
+    <!--Me page-->
+    <div id="me" data-role="page" data-title="Me-sida">
+
+
+
+        <div role="main" class="ui-content">
+            <article>
+                <h1>Om Mig</h1>
+
+                <p>Hej, jag heter Mikael Roos och är lärare på denna kurs som jag valt att kalla för smeknamnet <i>webapp</i>.</p>
+
+                <img src="http://www.gravatar.com/avatar/d1e65e60a2a3b9ef7c94a86374dde46c.jpg?s=200" class="right" alt="Bild på mig">
+
+                <p>Detta är min me-sida i kursen. Denna sidan innehåller en presentation av mig
+                själv. Underhåll denna sidan under hela kursen och uppdatera den efter hand
+                och behov.</p>
+
+                <p>Så, en presentation en bra början. Skriv några ord om dig själv. Jag börjar.</p>
+
+                <p>
+                    Mitt namn är Mikael Roos. Född och uppvuxen i Bankeryd, Småland, strax utanför Jönköping, i ett villaområde som byggdes upp samtidigt som vi flyttade in där.
+                    En längre historia om mig finns att läsa i min me-sida för kursen oophp. Du når den via länken: <a class="more" href="http://dbwebb.se/oophp/me/kmom01/me.php">http://dbwebb.se/oophp/me/kmom01/me.php</a>.
+                </p>
+
+                <p>Om jag skall nämna någon hobby, förutom webbprogrammering, så får det bli att
+                bära sten på sommarstugetomten, och det finns sten så det räcker ett par
+                livstider. Till och från får jag för mig att börja på lite hobbies, ett år
+                satsade jag på pokerspel, ett annat år var det geocaching och därefter turfing.</p>
+
+                <p>Nu är jag öppen för nya hobbies, vå får se vad det blir.</p>
+
+                <p>Vi syns och hörs i forum och chatt!</p>
+            </article>
+        </div>
+    </div>
+
+    <!--Report page-->
+    <div id="report" data-role="page" data-title="Redovisningar">
+        <div role="main" class="ui-content">
+            <article>
+                <h1>Min Redovisnings-sida</h1>
+
+                <h2>Kmom01</h2>
+                <p>Här skriver du redovisningstext för kursmoment 01.</p>
+
+                <h2>Kmom02</h2>
+                <p>Här skriver du redovisningstext för kursmoment 02.</p>
+            </article>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
