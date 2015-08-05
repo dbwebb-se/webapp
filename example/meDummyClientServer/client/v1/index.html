@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="minimal-ui, user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Me-appen i webapp</title>
+
+    <link rel="icon" type="image/pgn" href="image/myCustomIcon.png">
+    <link rel="apple-touch-icon-precomposed" href="image/myCustomIcon.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+    <div id="me" data-role="page" data-title="Me-sida">
+
+        <!-- Header -->
+        <div data-role="header" data-theme="a">
+            <h1>Me-appen i webapp</h1>
+            <a class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
+        </div>
+
+        <!-- Menu -->
+        <div id="menu" data-role="panel">
+            <ul data-role="listview">
+                <li><a data-prefetch="true" href="#">Me-sida</a></li>
+                <li><a data-prefetch="true" href="#reports">Reports</a></li>
+                <li><a data-prefetch="true" href="#about">About</a></li>
+            </ul>
+        </div>
+
+        <!-- View -->
+        <div id="view" role="main" class="ui-content"></div>
+    </div>
+
+    <!--Libs-->
+    <script src="js/libs/jquery-2.1.4.min.js"></script>
+    <script src="js/libs/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/libs/director.min.js"></script>
+    <script src="js/libs/mustache.js"></script>
+
+    <script>
+        // Init the app.
+        $(document).ready(function() {
+            'use strict';
+
+            // Stupid fix for / route.
+            if (window.location.href.charAt(window.location.href.length - 1) === '/') {
+                window.location.replace('#/');
+            }
+            // Nav panel closes on a link click
+            $('#menu ul li a').on('click', function() {
+                $('#menu').panel('close');
+            });
+
+            // Disable JQM navigation system.
+            $.mobile.ajaxEnabled = false;
+            $.mobile.linkBindingEnabled = false;
+            $.mobile.hashListeningEnabled = false;
+            $.mobile.pushStateEnabled = false;
+
+            var routes = {
+                // Index route
+                '/': function() {
+                    // Ajax request to the API -> returns HTML.
+                    $.get('http://localhost:1337/view/me.html', function(content) {
+
+                        $('#view').html(content);
+                    });
+                },
+
+                // About
+                '/about': function() {
+                    // Ajax request to the API -> returns HTML
+                    $.get('http://localhost:1337/view/about.html', function(content) {
+                        $('#view').html(content);
+                    });
+                },
+
+                // Reports
+                '/reports': function BooksRoute() {
+                    // Ajax request to the API -> returns HTML
+                    $.get('http://localhost:1337/view/reports.html', function(content) {
+                        $('#view').html(content);
+                    });
+                },
+            };
+
+
+            // Init the router.
+            var router = new Router(routes);
+            router.configure({
+                strict: false
+            });
+            router.init();
+        });
+    </script>
+
+</body>
+</html>
