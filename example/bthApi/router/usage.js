@@ -6,46 +6,7 @@ import Router from '../router/router';
 var http = require('http');
 var router = new Router();
 
-/*function hello(req, res) {
-    res.end('Hello');
-}
-
-// Standard 'GET /' using the function hello.
-router.add('GET', '/', hello);
-
-// Standard 'GET /hello' using the function hello.
-router.add('GET', '/hello', hello);
-
-// 'GET /foo' with anonymous function.
-router.add('GET', '/foo', function (req, res) {
-    res.end('FOO');
-});
-
-// 'GET /helloworld' with anonymous function.
-router.add('GET', '/helloworld', function (req, res) {
-    res.end('Hello WORLD');
-});
-
-// 'GET /blabla' using ES6 arrow function.
-router.get('/blabla', (req, res) => {
-    res.end('blabla');
-});
-
-// 'POST /hello' with anonymous function.
-router.add('POST', '/hello', function (req, res) {
-    res.end('POST REQUEST');
-});
-*/
-
-/*router.get('/animal', (req, res) => {
-    res.end('Animal');
-});
-*/
-
 router.get('/animal/', (req, res) => {
-    /*console.log(req);
-    console.log('-----------------');
-    console.log(res);*/
     res.end('Animal with a slash');
 });
 
@@ -108,6 +69,36 @@ router.get('/plain', (req, res) => {
 
 router.get('/html', (req, res) => {
     res.send('<html><body><h1>Hello!</h1></body></html>');
+});
+
+router.group('/api', function() {
+    // /api
+    router.get('/', function(req, res) {
+        res.send('GET /api');
+    });
+
+    // /api/test
+    router.get('/test', function(req, res) {
+        res.send('GET /api/test');
+    });
+
+    // /api/v1/
+    router.group('/v1', function() {
+
+        // /api/v1/
+        router.get('/', function(req, res) {
+            res.send('/api/v1/');
+        });
+        // /api/v1/test
+        router.get('/test', function (req, res) {
+            res.send('/api/v1/test');
+        });
+    });
+});
+
+router.post('/test', (req, res) => {
+    console.log(req.body);
+    res.send('ok', 200);
 });
 
 // Create the server using the router.

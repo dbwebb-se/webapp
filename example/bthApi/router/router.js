@@ -1,21 +1,21 @@
 /**
  * Router
+ *
+ * Example usage..
+ *
+ * var http = require('http');
+ * var router = new Router();
+ *
+ * // Write a simple route..
+ * router.get('/', function(req, res) {
+ * 	res.end('hello');
+ * });
+ *
+ * http.createServer(function (req, res) {
+ *    router.route(req, res);
+ * }).listen(1337);
+ *
  */
-
-/* Example usage..
-
-    var http = require('http');
-    var router = new Router();
-
-    // Write a simple route..
-    router.get('/', function(req, res) {
-        res.end('hello');
-    });
-
-    http.createServer(function (req, res) {
-        router.route(req, res);
-    }).listen(1337);
-*/
 
 var url = require('url');
 
@@ -55,7 +55,6 @@ class Router {
         });
     }
 
-
     /**
      * Shorthand GET route
      * @param  String   path    The path to the route
@@ -75,20 +74,12 @@ class Router {
     }
 
     /**
-     * Shorthand PUT route
-     * @param  String   path    The path to the route
-     * @param  Function handler The function for the route.
-     */
-    put(path, handler) {
-        this.add('PUT', path, handler);
-    }
-
-    /**
      * Route
      * @param  Object req HTTP request object
-     * @param  Object res HTTP response object
+     * @param  {[type]} res HTTP response object
      */
     route(req, res) {
+
         // Extend request and response object.
         req = buildRequest(req, res);
         res = buildResponse(req, res);
@@ -102,22 +93,20 @@ class Router {
 
         // Filter out the routes to process..
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-        var routesToProcess = this.routes.filter((r) => {
-            // remove trailing slash from the current path,
-            // if they exist.
+        var routesToProcess = this.routes.filter(function (r) {
+            // remove trailing slash from the current path, if they exist.
             r.path = trimSlashes(r.path);
 
             // Split the current params.
             var params = r.path.split('/');
 
-            // If the parameters lenght is not the same,
-            // it's not the route we are looking for.
+            // If the parameters lenght is not the same, it's not the route we are looking for.
             if (params.length !== urlParams.length) {
                 return false;
             }
 
             // Get params.
-            var currentParams = params.filter((p) => {
+            var currentParams = params.filter(function (p) {
                 return p.includes(':');
             });
 
@@ -157,20 +146,33 @@ class Router {
         }
 
         // Handle the request.
-        routesToProcess.forEach((route) => {
-            if (method === 'POST') {
-                // Make sure that the request is finished before
-                // calling the handler
-                req.on('end', () => {
-                    route.handler(req, res);
-                });
-            } else {
+        routesToProcess.forEach(function (route) {
+
+            req.on('end', () => {
+                // Does the raw body have any data?
+                if (req.rawBody !== '') {
+                    console.log(req.headers['content-type']);
+                    var body;
+                    // What type of data is? Which method of parsing
+                    // the data does I need?
+                    switch (req.headers['content-type']) {
+                        case 'application/json':
+                            body = JSON.parse(req.rawBody);
+                            break;
+                        default:
+                        case 'applicaton/x-www-form-urlencoded':
+                            body = require('querystring').parse(req.rawBody);
+                            break;
+                    }
+                    req.body = body;
+                }
+
                 // Calling the function.
                 route.handler(req, res);
-            }
+            });
         });
-
     }
+
     /**
      * Returns the number of routes added.
      * @return Integer
@@ -181,9 +183,8 @@ class Router {
 
     /**
      * Group routes
-     * @param  {[type]}   path     [description]
-     * @param  {Function} callback [description]
-     * @return {[type]}            [description]
+     * @param  String   path     Name on the group of routes
+     * @param  Function callback
      */
     group(path, callback) {
         if (!path) {
@@ -205,8 +206,12 @@ class Router {
 
 }
 
+/**
+ * Removes the last slash of a string
+ * @param  String str
+ * @return String
+ */
 function trimSlashes(str) {
-
     if (str.length > 1 && str.indexOf('/', str.length - '/'.length) !== -1) {
         str = str.substr(0, str.length - 1);
     }

@@ -15,11 +15,6 @@ export function buildResponse(req, res) {
         res.body = body;
         res.headers = 'text/html';
 
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With');
-
-
-
         // Set the content type.
         if (contentType) {
             this.setHeader('Content-Type', contentType);
@@ -47,39 +42,23 @@ export function buildResponse(req, res) {
 
             break;
         }
+
         // Write and end..
-        // res.statusCode = statusCode;
-        res.write(body);
+        res.write(body, statusCode);
         res.end();
     };
 
     /**
      * Send json as response
-     * @param  object  body   The body you want to send
-     * @param  Integer code   The Statuscode of the response
+     * @param  object body   The body you want to send
+     * @return
      */
-    res.json = function sendJson(body, code = 200) {
-        res.send(body, 'application/json', code);
+    res.json = function sendJson(body) {
+        if (!this.get('Content-Type')) {
+            this.setHeader('Content-Type', 'application/json');
+        }
+        return res.send(body, 'application/json', 200);
     };
-
-    /**
-     * Send plain text response
-     * @param  object  body   The body you want to send
-     * @param  Integer code   The Statuscode of the response
-     */
-    res.plain = function sendPlain(body, code = 200) {
-        if (!this.get('Content-Type')) {
-            this.setHeader('Content-Type', 'text/plain');
-        }
-        res.send(body, 'text/plain', code);
-    }
-
-    res.html = function sendHtml(body, code = 200) {
-        if (!this.get('Content-Type')) {
-            this.setHeader('Content-Type', 'text/html');
-        }
-        res.send(body, 'text/html', code);
-    }
 
     /**
      * Shorthand getHeader function.
