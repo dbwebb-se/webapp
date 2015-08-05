@@ -11,10 +11,18 @@ var app = (function(router) {
 
     var init = function() {
         console.log('App init');
-
     };
+
+
 
     return {
         init: init
     }
 })(router.getInstance());
+
+
+/*
+    3 html svar.
+
+
+ */

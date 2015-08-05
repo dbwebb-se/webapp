@@ -30,6 +30,7 @@
                 <li><a data-prefetch="true" href="#">Me-sida</a></li>
                 <li><a data-prefetch="true" href="#reports">Reports</a></li>
                 <li><a data-prefetch="true" href="#about">About</a></li>
+                <li><a href="#random">Dynamic data</a></li>
             </ul>
         </div>
 
@@ -37,6 +38,40 @@
 
         </div>
     </div>
+
+    <script id="dynamic-data-template" type="x-tmpl-mustache">
+        <h1>{{title}}</h1>
+        <p>The data is loaded with AJAX and the mustache template is inline </p>
+        <p>{{desc}}</p>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Numbers</th>
+            </tr>
+            {{#data}}
+                <tr>
+
+                    <td>{{names}}</td>
+                    <td>{{numbers}}</td>
+
+                </tr>
+            {{/data}}
+        </table>
+
+    </script>
+
+    <script id="about-template" type="x-tmpl-mustache">
+       <h1>{{title}}</h1>
+       <p>{{body}}</p>
+
+       <ul>
+            {{#links}}
+                <li><a href={{url}}>{{name}}</a></li>
+            {{/links}}
+       </ul>
+    </script>
+
 
     <!--Libs-->
     <script src="js/libs/jquery-2.1.4.min.js"></script>
@@ -72,32 +107,53 @@
             var routes = {
                 // Index route
                 '/': function() {
+                    // HTML from server.
                     $.get('http://localhost:1337/view/me.html', function(content) {
+                        $('#view').html(content);
+                    });
+                },
+
+                // Reports
+                '/reports': function() {
+
+                    // HTML from server.
+                    $.get('http://localhost:1337/view/reports.html', function(content) {
                         $('#view').html(content);
                     });
                 },
 
                 // About
                 '/about': function() {
-                    $.get('http://localhost:1337/view/about.html', function(content) {
-                        $('#view').html(content);
+                    // JSON from server with templates.
+                    var url = 'http://localhost:1337/view/about.json';
+                    $.get(url, function(content) {
+                        console.log(content);
+                        console.log('Template:', content.template);
+                        renderTemplate(content.template, {
+                            title: content.title,
+                            body: content.body,
+                            links: content.links,
+                        });
                     });
                 },
 
-                // Reports
-                '/reports': function BooksRoute() {
-                    $.get('http://localhost:1337/view/reports.html', function(content) {
-                        $('#view').html(content);
+                '/random': function() {
+                    // Inline template with data from JSON-api.
+                    var url = 'http://localhost:1337/random';
+                    $.get(url, function(data) {
+                        console.log(data);
+                        renderTemplate('dynamic-data-template', data);
                     });
-                },
+                }
             };
 
+
+            // Use the client side router with our defined routes.
             var router = new Router(routes);
             router.configure({
                 strict: false
             });
             router.init();
-
         });
     </script>
 

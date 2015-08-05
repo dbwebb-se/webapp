@@ -1,0 +1,10 @@
+{
+    "title": "About from json and template",
+    "body": "Hej, en fin about text här, under finns saker jag gillar",
+    "links": [
+        { "url": "http://github.com/mosbth", "name": "Min github"},
+        { "url": "http://google.se", "name": "google"},
+        { "url": "#random", "name": "random" }
+    ],
+    "template": "<h1>{{title}}</h1><p>{{body}}</p><ul>{{#links}}<li><a href='{{url}}'>{{name}}</a></li>{{/links}}</ul>"
+}
