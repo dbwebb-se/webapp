@@ -2,87 +2,47 @@
  * Index.js
  */
 
-import Router from './router/router';
 
 var fs = require('fs');
-var crypto = require('crypto');
+var router = require('./routes'); // Idk about the name here....
+var mongoose = require('mongoose');
+var join = require('path').join;
 
-var router = new Router();
-
-router.get('/view', (req, res) => {
-    fs.readdir('./view', (err, files) => {
-        if (!err && files && files.length > 0) {
-            // return only json files.
-            files = files.filter((f) => f.includes('.json') || f.includes('.html'));
-            res.json(files);
-        } else if (err) {
-            res.json({ err: err.message }, 500);
-        } else {
-            res.json({ err: 'No files found'}, 404);
-        }
-    });
+// Require models.
+fs.readdirSync(join(__dirname, '/models')).forEach((file) => {
+    if (~file.indexOf('.js')) require(join(__dirname, '/models', file));
 });
 
-router.get('/random', (req, res) => {
+var User = mongoose.model('User');
 
+// Connect to mongodb.
+var connect = function() {
+    var options = {
+        server: {
+            socketOption: {
+                keepAlive: 1
+            },
+        },
+    };
 
-    function randomValueBase64(len) {
-        return crypto.randomBytes(Math.ceil(len * 3 / 4))
-            .toString('base64')
-            .slice(0, len)
-            .replace(/\+/g, '0')  // replace '+' with '0'
-            .replace(/\//g, '0'); // replace '/' with '0'
-    }
+    mongoose.connect('mongodb://localhost/webapp', options);
+}
+connect();
+mongoose.connection.on('error', console.log);
+mongoose.connection.on('disconnected', connect);
 
-    var data = [];
-    for (var i = 0; i < 10; i++) {
-        data.push({
-            names: randomValueBase64(12),
-            numbers: Math.floor(Math.random() * (10000 - 10) + 10),
-        });
-    }
-
-    res.json({
-        title: 'Dynamic data',
-        desc: 'Dynamic data in form of numbers and base64 randomBytes',
-        data: data
-    });
+// Insert a user.
+var user = new User({
+    name: 'Test',
+    email: 'test@test.com'
 });
 
+// Save the user to the db..
+user.save();
+console.log('saved user to db');
 
-router.get('/view/:name', (req, res) => {
-    var path = './view/' + req.params.name;
 
-    fs.readFile(path, (err, content) => {
-
-        if (!err && content) {
-
-            // if (req.params.type && req.params.type === 'mustache') {
-            //     res.json({
-            //         data: {
-
-            //         }
-            //         template: content.toString(),
-            //     })
-            // }
-
-            // Send the content and converts it to string from buffer.
-            if (req.params.name.includes('.json')) {
-                res.json(content.toString());
-            } else {
-                res.html(content.toString())
-            }
-        } else if (err) {
-            res.json({ err: err.message}, 500);
-        } else {
-            res.json({ err: 'file not found'}, 404);
-        }
-    });
-});
-
+// Start the HTTP server
 require('http').createServer((req, res) => {
     router.route(req, res);
 }).listen(1337);
-
-
-

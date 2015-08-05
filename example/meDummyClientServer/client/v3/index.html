@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="minimal-ui, user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Me-appen i webapp</title>
+
+    <link rel="icon" type="image/pgn" href="image/myCustomIcon.png">
+    <link rel="apple-touch-icon-precomposed" href="image/myCustomIcon.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+    <div id="me" data-role="page" data-title="Me-sida">
+
+        <!-- Header -->
+        <div data-role="header" data-theme="a">
+            <h1>Me-appen i webapp</h1>
+            <a class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
+        </div>
+
+        <!-- Menu -->
+        <div id="menu" data-role="panel">
+            <ul data-role="listview">
+                <li><a data-prefetch="true" href="#">Me-sida</a></li>
+                <li><a data-prefetch="true" href="#reports">Reports</a></li>
+                <li><a data-prefetch="true" href="#about">About</a></li>
+                <li><a href="#random">Dynamic data</a></li>
+            </ul>
+        </div>
+
+
+        <!-- View -->
+        <div id="view" role="main" class="ui-content">
+
+        </div>
+    </div>
+
+    <!--Mustache template-->
+    <script id="dynamic-data-template" type="x-tmpl-mustache">
+        <h1>{{title}}</h1>
+        <p>The data is loaded with AJAX and the mustache template is inline </p>
+        <p>{{desc}}</p>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Numbers</th>
+            </tr>
+            {{#data}}
+                <tr>
+
+                    <td>{{names}}</td>
+                    <td>{{numbers}}</td>
+
+                </tr>
+            {{/data}}
+        </table>
+    </script>
+
+    <!--Libs-->
+    <script src="js/libs/jquery-2.1.4.min.js"></script>
+    <script src="js/libs/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/libs/director.min.js"></script>
+    <script src="js/libs/mustache.js"></script>
+
+    <script>
+
+        /**
+         * Render a mustache template to the div#view.
+         * @param  {String} templateId [The template id]
+         * @param  {Object} data       [Data you want to transform]
+         */
+        var renderTemplate = function(templateId, data) {
+
+            // Where do we want to replace it?
+            var view = $('#view');
+
+            // # - optional.
+            templateId = templateId.indexOf('#') != -1 ? templateId : '#' + templateId;
+
+            // Get the template.
+            var template = $(templateId).html();
+
+            // Render the mustache template to the view.
+            view.html(Mustache.render(template, data));
+        };
+
+        // Init the app.
+        $(document).ready(function() {
+            'use strict';
+
+            // Stupid fix for / route.
+            if (window.location.href.charAt(window.location.href.length - 1) === '/') {
+                window.location.replace('#/');
+            }
+            // Nav panel closes on a link click
+            $('#menu ul li a').on('click', function() {
+                $('#menu').panel('close');
+            });
+
+            // Disable JQM navigation system.
+            $.mobile.ajaxEnabled = false;
+            $.mobile.linkBindingEnabled = false;
+            $.mobile.hashListeningEnabled = false;
+            $.mobile.pushStateEnabled = false;
+
+            var routes = {
+                // Index route
+                '/': function() {
+                    // HTML from server.
+                    $.get('http://localhost:1337/view/me.html', function(content) {
+                        $('#view').html(content);
+                    });
+                },
+
+                // Reports
+                '/reports': function() {
+                    // HTML from server.
+                    $.get('http://localhost:1337/view/reports.html', function(content) {
+                        $('#view').html(content);
+                    });
+                },
+
+                // About
+                '/about': function() {
+                    // JSON from server with templates.
+                    var url = 'http://localhost:1337/view/about.json';
+                    $.get(url, function(content) {
+                        console.log(content);
+                        console.log('Template:', content.template);
+
+                        renderTemplate(content.template, {
+                            title: content.title,
+                            body: content.body,
+                            links: content.links,
+                        });
+                    });
+                },
+
+                '/random': function() {
+                    // Inline template with data from JSON-api.
+                    var url = 'http://localhost:1337/random';
+                    $.get(url, function(data) {
+                        renderTemplate('dynamic-data-template', data);
+                    });
+                }
+            };
+
+
+            // Use the client side router with our defined routes.
+            var router = new Router(routes);
+            router.configure({
+                strict: false
+            });
+            router.init();
+        });
+    </script>
+
+</body>
+</html>
