@@ -107,8 +107,8 @@ router.group('/users', () => {
     // POST /users
     router.post('/', (req, res) => {
         var user = new User({
-            name: 'randomPost',
-            email: 'randomEmailFromPost@email.se'
+            name: req.body.name,
+            email: req.body.email
         });
 
         user.save((err) => {
