@@ -2,7 +2,7 @@ import Router from './router/router';
 var router = new Router();
 var crypto = require('crypto');
 var fs = require('fs');
-
+var join = require('path').join;
 
 var mongoose = require('mongoose');
 var userModel = require('./models/user');
@@ -32,7 +32,9 @@ function md5(str) {
 
 
 router.get('/view', (req, res) => {
-    fs.readdir('./view', (err, files) => {
+    var path = join(__dirname, 'view');
+
+    fs.readdir(path, (err, files) => {
         if (!err && files && files.length > 0) {
             // return only json files.
             files = files.filter((f) => f.includes('.json') || f.includes('.html'));
@@ -46,9 +48,10 @@ router.get('/view', (req, res) => {
 });
 
 router.get('/view/:name', (req, res) => {
-    var path = './view/' + req.params.name;
+    var path = join(__dirname, 'view', req.params.name);
 
     fs.readFile(path, (err, content) => {
+        console.log(err, content);
 
         if (!err && content) {
             // Send the content and converts it to string from buffer.
