@@ -21,13 +21,28 @@
     <div id="me" data-role="page" data-title="Me-sida">
 
         <!-- Header -->
-        <div data-role="header" data-theme="a">
+        <div id="header" data-role="header" data-theme="a">
             <h1>Me-appen i webapp</h1>
             <a class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
         </div>
 
         <!-- Menu -->
-        <div id="menu" data-role="panel">
+        <div id="menu" data-role="panel" class="ui-responsive-panel">
+            <div id="profile">
+                <div class="profile-pic">
+                    <img class="profile-thumbnail" src="http://www.gravatar.com/avatar/d1e65e60a2a3b9ef7c94a86374dde46c.jpg?s=80">
+                </div>
+                <div class="profile-text">
+                    <strong>Mikael Roos</strong>
+                    <span class="sublime">Super Power User</span>
+                </div>
+
+                <!--<img src="http://lorempixel.com/400/150/abstract/2/" class="profile-background">-->
+
+
+
+            </div>
+
             <ul data-role="listview">
                 <li><a data-prefetch="true" href="#">Me-sida</a></li>
                 <li><a data-prefetch="true" href="#reports">Reports</a></li>

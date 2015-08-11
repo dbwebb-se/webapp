@@ -51,8 +51,6 @@ router.get('/view/:name', (req, res) => {
     var path = join(__dirname, 'view', req.params.name);
 
     fs.readFile(path, (err, content) => {
-        console.log(err, content);
-
         if (!err && content) {
             // Send the content and converts it to string from buffer.
             if (req.params.name.includes('.json')) {
