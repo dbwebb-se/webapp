@@ -10,8 +10,13 @@
 #profile {
     color: #fff;
     height: 20vh;
-    background-image: url('http://lorempixel.com/400/150/abstract/2/');
+    background-image: url('http://lorempixel.com/250/100/abstract/2/');
+    background-repeat: round;
     margin: -1em;
+}
+
+#menu .ui-listview {
+    clear: both;
 }
 
 .profile-background {
