@@ -12,3 +12,6 @@ if ("geolocation" in navigator) {
     el.innerHTML = 'Geolocation not supported by your browser';
 }
 ```
+
+## Read more
+[Mozilla docs](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation)

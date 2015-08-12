@@ -1,8 +1,8 @@
-Detect several gestures and print them out.
+# Detect several gestures
 
+Here are examples on how to detect screen gestures.
 
-
-## Jquery
+## jQuery mobile
 
 ```js
 $('html').on('swipe', function(event) {
