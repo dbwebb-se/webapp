@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <style>
         .status {
-            width: 100%;
             font: bold 1em sans-serif;
             color: #FFF;
+            padding:30px
         }
 
         /* portrait-specific styles */
         @media screen and (orientation:portrait) {
-            body {
+            .status {
                 background: blue;
             }
         }
 
         /* landscape-specific styles */
         @media screen and (orientation:landscape) {
-            body {
+            .status {
                 background: green;
             }
         }
