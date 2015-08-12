@@ -187,6 +187,8 @@ router.group('/api', () => {
 });
 
 require('http').createServer((req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With');
     router.route(req, res);
 }).listen(1337);
 console.log('Listening on port 1337');
