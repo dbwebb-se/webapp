@@ -32,35 +32,37 @@
 
 <body>
     <p class='status'>Orientation: <span id='js'></span></p>
-    <p id="orientation"></p>
 
     <script type="text/javascript">
         (function() {
             // Find matches
             var mql = window.matchMedia('(orientation: portrait)');
 
+            // Event handler
             var onChange = function(m) {
                 if (m.matches) {
                     // Changed to portrait
-                    document.getElementById('js').innerHTML = 'Protrait!';
+                    document.getElementById('js').innerHTML = 'Portrait!';
                 } else {
                     // Changed to landscape
                     document.getElementById('js').innerHTML = 'Landscape!';
                 }
             };
 
-            // Add a media query change listener
+            // Add the event handler to the mql-obj
             mql.addListener(onChange);
 
+            // Calls the eventhandler for initial check
             onChange(mql);
-        })();
-        (function () {
-            // Listen for resize changes
+
+            // Add a listener for resize changes
             window.addEventListener("resize", function() {
+                // Checks if the innerwidth is larger than inner height
+                // if it is its landscape else portrait
                 if (window.innerWidth > window.innerHeight) {
                     console.log('Landscape');
                 } else {
-                    console.log('Protrait');
+                    console.log('Portrait');
                 }
             }, false);
         })();
