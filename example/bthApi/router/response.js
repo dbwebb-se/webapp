@@ -1,3 +1,6 @@
+/**
+ * @version 1.0.1
+ */
 export function buildResponse(req, res) {
     res = res || {};
 
@@ -44,7 +47,7 @@ export function buildResponse(req, res) {
         }
 
         // Write and end..
-        res.write(body, statusCode);
+        res.write(body);
         res.end();
     };
 
