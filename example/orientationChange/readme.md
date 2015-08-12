@@ -64,4 +64,5 @@ $(window).on("orientationchange", function(event) {
 ### Read more
 
 [Mozilla API docs on matchMedia.](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)   
+[jQuery mobile](https://api.jquerymobile.com/orientationchange/)       
 [Stackoverflow discussion. ](http://stackoverflow.com/questions/4917664/detect-viewport-orientation-if-orientation-is-portrait-display-alert-message-ad)
