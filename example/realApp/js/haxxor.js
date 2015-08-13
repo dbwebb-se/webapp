@@ -1,5 +1,5 @@
 /**
- * Sometimes you need a little
+ * Sometimes you need a little hax
  * to make the world a better place
  */
 var haxxor = (function () {
