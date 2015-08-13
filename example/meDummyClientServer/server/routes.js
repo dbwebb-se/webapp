@@ -25,7 +25,6 @@ function getGravatImage(email, args) {
 }
 
 function md5(str) {
-    console.log(str);
     str = str.toLowerCase().trim();
     var hash = crypto.createHash('md5');
     hash.update(str);
@@ -93,6 +92,19 @@ router.group('/users', () => {
     router.get('/', (req, res) => {
         User.find((err, users) => {
             res.json(users);
+        });
+    });
+
+    // GET /users/:id
+    router.get('/:id', (req, res) => {
+        User.findOne({
+            _id: req.params.id
+        }, function(err, user) {
+            if (err) {
+                res.json({ err: err.message });
+            } else {
+                res.json(user);
+            }
         });
     });
 

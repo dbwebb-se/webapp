@@ -5,6 +5,7 @@ var http = require('http');
 var app = require('../index');
 var request = require('supertest')('localhost:1337');
 var sinon = require('sinon');
+var UserModel = require('../models/user');
 
 describe('THE API', () => {
 
@@ -93,11 +94,15 @@ describe('THE API', () => {
 
         describe('PUT', () => {
             it('Should change a user', (done) => {
-                request
-                    .put('/users')
-                    .field('name', 'my-awesome-changed-name')
-                    .field('email', 'my-awesome-changed-email')
-                    .expect(200)
+
+                // GET A sample user.
+                // request
+                //     .get('/users/')
+
+                // request
+                //     .put('/users/')
+                //     .send('name')
+                //     .expect(200)
                     /*.expect('Content-Type', /json/)
                     .expect((res) => {
                         assert(res.body.name === 'my-awesome-changed-name');
@@ -108,6 +113,40 @@ describe('THE API', () => {
             });
         });
 
+    });
+
+    describe('/users/:id', () => {
+        describe('GET', () => {
+            it('Should return one user', (done) => {
+                // Get the first user and test with it.
+                UserModel.findOne((err, user) => {
+                    request
+                        .get('/users/' + user._id)
+                        .expect(200)
+                        .expect('Content-Type', /json/)
+                        .end(done);
+                });
+            });
+        });
+
+        describe('PUT', () => {
+            // Get the first user and test with it.
+            /*UserModel.findOne((err, user) => {
+                request
+
+
+            });*/
+
+            // request
+            //     .put('/users/')
+            //     .send('name')
+            //     .expect(200)
+                /*.expect('Content-Type', /json/)
+                .expect((res) => {
+                    assert(res.body.name === 'my-awesome-changed-name');
+                    assert(res.body.name === 'my-awesome-changed-email');
+                });*/
+        });
     });
 
 });
