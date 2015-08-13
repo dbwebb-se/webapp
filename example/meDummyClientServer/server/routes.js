@@ -20,6 +20,7 @@ function getGravatImage(email, args) {
     args = args || '';
     var baseUrl = 'http://www.gravatar.com/avatar/';
     return (baseUrl + md5(email) + args).trim();
+
 }
 
 function md5(str) {
@@ -30,42 +31,42 @@ function md5(str) {
     return hash.digest("hex");
 }
 
+router.group('/view', () => {
+    router.get('/', (req, res) => {
+        var path = join(__dirname, 'view');
 
-router.get('/view', (req, res) => {
-    var path = join(__dirname, 'view');
-
-    fs.readdir(path, (err, files) => {
-        if (!err && files && files.length > 0) {
-            // return only json files.
-            files = files.filter((f) => f.includes('.json') || f.includes('.html'));
-            res.json(files);
-        } else if (err) {
-            res.json({ err: err.message }, 500);
-        } else {
-            res.json({ err: 'No files found'}, 404);
-        }
-    });
-});
-
-router.get('/view/:name', (req, res) => {
-    var path = join(__dirname, 'view', req.params.name);
-
-    fs.readFile(path, (err, content) => {
-        if (!err && content) {
-            // Send the content and converts it to string from buffer.
-            if (req.params.name.includes('.json')) {
-                res.json(content.toString());
+        fs.readdir(path, (err, files) => {
+            if (!err && files && files.length > 0) {
+                // return only json files.
+                files = files.filter((f) => f.includes('.json') || f.includes('.html'));
+                res.json(files);
+            } else if (err) {
+                res.json({ err: err.message }, 500);
             } else {
-                res.html(content.toString())
+                res.json({ err: 'No files found'}, 404);
             }
-        } else if (err) {
-            res.json({ err: err.message}, 500);
-        } else {
-            res.json({ err: 'file not found'}, 404);
-        }
+        });
+    });
+
+    router.get('/:name', (req, res) => {
+        var path = join(__dirname, 'view', req.params.name);
+
+        fs.readFile(path, (err, content) => {
+            if (!err && content) {
+                // Send the content and converts it to string from buffer.
+                if (req.params.name.includes('.json')) {
+                    res.json(content.toString());
+                } else {
+                    res.html(content.toString())
+                }
+            } else if (err) {
+                res.json({ err: err.message}, 500);
+            } else {
+                res.json({ err: 'file not found'}, 404);
+            }
+        });
     });
 });
-
 
 router.get('/random', (req, res) => {
 
@@ -84,18 +85,6 @@ router.get('/random', (req, res) => {
     });
 });
 
-// Insert a user.
-// var user = new User({
-//     name: 'Test',
-//     email: 'test@test.com'
-// });
-
-// // Save the user to the db..
-// user.save();
-// console.log('saved user to db');
-
-
-
 router.group('/users', () => {
 
     // GET /users
@@ -107,10 +96,13 @@ router.group('/users', () => {
 
     // POST /users
     router.post('/', (req, res) => {
+        console.log(req.body);
         var user = new User({
             name: req.body.name,
             email: req.body.email
         });
+
+        console.log(user);
 
         user.save((err) => {
             if (err) {
