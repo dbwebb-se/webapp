@@ -1,10 +1,10 @@
 # HTML5 Geolocation using Navigator.
 
 ```js
-
 var el = document.getElementById('content');
-
+// Checks the compatibility of the browser
 if ("geolocation" in navigator) {
+    // Gets the current position 
     navigator.geolocation.getCurrentPosition(function (position) {
         el.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
     });
