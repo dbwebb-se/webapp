@@ -27,22 +27,18 @@ var connect = function() {
         },
     };
 
-    mongoose.connect('mongodb://localhost/webapp', options);
+    // Database for prod/dev or test.
+    if (process.env.NODE_ENV === 'test') {
+        mongoose.connect('mongodb://localhost/webbapptest', options)
+    } else {
+        mongoose.connect('mongodb://localhost/webapp', options);
+    }
+
+
 }
 connect();
 mongoose.connection.on('error', console.log);
 mongoose.connection.on('disconnected', connect);
-
-// Insert a user.
-// var user = new User({
-//     name: 'Test',
-//     email: 'test@test.com'
-// });
-
-// // Save the user to the db..
-// user.save();
-// console.log('saved user to db');
-
 
 // Start the HTTP server
 require('http').createServer((req, res) => {

@@ -17,55 +17,57 @@ function randomValueBase64(len) {
 }
 
 function getGravatImage(email, args) {
+    email = email || 'http://example.com/images/avatar.jpg';
     args = args || '';
     var baseUrl = 'http://www.gravatar.com/avatar/';
     return (baseUrl + md5(email) + args).trim();
+
 }
 
 function md5(str) {
-    str = str.tolowerCase().strim();
+    str = str.toLowerCase().trim();
     var hash = crypto.createHash('md5');
     hash.update(str);
 
     return hash.digest("hex");
 }
 
+router.group('/view', () => {
+    router.get('/', (req, res) => {
+        var path = join(__dirname, 'view');
 
-router.get('/view', (req, res) => {
-    var path = join(__dirname, 'view');
-
-    fs.readdir(path, (err, files) => {
-        if (!err && files && files.length > 0) {
-            // return only json files.
-            files = files.filter((f) => f.includes('.json') || f.includes('.html'));
-            res.json(files);
-        } else if (err) {
-            res.json({ err: err.message }, 500);
-        } else {
-            res.json({ err: 'No files found'}, 404);
-        }
-    });
-});
-
-router.get('/view/:name', (req, res) => {
-    var path = join(__dirname, 'view', req.params.name);
-
-    fs.readFile(path, (err, content) => {
-        if (!err && content) {
-            // Send the content and converts it to string from buffer.
-            if (req.params.name.includes('.json')) {
-                res.json(content.toString());
+        fs.readdir(path, (err, files) => {
+            if (!err && files && files.length > 0) {
+                // return only json files.
+                files = files.filter((f) => f.includes('.json') || f.includes('.html'));
+                res.json(files);
+            } else if (err) {
+                res.json({ err: err.message }, 500);
             } else {
-                res.html(content.toString())
+                res.json({ err: 'No files found'}, 404);
             }
-        } else if (err) {
-            res.json({ err: err.message}, 500);
-        } else {
-            res.json({ err: 'file not found'}, 404);
-        }
+        });
+    });
+
+    router.get('/:name', (req, res) => {
+        var path = join(__dirname, 'view', req.params.name);
+
+        fs.readFile(path, (err, content) => {
+            if (!err && content) {
+                // Send the content and converts it to string from buffer.
+                if (req.params.name.includes('.json')) {
+                    res.json(content.toString());
+                } else {
+                    res.html(content.toString())
+                }
+            } else if (err) {
+                res.json({ err: err.message}, 500);
+            } else {
+                res.json({ err: 'file not found'}, 404);
+            }
+        });
     });
 });
-
 
 router.get('/random', (req, res) => {
 
@@ -84,18 +86,6 @@ router.get('/random', (req, res) => {
     });
 });
 
-// Insert a user.
-// var user = new User({
-//     name: 'Test',
-//     email: 'test@test.com'
-// });
-
-// // Save the user to the db..
-// user.save();
-// console.log('saved user to db');
-
-
-
 router.group('/users', () => {
 
     // GET /users
@@ -109,17 +99,57 @@ router.group('/users', () => {
     router.post('/', (req, res) => {
         var user = new User({
             name: req.body.name,
-            email: req.body.email
+            email: req.body.email,
+            gravatar: getGravatImage(req.body.email)
         });
 
         user.save((err) => {
             if (err) {
-                res.json({err: err})
+                res.json({ err: err.message }, 400);
             } else {
                 res.json(user);
             }
         });
     });
+
+    // GET /users/:id
+    router.get('/:id', (req, res) => {
+        User.findOne({
+            _id: req.params.id
+        }, function(err, user) {
+            if (err) {
+                res.json({ err: err.message });
+            } else {
+                res.json(user);
+            }
+        });
+    });
+
+    // PUT /users/:id
+    router.put('/:id', (req, res) => {
+
+        User.findOne({ _id: req.params.id}, (err, user) => {
+
+            // Update all properties
+            /*for (var prop in req.body) {
+                user[prop] = req.body[prop];
+            }*/
+            user.name = req.body.name;
+            user.email = req.body.email;
+            user.gravatar = getGravatImage(user.email);
+
+            user.save((err) => {
+                if (err) {
+                    res.json({ err: err.message });
+                } else {
+                    res.json(user);
+                }
+            });
+        });
+
+    });
+
+
 });
 
 
