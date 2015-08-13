@@ -68,13 +68,11 @@
     window.initialize = initialize;
 
     (function() {
-        // Make sure that we never include google maps files more than once
-        if (!document.getElementById('google-maps')) {
-            var s = document.createElement('script');
-            s.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&callback=initialize';
-            s.id = 'google-maps';
-            document.body.appendChild(s);
-        }
+        // Load google maps async
+        var s = document.createElement('script');
+        s.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&callback=initialize';
+        s.id = 'google-maps';
+        document.body.appendChild(s);
     })();
 })();
 </script>
