@@ -63,30 +63,32 @@ describe('THE API', () => {
         });
 
         describe('POST', () => {
-            it('Should add a user', (done) => {
-
-                var user = {
-                    name: 'a',
-                    email: 'e'
-                };
+            it('Add user with attributes', (done) => {
 
                 request
                     .post('/users')
-                    .send('name=a')
-                    .send('email=e')
+                    .send('name=aName')
+                    .send('email=eMail')
                     .set('Content-Type', 'application/json')
-
                     .expect(200)
                     .expect('Content-Type', /json/)
                     .expect(shouldReturnValues)
                     .end(done);
 
                     function shouldReturnValues(res) {
-                        console.log(res);
-                        assert(res.body.name === 'a');
-                        assert(res.body.email === 'e');
+                        assert(res.body.name === 'aName');
+                        assert(res.body.email === 'eMail');
                     }
             });
+
+            it('Add user WITHOUT attributes', (done) => {
+                request
+                    .post('/users')
+                    .set('Content-Type', 'application/json')
+                    .expect(400)
+                    .end(done);
+            });
+
         });
 
         describe('PUT', () => {

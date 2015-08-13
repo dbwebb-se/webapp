@@ -17,6 +17,7 @@ function randomValueBase64(len) {
 }
 
 function getGravatImage(email, args) {
+    email = email || 'http://example.com/images/avatar.jpg';
     args = args || '';
     var baseUrl = 'http://www.gravatar.com/avatar/';
     return (baseUrl + md5(email) + args).trim();
@@ -24,7 +25,8 @@ function getGravatImage(email, args) {
 }
 
 function md5(str) {
-    str = str.tolowerCase().strim();
+    console.log(str);
+    str = str.toLowerCase().trim();
     var hash = crypto.createHash('md5');
     hash.update(str);
 
@@ -96,17 +98,15 @@ router.group('/users', () => {
 
     // POST /users
     router.post('/', (req, res) => {
-        console.log(req.body);
         var user = new User({
             name: req.body.name,
-            email: req.body.email
+            email: req.body.email,
+            gravatar: getGravatImage(req.body.email)
         });
-
-        console.log(user);
 
         user.save((err) => {
             if (err) {
-                res.json({err: err})
+                res.json({ err: err.message }, 400);
             } else {
                 res.json(user);
             }
