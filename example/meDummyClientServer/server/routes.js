@@ -95,19 +95,6 @@ router.group('/users', () => {
         });
     });
 
-    // GET /users/:id
-    router.get('/:id', (req, res) => {
-        User.findOne({
-            _id: req.params.id
-        }, function(err, user) {
-            if (err) {
-                res.json({ err: err.message });
-            } else {
-                res.json(user);
-            }
-        });
-    });
-
     // POST /users
     router.post('/', (req, res) => {
         var user = new User({
@@ -124,6 +111,45 @@ router.group('/users', () => {
             }
         });
     });
+
+    // GET /users/:id
+    router.get('/:id', (req, res) => {
+        User.findOne({
+            _id: req.params.id
+        }, function(err, user) {
+            if (err) {
+                res.json({ err: err.message });
+            } else {
+                res.json(user);
+            }
+        });
+    });
+
+    // PUT /users/:id
+    router.put('/:id', (req, res) => {
+
+        User.findOne({ _id: req.params.id}, (err, user) => {
+
+            // Update all properties
+            /*for (var prop in req.body) {
+                user[prop] = req.body[prop];
+            }*/
+            user.name = req.body.name;
+            user.email = req.body.email;
+            user.gravatar = getGravatImage(user.email);
+
+            user.save((err) => {
+                if (err) {
+                    res.json({ err: err.message });
+                } else {
+                    res.json(user);
+                }
+            });
+        });
+
+    });
+
+
 });
 
 

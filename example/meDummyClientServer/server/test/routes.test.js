@@ -130,22 +130,25 @@ describe('THE API', () => {
         });
 
         describe('PUT', () => {
-            // Get the first user and test with it.
-            /*UserModel.findOne((err, user) => {
-                request
+            it('Should update on user', (done) => {
+                // Get the first user and test with it.
+                UserModel.findOne((err, user) => {
 
+                    // Test the put req
+                    request
+                        .put('/users/' + user._id)
+                        .send('name=newName')
+                        .send('email=newEmail')
+                        .expect(200)
+                        .expect(shouldReturnValues)
+                        .end(done);
 
-            });*/
-
-            // request
-            //     .put('/users/')
-            //     .send('name')
-            //     .expect(200)
-                /*.expect('Content-Type', /json/)
-                .expect((res) => {
-                    assert(res.body.name === 'my-awesome-changed-name');
-                    assert(res.body.name === 'my-awesome-changed-email');
-                });*/
+                    function shouldReturnValues(res) {
+                        assert(res.body.name === 'newName');
+                        assert(res.body.email === 'newEmail');
+                    }
+                });
+            });
         });
     });
 
