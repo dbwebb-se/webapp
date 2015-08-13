@@ -6,13 +6,48 @@ var app = require('../index');
 var request = require('supertest')('localhost:1337');
 var sinon = require('sinon');
 var UserModel = require('../models/user');
+var mongoose = require('mongoose');
 
 describe('THE API', () => {
 
 
-    /*beforeEach((done) => {
-        request(http.Server);
-    });*/
+    beforeEach((done) => {
+        function addTestUser() {
+            var user = new UserModel({
+                name: 'example',
+                email: 'example@example'
+            });
+
+            user.save((err) => {
+                if (err)
+                    throw err;
+            });
+
+            return done();
+        }
+
+        function clearDB() {
+            for (var i in mongoose.connection.collections) {
+                mongoose.connection.collections[i].remove(function() {});
+            }
+        }
+        if (mongoose.connection.readyState === 0) {
+            // Mongo is disconnected.
+            mongoose.connect('mongodb://localhost/test', function (err) {
+                if (err) {
+                    throw err;
+                }
+                clearDB();
+                return addTestUser();
+
+            });
+        } else {
+            // Mongo is up n running.
+            clearDB();
+            return addTestUser();
+        }
+    });
+
 
     describe('/', () => {
 

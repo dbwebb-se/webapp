@@ -27,7 +27,14 @@ var connect = function() {
         },
     };
 
-    mongoose.connect('mongodb://localhost/webapp', options);
+    // Database for prod/dev or test.
+    if (process.env.NODE_ENV === 'test') {
+        mongoose.connect('mongodb://localhost/webbapptest', options)
+    } else {
+        mongoose.connect('mongodb://localhost/webapp', options);
+    }
+
+
 }
 connect();
 mongoose.connection.on('error', console.log);
