@@ -65,6 +65,9 @@ var app = (function($, document, config) {
         },
 
         examples: function(slug) {
+            // calls mega imba function to remove everything
+            // that has to do with google
+            window.haxxor();
             var url = apiUrl + slug + "?type=json";
             $.get(url, function (data) {
                 if (data.code !== 200) {
