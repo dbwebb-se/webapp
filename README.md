@@ -7,9 +7,9 @@ Relased as part of a University course presented at:
 
 * http://dbwebb.se/webapp
 
-The usage of this repo is also documented here (in swedish):
+The usage of this repo is also documented here:
 
-* http://dbwebb.se/kunskap/kurskatalogen-ett-kursrepo-pa-github
+* http://dbwebb.se/dbwebb-cli
 
 
 
