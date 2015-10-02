@@ -1,0 +1,1 @@
+!function(){"use strict";$("#header").toolbar(),$("#footer").toolbar(),$("#menu").panel().enhanceWithin()}();
