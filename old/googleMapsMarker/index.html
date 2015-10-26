@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5 APP - Geolocation</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="minimal-ui, user-scalable=no, width=device-width" />
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            min-width: 300px !important;
+            min-height: 300px !important;
+            margin:3px auto;
+        }
+        .wrapper form {
+            margin: 0 auto;
+            width: 262px;
+        }
+        #map-canvas {
+            margin:0 auto;
+            height: 100%;
+            min-height: 300px !important;
+            width: 100%;
+            min-width: 300px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <form>
+            <p>
+                <input id="latitude" type="text" placeholder="Input latitude here">
+            </p>
+            <p>
+                <input id="longitude" type="text" placeholder="Input longitude here">
+            </p>
+            <p>
+                <input id="text" type="text" placeholder="Input text on marker here">
+            </p>
+            <p><button id="place">Place marker</button></p>
+            <p id="status"></p>
+        </form>
+
+        <div id="map-canvas"></div>
+    </div>
+
+<script>
+(function() {
+    var map;
+
+    function initialize() {
+        var mapOptions = {
+            zoom: 10
+        };
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+        // Try HTML5 geolocation
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                map.setCenter(pos);
+            }, function() {
+                handleNoGeolocation(true);
+            });
+        } else {
+            // Browser doesn't support Geolocation
+            handleNoGeolocation(false);
+        }
+    };
+
+    function handleNoGeolocation(errorFlag) {
+        if (errorFlag) {
+            var content = 'Error: The Geolocation service failed.';
+        } else {
+            var content = 'Error: Your browser doesn\'t support geolocation.';
+        }
+
+        var options = {
+            map: map,
+            position: new google.maps.LatLng(60, 105),
+            content: content
+        };
+
+        var infowindow = new google.maps.InfoWindow(options);
+        map.setCenter(options.position);
+    }
+    // Exports the initialize-func to window so google can find the callback
+    window.initialize = initialize;
+
+    var lat = document.getElementById('latitude'),
+        lng = document.getElementById('longitude'),
+        txt = document.getElementById('text'),
+        sav = document.getElementById('place');
+
+    sav.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Prevents the marker to be created if the input-fields are empty
+        if (lat.value && lng.value && txt.value) {
+            // Checks if the values of the latitude and longitud are ok
+            if (!isNumeric(lat.value) || !isNumeric(lng.value)) {
+                writeStatus('latitude value or the longitud value is not numeric');
+                return;
+            }
+
+            //  Creates a set of latitude / longitude values
+            var latLngToMaps = new google.maps.LatLng(
+                lat.value,
+                lng.value
+            );
+
+            // Creates a new Marker through the google maps api
+            var marker = new google.maps.Marker({
+                // Position where to place the marker on the map
+                position: latLngToMaps,
+                // And the title for the marker
+                title: txt.value,
+                label: txt.value
+            });
+
+            // Binds the marker to the map.
+            marker.setMap(map);
+
+            // Sets the input-fields to empty again.
+            lat.value = '';
+            lng.value = '';
+            txt.value = '';
+
+            writeStatus('Marker placed!');
+        } else {
+            writeStatus('Input files cannot be empty.');
+        }
+    });
+
+    /**
+     * Writes a status text and removes the text after given interval
+     * @param  {String} txt
+     * @param  {integer} interval
+     */
+    function writeStatus(txt, interval) {
+        var interval = interval || 3000;
+        var status = document.getElementById('status');
+        status.innerHTML = txt;
+        window.setTimeout(function () {
+            status.innerHTML = '';
+        }, interval);
+    }
+
+    /**
+     * Check the obj if its numeric
+     * @param  {Any}  obj Value to check
+     * @return {Boolean}
+     */
+    function isNumeric(obj) {
+        return (obj - parseFloat( obj ) + 1) >= 0
+    }
+
+    (function() {
+        // Load google api async
+        var s = document.createElement('script');
+        s.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&callback=initialize';
+        s.id = 'google-maps';
+        document.body.appendChild(s);
+
+    })();
+})();
+</script>
+</body>
+</html>

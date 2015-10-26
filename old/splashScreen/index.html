@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5 APP - Geolocation</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="minimal-ui, user-scalable=no, width=device-width" />
+
+    <style>
+
+        .splash-screen {
+            position:absolute;
+            top:0;
+            left:0;
+            bottom:0;
+            width:100%;
+            background-color:white;
+        }
+
+        .splash-screen p, a {
+            color: black;
+            margin-left: 20%;
+        }
+        a#enter {
+            margin-left: 20%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="splash-screen">
+        <img src="http://i2.wp.com/cdn.bgr.com/2015/03/new-macbook-2015.png?w=300">
+        <p>A typical splash screen</p>
+        <a id="enter">Enter the real website</a>
+
+
+    </div>
+
+    <div id="content">
+        <p>REAL WEBISTE HERE</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <script type="text/javascript">
+        (function() {
+            var interval = null;
+            interval = setInterval(function() {
+                $('.splash-screen p').append('.');
+            }, 700);
+
+
+            $('#enter').on('click', function() {
+                $(this).parent().fadeOut(1000);
+                clearInterval(interval);
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5 APP - Geolocation</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="minimal-ui, user-scalable=no, width=device-width" />
+    <style>
+        #map-canvas {
+            height: 300px;
+            margin:0 auto;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="map-canvas"></div>
+<script>
+(function() {
+    var map;
+
+    function initialize() {
+        var mapOptions = {
+            zoom: 10
+        };
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+        // Try HTML5 geolocation
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+                var infowindow = new google.maps.InfoWindow({
+                    map: map,
+                    position: pos,
+                    content: 'Location found using HTML5.'
+                });
+
+                map.setCenter(pos);
+            }, function() {
+                handleNoGeolocation(true);
+            });
+        } else {
+            // Browser doesn't support Geolocation
+            handleNoGeolocation(false);
+        }
+    };
+
+    function handleNoGeolocation(errorFlag) {
+        if (errorFlag) {
+            var content = 'Error: The Geolocation service failed.';
+        } else {
+            var content = 'Error: Your browser doesn\'t support geolocation.';
+        }
+
+        var options = {
+            map: map,
+            position: new google.maps.LatLng(60, 105),
+            content: content
+        };
+
+        var infowindow = new google.maps.InfoWindow(options);
+        map.setCenter(options.position);
+    }
+    // Exports the initialize-func to window so google can find the callback
+    window.initialize = initialize;
+
+    (function() {
+        // Load google maps async
+        var s = document.createElement('script');
+        s.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&callback=initialize';
+        s.id = 'google-maps';
+        document.body.appendChild(s);
+    })();
+})();
+</script>
+</body>
+</html>

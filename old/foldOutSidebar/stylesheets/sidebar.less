@@ -1,0 +1,195 @@
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+
+.animation(@args) {
+  -webkit-animation: @args;
+  -moz-animation: @args;
+  -ms-animation: @args;
+  -o-animation: @args;
+  animation: @args;
+}
+
+.transform(@args) {
+  -webkit-transform: @args;
+  -moz-transform: @args;
+  -ms-transform: @args; 
+  -o-transform: @args;
+  transform: @args;
+}
+
+.transition(...) {
+  -moz-transition: @arguments;
+  -webkit-transition: @arguments;
+  -o-transition: @arguments;
+  -ms-transition: @arguments;
+  transition: @arguments;
+}
+
+body {background-color: #2196F3;}
+
+#sidebar-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 99;
+  color: #fff;
+  font-family: 'Bree Serif', serif;
+  cursor: pointer;
+  font-size: 30px;
+  transition: left .4s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+#sidebar-toggle:hover .fa {.animation(spin-small .6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards);}
+
+#sidebar-toggle.foldOut {.animation(fold .4s linear forwards);}
+
+#sidebar-toggle.foldIn {.animation(fold .6s linear forwards);}
+
+#sidebar-toggle .fa.spin {.animation(spin .6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards);}
+
+#sidebar {
+  .transform(perspective( 300px ) rotateY( 90deg ));
+  .transition(transform .4s, left .4s;);
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  z-index: 99;
+  list-style: none;
+  font-family: 'Bree Serif', serif;
+  color: #ccc;
+  height: 100%;
+}
+
+#sidebar.show {.transform(perspective( 600px ) rotateY( 0 ));}
+
+#sidebar a {
+  text-decoration: none;
+  color: #ccc;
+}
+
+#sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#sidebar li {
+  text-align: center;
+  background-color: #000;
+  .transition(background-color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1));
+  border-bottom: 1px solid #212121;
+}
+
+#sidebar ul li:first-child {
+  font-size: 1.2em;
+}
+
+#sidebar ul li:first-child a:hover {
+  background-color: #000;
+}
+
+#sidebar ul li a {
+  display: block;
+  font-size: 1.4em;
+  padding: 15px 80px;
+}
+
+#sidebar ul li a:hover {
+  background-color: #303030;
+  color: #fff !important;
+}
+
+#sidebar li.selected {
+  background-color: #303030;
+}
+
+#sidebar .social {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+#sidebar .social .fa {
+  font-size: 30px;
+  vertical-align: middle;
+  padding: .4em 0em;
+}
+
+#sidebar .social .copyright {
+  display: inline-block;
+  color: #5e5e5e;
+  margin: 0;
+  border-bottom: 1px solid #212121;
+  padding: 1em 0em;
+  text-align: center;
+  width: 100%;
+}
+
+#sidebar .social-icon {
+  display: inline-block;
+  width: 40%;
+  border-bottom: 1px solid #212121;
+}
+
+#sidebar .social-icon:first-child {
+  width: 40%;
+  margin: 0% 25%;
+  border-bottom: none;
+}
+
+#sidebar .social-icon a {
+  display: block;
+}
+
+
+#sidebar .social-icon:hover {background-color: #303030;}
+
+#sidebar .social-icon:hover .fa {color: #fff;}
+
+.spin-frames () {
+  0% {.transform(rotate(0deg))}
+  100% {.transform(rotate(720deg))}
+}
+
+@-webkit-keyframes spin {.spin-frames;}
+@-moz-keyframes spin {.spin-frames;}
+@-ms-keyframes spin {.spin-frames;}
+@-o-keyframes spin {.spin-frames;}
+@keyframes spin {.spin-frames;}
+
+.spin-small-frames () {
+  0% {.transform(rotate(0deg))}
+  100% {.transform(rotate(180deg))}
+}
+
+@-webkit-keyframes spin-small {.spin-small-frames;}
+@-moz-keyframes spin-small {.spin-small-frames;}
+@-ms-keyframes spin-small {.spin-small-frames;}
+@-o-keyframes spin-small {.spin-small-frames;}
+@keyframes spin-small {.spin-small-frames;}
+
+.fold-frames () {
+  0% {.transform(perspective( 100px ) rotateY( 90deg ))}
+  100% {.transform(perspective( 100px ) rotateY( 0 ))}
+}
+
+@-webkit-keyframes fold {.fold-frames;}
+@-moz-keyframes fold {.fold-frames;}
+@-ms-keyframes fold {.fold-frames;}
+@-o-keyframes fold {.fold-frames;}
+@keyframes fold {.fold-frames;}
+
+@media screen and (max-width: 479px) {
+  #sidebar-toggle span {
+    display: none;
+  }
+}
