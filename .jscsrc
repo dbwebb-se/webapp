@@ -5,5 +5,7 @@
 	"requireSpacesInsideParentheses": null,
 	"requireSpaceBeforeBlockStatements": null,
 	"requirePaddingNewlinesInBlocks": null,
+	"requireSpaceBeforeBinaryOperators": null,
+	"requireSpaceAfterBinaryOperators": null,
     "esnext": true
 }
