@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Mina husdjur",
+        "content": "Här är mina husdjur som jag brukar prata med.",
+        "image": "img/birds.jpg"
+    },
+    {
+        "title": "Mitt nya jobb",
+        "content": "Jag har valt att flytta ut till landet till min lantgård.",
+        "image": "img/countryside.jpg"
+    },
+    {
+        "title": "Sommarsemester 2015",
+        "content": "I somras var jag ute och reste runt och vandrade.",
+        "image": "img/hike.jpg"
+    },
+    {
+        "title": "Helgresa till storstaden",
+        "content": "I helgen var jag på resa och shoppade i storstaden.",
+        "image": "img/houses.jpg"
+    }
+]

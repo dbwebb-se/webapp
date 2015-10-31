@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Handlebars test app</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <a href="#/">Hem</a>
+        <a href="#/redovisning">Redovisning</a>
+        <a href="#/om">Om</a>
+    </header>
+        
+    <main id="main"></main>
+
+
+
+<script id="page_tpl" type="text/template">
+<article>
+<header>{{{header}}}</header>
+{{{content}}}
+</article>
+</script>
+
+<script id="report_tpl" type="text/template">
+<article>
+{{#with intro}}
+    <header>{{{header}}}</header>
+    {{{content}}}
+{{/with}}
+{{#each sections}}
+    <header>{{{header}}}</header>
+    {{{content}}}
+{{/each}}
+</article>
+</script>
+
+
+<script src="../lib/handlebars.js"></script>
+<script src="../lib/mithril.min.js"></script>
+<script>
+
+// Model
+var Pages = {
+    me: function() {
+        return m.request({method: "GET", url: "json/me.json"});
+    },
+    report: function() {
+        return m.request({method: "GET", url: "json/report.json"});
+    },
+    about: function() {
+        return m.request({method: "GET", url: "json/about.json"});
+    }
+};
+
+
+
+// Components
+var Me = {
+    controller: function() {
+        return { page: Pages.me() };
+    },
+    view: function(controller) {
+        var source   = document.getElementById("page_tpl").innerHTML;
+        var template = Handlebars.compile(source);
+        var context  = controller.page();
+        var html     = template(context);
+
+        return m("main", m.trust(html));
+    }
+}
+
+
+var Report = {
+    controller: function() {
+        return { page: Pages.report() };
+    },
+    view: function(controller) {
+        var source   = document.getElementById("report_tpl").innerHTML;
+        var template = Handlebars.compile(source);
+        var context  = controller.page();
+        var html     = template(context);
+
+        return m("main", m.trust(html));
+    }
+}
+
+
+var About = {
+    controller: function() {
+        return { page: Pages.about() };
+    },
+    view: function(controller) {
+        var source   = document.getElementById("page_tpl").innerHTML;
+        var template = Handlebars.compile(source);
+        var context  = controller.page();
+        var html     = template(context);
+
+        return m("main", m.trust(html));
+    }
+}
+
+
+// routes
+m.route(document.getElementById("main"), "/", {
+    "/": Me,
+    "/redovisning": Report,
+    "/om": About,
+});
+
+m.route.mode = "hash";
+
+</script>

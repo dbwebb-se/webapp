@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mithril test app</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <a href="#/">Hem</a>
+        <a href="#/redovisning">Redovisning</a>
+        <a href="#/om">Om</a>
+    </header>
+        
+    <main id="main"></main>
+
+
+
+<script src="../lib/mithril.min.js"></script>
+<script>
+
+// Components
+var Me = {
+    view: function() {
+        return m("p", "Me");
+    }
+}
+
+
+var Report = {
+    view: function() {
+        return m("p", "Report");
+    }
+}
+
+
+var About = {
+    view: function() {
+        return m("p", "About");
+    }
+}
+
+
+
+// Routes
+m.route(document.getElementById("main"), "/", {
+    "/": Me,
+    "/redovisning": Report,
+    "/om": About,
+});
+
+m.route.mode = "hash";
+
+</script>

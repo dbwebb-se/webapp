@@ -1,0 +1,20 @@
+{
+    "intro" : {
+        "header": "<h1>Redovisningar</h1>",
+        "content": "<p>Här är mina Redovisningstexter.</p>"
+    },
+    "sections" : [
+        {
+            "header": "<h2>Kmom01</h2>",
+            "content": "<p>Redovisningstext.</p>"
+        },
+        {
+            "header": "<h2>Kmom02</h2>",
+            "content": "<p>Redovisningstext.</p>"
+        },
+        {
+            "header": "<h2>Kmom03</h2>",
+            "content": "<p>Redovisningstext.</p>"
+        }
+    ]
+}

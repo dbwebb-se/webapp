@@ -1,0 +1,43 @@
+a {
+    display: block;
+    margin-bottom: 0.3em;
+}
+
+a::after {
+    content: "\bb";
+}
+
+.listview a::after {
+    content: none;
+}
+
+.listview {
+    margin: 0;
+    padding: 0;
+}
+
+.listview li {
+    list-style: none;
+    clear: both;
+    border: 1px solid #ccc;
+    margin-bottom: 0.5em;
+}
+
+.listview img {
+    width: 100px;
+    float: left;
+    padding: 0.5em;
+}
+
+.listview h1 {
+    font-size: 1.3em;
+}
+
+.listview a {
+    text-decoration: none;
+    color: #333;
+}
+
+.listview a:hover {
+    background-color: #eee;
+}

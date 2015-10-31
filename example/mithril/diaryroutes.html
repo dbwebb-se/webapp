@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mithril test app</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>hej
+    <main id="main"></main>
+
+
+
+<script id="page_tpl" type="text/template">
+<article>
+<header>{{{header}}}</header>
+{{{content}}}
+</article>
+</script>
+
+
+
+<script id="list_tpl" type="text/template">
+<article>
+{{#with intro}}
+    <header>{{{header}}}</header>
+    {{{content}}}
+{{/with}}
+{{#each sections}}
+    <header>{{{header}}}</header>
+    {{{content}}}
+{{/each}}
+</article>
+</script>
+
+
+
+<script src="../lib/handlebars.js"></script>
+<script src="../lib/mithril.min.js"></script>
+<script>
+
+// Model
+var Diary = {
+    list: function() {
+        return m.request({method: "GET", url: "json/diary.json"});
+    }
+};
+
+
+
+// Components
+var ListView = {
+    controller: function() {
+        return { items: Diary.list() };
+    },
+    view: function(controller) {
+        var source   = document.getElementById("list_tpl").innerHTML;
+        var template = Handlebars.compile(source);
+        var context  = controller.items();
+        var html     = template(context);
+
+        return m("main", m.trust(html));
+    }
+
+/*
+    view: function(ctrl) {
+        return m(
+            "ul", {class: "listview"}, [
+                ctrl.pages().map(function(page) {
+                    return m(
+                        "a", {href: "#"}, [
+                            m("li", [
+                                m("img", {src: page.image}),
+                                m("h1", page.title),
+                                m("p", page.content)
+                            ]),
+                    ]);
+                })
+        ]);
+    }
+*/
+};
+
+// routes
+m.route(document.getElementById("main"), "/", {
+    "/": ListView,
+});
+
+m.route.mode = "hash";
+
+</script>
