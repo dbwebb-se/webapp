@@ -6,31 +6,33 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>hej
+<body>
     <main id="main"></main>
 
 
 
 <script id="page_tpl" type="text/template">
 <article>
-<header>{{{header}}}</header>
-{{{content}}}
+<img src="{{image}}">
+<h1>{{{title}}}</h1>
+<p>{{{content}}}</p>
 </article>
 </script>
 
 
 
 <script id="list_tpl" type="text/template">
-<article>
-{{#with intro}}
-    <header>{{{header}}}</header>
-    {{{content}}}
-{{/with}}
-{{#each sections}}
-    <header>{{{header}}}</header>
-    {{{content}}}
+<ul class="listview">
+{{#each items}}
+    <a href="#/{{@index}}">
+        <li>
+            <img src="{{image}}">
+            <h1>{{{title}}}</h1>
+            <p>{{{content}}}</p>
+        </li>
+    </a>
 {{/each}}
-</article>
+</ul>
 </script>
 
 
@@ -41,8 +43,31 @@
 
 // Model
 var Diary = {
+    items: null, 
+
     list: function() {
-        return m.request({method: "GET", url: "json/diary.json"});
+        if (this.items === null) {
+            this.items = m.request({method: "GET", url: "json/diaryextended.json"});
+        }
+        return this.items;
+    },
+    
+    item: function(id) {
+        json = this.items();
+        return json.items[id];
+    }
+};
+
+
+
+// Template
+var Template = {
+    compile: function(id, context) {
+        var source   = document.getElementById(id).innerHTML;
+        var template = Handlebars.compile(source);
+        var html     = template(context);
+
+        return html;
     }
 };
 
@@ -54,36 +79,30 @@ var ListView = {
         return { items: Diary.list() };
     },
     view: function(controller) {
-        var source   = document.getElementById("list_tpl").innerHTML;
-        var template = Handlebars.compile(source);
-        var context  = controller.items();
-        var html     = template(context);
-
-        return m("main", m.trust(html));
+        html = Template.compile("list_tpl", controller.items());
+        return m("div", m.trust(html));
     }
-
-/*
-    view: function(ctrl) {
-        return m(
-            "ul", {class: "listview"}, [
-                ctrl.pages().map(function(page) {
-                    return m(
-                        "a", {href: "#"}, [
-                            m("li", [
-                                m("img", {src: page.image}),
-                                m("h1", page.title),
-                                m("p", page.content)
-                            ]),
-                    ]);
-                })
-        ]);
-    }
-*/
 };
 
-// routes
+
+
+var ListViewPage = {
+    controller: function() {
+        var id = m.route.param("id");
+        return { item: Diary.item(id) }
+    },
+    view: function(controller) {
+        html = Template.compile("page_tpl", controller.item);
+        return m("div", m.trust(html));
+    }
+};
+
+
+
+// Routes
 m.route(document.getElementById("main"), "/", {
     "/": ListView,
+    "/:id": ListViewPage,
 });
 
 m.route.mode = "hash";
