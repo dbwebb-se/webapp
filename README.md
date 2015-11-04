@@ -20,15 +20,16 @@ This is a co-effort of several people using freely available documentation and t
 
 For contributors, see the commit history and the issues.
 
-Feel free to help builing up the repository with more content suited for training and education.
+Feel free to help building up the repository with more content suited for training and education.
 
 
 
 History
 -------------------
 
-v1.0.x (latest)
+v1.0.x (2015-11-04)
 
+* Added mithril examples for kmom04.
 * Started work in january 2015, planned release end of august 2015.
 
 
