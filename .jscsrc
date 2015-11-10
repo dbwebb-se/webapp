@@ -1,11 +1,28 @@
 {
-	"preset": "mdcs",
-	"validateIndentation": null,
-	"requireSpacesInFunctionExpression": null,
-	"requireSpacesInsideParentheses": null,
-	"requireSpaceBeforeBlockStatements": null,
-	"requirePaddingNewlinesInBlocks": null,
+	"requireCurlyBraces": ["while", "do", "try", "catch"],
+	"requireSpaceAfterKeywords": ["if", "else", "for", "while", "do", "switch", "return", "try", "catch"],
+	"requireSpacesInsideObjectBrackets": "all",
+	"requireSpacesInForStatement": true,
+	"requireSpaceBeforeObjectValues":true,
+	"requireSpaceBetweenArguments": true,
+	"disallowKeywords": [ "with" ],
+	"requireLineFeedAtFileEnd": true,
+	"validateLineBreaks": "LF",
+	"disallowSpaceBeforeBinaryOperators": [","],
+	"requireSpacesInConditionalExpression": {
+		"afterTest": true,
+		"beforeConsequent": true,
+		"afterConsequent": true,
+		"beforeAlternate": true
+	},
+
+	"esnext": true,
+	"disallowTrailingWhitespace": true,
+
 	"requireSpaceBeforeBinaryOperators": null,
 	"requireSpaceAfterBinaryOperators": null,
-    "esnext": true
+	"validateIndentation": null,
+	"requireSpacesInFunctionExpression": null,
+	"requireSpaceBeforeBlockStatements": null,
+	"requirePaddingNewlinesInBlocks": null
 }
