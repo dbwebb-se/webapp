@@ -1,6 +1,8 @@
 Webbapplikationer för mobila enheter (Web applications for mobile devices) - webapp
 ===================
 
+[![Join the chat at https://gitter.im/mosbth/webapp](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mosbth/webapp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Course material for webapp-course, aimed at a swedish target audience as an introduction to web programmering for computer science students at University level. 
 
 Relased as part of a University course presented at:
