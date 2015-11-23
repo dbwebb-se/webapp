@@ -81,3 +81,12 @@ script:
 
 notifications:
     irc: "irc.freenode.org#dbwebb"
+
+    webhooks:
+        urls:
+            - https://webhooks.gitter.im/e/7dd5cda20cc3c4a9dcb0
+
+        # options: [always|never|change] default: always
+        on_success: change
+        on_failure: always
+        on_start: never
