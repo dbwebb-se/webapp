@@ -77,3 +77,7 @@ script:
     - dbwebb-validate --version
     - dbwebb-validate --check
     - dbwebb-validate --publish --publish-to build/ example
+
+
+notifications:
+    irc: "irc.freenode.org#dbwebb"
