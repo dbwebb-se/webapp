@@ -1,8 +1,9 @@
 Webbapplikationer för mobila enheter (Web applications for mobile devices) - webapp
 ===================
 
-[![Build Status](https://travis-ci.org/mosbth/webapp.svg)](https://travis-ci.org/mosbth/webapp) 
 [![Join the chat at https://gitter.im/mosbth/webapp](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mosbth/webapp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/dbwebb-se/webapp.svg?branch=master)](https://travis-ci.org/dbwebb-se/webapp)
+[![CircleCI](https://circleci.com/gh/dbwebb-se/webapp.svg?style=svg)](https://circleci.com/gh/dbwebb-se/webapp)
 
 Course material for webapp-course, aimed at a swedish target audience as an introduction to web programmering for computer science students at University level. 
 
@@ -29,6 +30,11 @@ Feel free to help building up the repository with more content suited for traini
 
 History
 -------------------
+
+v1.1.0 (2016-08-17)
+
+* Added new test suite for travis and circle.
+
 
 v1.0.0 (2016-08-17)
 
