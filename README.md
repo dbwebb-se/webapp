@@ -31,6 +31,11 @@ Feel free to help building up the repository with more content suited for traini
 History
 -------------------
 
+v1.1.1 (2016-08-17)
+
+* Removed dir `old`.
+
+
 v1.1.0 (2016-08-17)
 
 * Added new test suite for travis and circle.

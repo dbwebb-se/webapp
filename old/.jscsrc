@@ -1,8 +1,0 @@
-{
-	"preset": "mdcs",
-	"validateIndentation": null,
-	"requireSpacesInFunctionExpression": null,
-	"requireSpaceBeforeBlockStatements": null,
-	"requirePaddingNewlinesInBlocks": null,
-    "esnext": true
-}
