@@ -30,7 +30,7 @@ Feel free to help building up the repository with more content suited for traini
 History
 -------------------
 
-v1.0.x (2015-11-04)
+v1.0.0 (2015-11-04)
 
 * Added mithril examples for kmom04.
 * Started work in january 2015, planned release end of august 2015.
