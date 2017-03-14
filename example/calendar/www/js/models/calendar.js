@@ -1,9 +1,17 @@
 var m = require("mithril");
 
+function zero_pad (number) {
+    if (number < 10) {
+        number = "0" + number;
+    }
+    return number;
+}
+
 var Calendar = {
     days : [],
     load: function () {
-        var apiURL = "https://api.dryg.net/dagar/v2.1/2017/04";
+        var today = new Date();
+        var apiURL = "https://api.dryg.net/dagar/v2.1/" + today.getFullYear() + "/" + zero_pad(parseInt(today.getMonth()) + 1);
 
         return m.request({
             method: "GET",
