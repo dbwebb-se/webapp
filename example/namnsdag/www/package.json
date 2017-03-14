@@ -1,0 +1,16 @@
+{
+  "name": "meapp",
+  "version": "1.0.0",
+  "description": "A me-app in mithril",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack js/index.js bin/app.js -d --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mithril": "^1.0.1",
+    "webpack": "^2.2.1"
+  }
+}
