@@ -11,7 +11,7 @@ main navbar {
     background: #333;
     font-family: Helvetica, Verdana, sans-serif;
     display: block;
-    color:#;
+    color: white;
 }
 
 main navbar::after {
@@ -20,7 +20,7 @@ main navbar::after {
     display: block;
 }
 
-main navbar h2.brand {
+main navbar .brand {
     margin: 0;
     float:left;
     color: #aac3dd;

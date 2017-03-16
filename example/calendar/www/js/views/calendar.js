@@ -1,6 +1,7 @@
+"use strict";
 var m = require("mithril");
 
-var Calendar_model = require("../models/calendar");
+var CalendarModel = require("../models/calendar");
 
 var Day = {
     view: function (vnode) {
@@ -9,18 +10,18 @@ var Day = {
             m("i", vnode.attrs.weekday)
         ]);
     }
-}
+};
 
 module.exports = {
     oninit: function () {
-        Calendar_model.load()
+        CalendarModel.load();
     },
     view: function() {
         return [
             m("h1", "Calendar"),
-            m("div", Calendar_model.days.map(function (day) {
+            m("div", CalendarModel.days.map(function (day) {
                 return m(Day, day);
             }))
         ];
     }
-}
+};

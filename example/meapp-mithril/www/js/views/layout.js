@@ -1,4 +1,5 @@
-var m = require("mithril")
+"use strict";
+var m = require("mithril");
 
 module.exports = {
     view: function(vnode) {
@@ -13,6 +14,6 @@ module.exports = {
                 ])
             ]),
             m("section.container", vnode.children)
-        ])
+        ]);
     }
-}
+};

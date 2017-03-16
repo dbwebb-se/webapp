@@ -1,3 +1,4 @@
+"use strict";
 var m = require("mithril");
 var Layout = require("./views/layout");
 var Me = require("./views/me");

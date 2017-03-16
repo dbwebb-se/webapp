@@ -6,30 +6,46 @@
 
 # kmom01
 me/kmom01/me1
+# version 2
 me/kmom01/meapp
 
 # kmom02
 me/kmom02/me2
+# version 2
+me/kmom02/namnsdag
+me/kmom02/nobel
+me/kmom02/jq
 
 # kmom03
 me/kmom03/me3
 me/kmom03/ajax
 me/kmom03/jq
+# version 2
+me/kmom03/dashboard
 
 # kmom04
 me/kmom04/me4
 me/kmom04/mithril
+# version 2
+me/kmom04/winecellar
 
 # kmom05
 me/kmom05/me5
+# version 2
 me/kmom05/pizza
 
 # kmom06
 me/kmom06/me6
 me/kmom06/cordova
+# version 2
+me/kmom06/gomoku
 
 # kmom10
 me/kmom10/proj
 
 # lib
 me/lib/jquery
+
+# redovisa
+# version 2
+me/redovisa

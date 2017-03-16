@@ -1,4 +1,5 @@
-var m = require("mithril")
+"use strict";
+var m = require("mithril");
 
 module.exports = {
     view: function() {
@@ -8,4 +9,4 @@ module.exports = {
             m("p", "I run orienteering and drive an old Saab.")
         ];
     }
-}
+};

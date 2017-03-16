@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Class for Gomoku board.
  *
@@ -233,6 +234,6 @@ var GomokuBoard = {
 
         return ascii;
     }
-}
+};
 
 module.exports = GomokuBoard;

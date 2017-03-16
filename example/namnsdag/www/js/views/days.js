@@ -1,14 +1,15 @@
+"use strict";
 var m = require("mithril");
-
-function format_date (date) {
-    return date.getFullYear() + "-" + zero_pad(parseInt(date.getMonth()) + 1) + "-" + zero_pad(parseInt(date.getDate()));
-}
 
 function zero_pad (number) {
     if (number < 10) {
         number = "0" + number;
     }
     return number;
+}
+
+function format_date (date) {
+    return date.getFullYear() + "-" + zero_pad(parseInt(date.getMonth()) + 1) + "-" + zero_pad(parseInt(date.getDate()));
 }
 
 module.exports = {
@@ -29,4 +30,4 @@ module.exports = {
             }))
         ];
     }
-}
+};

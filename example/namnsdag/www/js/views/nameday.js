@@ -1,10 +1,11 @@
+"use strict";
 var m = require("mithril");
 
 var Nameday = require("../models/nameday");
 
 module.exports = {
     oninit: function (vnode) {
-        Nameday.load(vnode.attrs.date)
+        Nameday.load(vnode.attrs.date);
     },
     view: function() {
         return [
@@ -12,4 +13,4 @@ module.exports = {
             m("p", Nameday.currentNames)
         ];
     }
-}
+};

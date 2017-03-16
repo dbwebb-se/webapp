@@ -1,3 +1,4 @@
+"use strict";
 var m = require("mithril");
 
 var Layout = require("./views/layout");
@@ -14,7 +15,7 @@ m.route(document.body, "/", {
     },
     "/hobby": {
         render: function() {
-            return m(Layout, m(Hobby));;
+            return m(Layout, m(Hobby));
         }
     },
     "/days": {

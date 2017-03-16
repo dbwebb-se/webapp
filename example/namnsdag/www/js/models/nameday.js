@@ -1,8 +1,9 @@
+"use strict";
 var m = require("mithril");
 
 var Nameday = {
     currentDate : "1970-01-01",
-    currentNames : "" ,
+    currentNames : "",
     load: function (date) {
         Nameday.currentDate = date;
 
@@ -16,6 +17,6 @@ var Nameday = {
             Nameday.currentNames = result.dagar[0].namnsdag.join(" - ");
         });
     }
-}
+};
 
 module.exports = Nameday;

@@ -1,3 +1,4 @@
+"use strict";
 var m = require("mithril");
 
 function zero_pad (number) {
@@ -22,6 +23,6 @@ var Calendar = {
             });
         });
     }
-}
+};
 
 module.exports = Calendar;

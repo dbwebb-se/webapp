@@ -1,3 +1,4 @@
+"use strict";
 var m = require("mithril");
 
 module.exports = {
@@ -7,4 +8,4 @@ module.exports = {
             m("p", "I run orienteering most of the time.")
         ];
     }
-}
+};
