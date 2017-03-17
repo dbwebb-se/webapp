@@ -2,6 +2,7 @@ me/
 bin/
 node_modules/
 build/
+/me
 
 # Logs
 logs
