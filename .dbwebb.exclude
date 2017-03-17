@@ -37,10 +37,5 @@ npm-debug.log
 .DS_Store
 
 # webapp
-/me/**/platforms/
-/me/**/node_modules/
-/me/**/hooks/
-/me/**/plugins/
-/me/**/config.xml
-/me/**/www/
+
 
