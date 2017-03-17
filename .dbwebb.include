@@ -1,3 +1,18 @@
+# dbwebb config files
+/.dbwebb*
+- /.dbwebb.exclude
+- /.dbwebb.include
+- /.dbwebb.tests
+- /.dbwebb.version
+
+# Validator config files
+/.*rc
+/.*.xml
+/.*.conf
+
+/example/
+/example/**
+
 /me/
 
 # kmom01
