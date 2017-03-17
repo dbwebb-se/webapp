@@ -1,13 +1,9 @@
 language: node_js
 
 node_js:
-    - "6"
-    - "5"
-    - "4"
-    - "iojs"
     - "node"
-    #- "0.11"
-    #- "0.10"
+    - "6"
+    - "4"
 
 
 
@@ -22,25 +18,20 @@ git:
 
 addons:
     apt:
+        sources:
+            - debian-sid    # Grab ShellCheck from the Debian repo
         packages:
-            #- php-codesniffer
-            #- phpmd
-            #- shellcheck
+            - shellcheck
 
 
 
 before_script:
-    # Prepare for automated tests
-    - make automated-tests-prepare
+    - make install
 
 
 
 script:
-    # Check version and environment
-    - make automated-tests-check
-
-    # Run tests
-    - make automated-tests-run
+    - make test
 
 
 
