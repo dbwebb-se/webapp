@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="se.dbwebb.splashScreen" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>SplashScreen</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+
+    <platform name="android">
+        <allow-intent href="market:*" />
+
+        <icon density="ldpi" src="www/res/mipmap-mdpi/dbwebb_splash_screen.png" />
+        <icon density="mdpi" src="www/res/mipmap-mdpi/dbwebb_splash_screen.png" />
+        <icon density="hdpi" src="www/res/mipmap-hdpi/dbwebb_splash_screen.png" />
+        <icon density="xhdpi" src="www/res/mipmap-xhdpi/dbwebb_splash_screen.png" />
+        
+        <splash density="port-ldpi" src="www/res/mipmap-mdpi/dbwebb_splash_screen.png" />
+        <splash density="port-mdpi" src="www/res/mipmap-mdpi/dbwebb_splash_screen.png" />
+        <splash density="port-hdpi" src="www/res/mipmap-hdpi/dbwebb_splash_screen.png" />
+        <splash density="port-xhdpi" src="www/res/mipmap-xhdpi/dbwebb_splash_screen.png" />
+        <splash density="port-xxhdpi" src="www/res/mipmap-xxhdpi/dbwebb_splash_screen.png" />
+        <splash density="port-xxxhdpi" src="www/res/mipmap-xxxhdpi/dbwebb_splash_screen.png" />
+        
+        <splash density="land-ldpi" src="www/res/mipmap-mdpi/dbwebb_splash_screen.png" />
+        <splash density="land-mdpi" src="www/res/mipmap-mdpi/dbwebb_splash_screen.png" />
+        <splash density="land-hdpi" src="www/res/mipmap-hdpi/dbwebb_splash_screen.png" />
+        <splash density="land-xhdpi" src="www/res/mipmap-xhdpi/dbwebb_splash_screen.png" />
+        <splash density="land-xxhdpi" src="www/res/mipmap-xxhdpi/dbwebb_splash_screen.png" />
+        <splash density="land-xxxhdpi" src="www/res/mipmap-xxxhdpi/dbwebb_splash_screen.png" />
+    </platform>
+
+    <platform name="browser">
+        <preference name="SplashScreen" value="res/web_hi_res_512.png"/> 
+        <preference name="SplashScreenDelay" value="5000" />
+        <!-- <preference name="SplashScreenBackgroundColor" value="green" />-->
+        <preference name="ShowSplashScreen" value="true" />
+        <!-- <preference name="SplashScreenWidth" value="600" /> -->
+        <!-- <preference name="SplashScreenHeight" value="300" />-->
+    </platform>
+
+
+
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <engine name="browser" spec="~4.1.0" />
+    <engine name="android" spec="~6.1.2" />
+    <plugin name="cordova-plugin-splashscreen" spec="~4.0.2" />
+</widget>
