@@ -10,6 +10,13 @@ dbwebb init-me
 #
 # Kmom01
 #
+test -d me/redovisa
+
+# http://local.dbwebb.se/kunskap/kom-igang-med-mithril-och-webpack
+cd me/redovisa && mkdir www www/js www/js/views && touch www/js/views/me.js
+
+# redovisa
+dbwebb validate redovisa
 
 
 
@@ -19,6 +26,14 @@ dbwebb init-me
 # Kmom02
 #
 
+# http://local.dbwebb.se/uppgift/sokverktyg-for-json-filer
+test -d me/kmom02/jq
+cp example/instagram/tag-dbwebb.json me/kmom02/jq
+dbwebb validate jq
+
+# http://local.dbwebb.se/uppgift/skapa-en-nobel-app
+test -d me/kmom02/nobel
+dbwebb validate nobel
 
 
 
@@ -27,13 +42,22 @@ dbwebb init-me
 # Kmom03
 #
 
+# http://local.dbwebb.se/kunskap/ett-enkelt-grid-for-alla-vara-enheter
+test -d me/kmom03/grid
+cd me/kmom03/grid && touch index.html style.css
 
+# http://local.dbwebb.se/uppgift/mithril-dashboard
+test -d me/kmom03/dashboard
+dbwebb validate dashboard
 
 # --------------------------------------------------------------------------
 #
 # Kmom04
 #
 
+# http://local.dbwebb.se/uppgift/vinkallare-appen
+test -d me/kmom04/winecellar
+dbwebb validate winecellar
 
 
 
@@ -42,6 +66,9 @@ dbwebb init-me
 # Kmom05
 #
 
+# http://local.dbwebb.se/uppgift/me-app-till-din-lokala-pizzeria-v2
+test -d me/kmom05/pizza
+dbwebb validate pizza
 
 
 
@@ -50,9 +77,15 @@ dbwebb init-me
 # Kmom06
 #
 
-
+# http://local.dbwebb.se/uppgift/gomoku-klient-i-mithril
+test -d me/kmom06/gomoku
+dbwebb validate gomoku
 
 # --------------------------------------------------------------------------
 #
 # Kmom10
 #
+
+# http://local.dbwebb.se/uppgift/gomoku-klient-i-mithril
+test -d me/kmom10/proj
+dbwebb validate proj
