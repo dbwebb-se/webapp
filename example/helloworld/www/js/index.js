@@ -22,7 +22,7 @@ var app = {
         content.innerHTML = html;
 
         var button = document.getElementsByClassName("otherPage")[0];
-        button.addEventListener("touchend", this.otherPage);
+        app.addEventListeners(button, this.otherPage);
     },
 
     otherPage: function() {
@@ -37,12 +37,18 @@ var app = {
         content.innerHTML = html;
 
         var button = document.getElementsByClassName("alertButton")[0];
-        button.addEventListener("touchend", function() {
-            console.log("alert sent");
-            window.alert("Hej");
+        app.addEventListeners(button, function() {
+            alert("hej");
         });
-    }
+    },
 
+    addEventListeners: function(element, callback) {
+        element.addEventListener("touchend", function(event) {
+            event.preventDefault();
+            callback();
+        });
+        element.addEventListener("click", callback);
+    }
 };
 
 app.initialize();
