@@ -279,7 +279,6 @@ var GomokuBoard = {
             startPosition = this.positionHelper(x - startOffset * deltaX, y - startOffset * deltaY);
         }
 
-        var positionArray = [];
         for (var i = 0; i <= startOffset; i++) {
             var markers = [];
             for (var j = 0; j < 5; j++) {
