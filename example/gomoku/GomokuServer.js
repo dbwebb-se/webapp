@@ -159,8 +159,14 @@ router.get("/place/:x/:y", (req, res) => {
 
     // Place the marker
     var message = "Ok.";
+    var winningMessage = "No winner.";
     try {
         gameBoard.place(x, y);
+        if (gameBoard.isWinningMove(x, y)) {
+            winningMessage = gameBoard.playerInTurn() + " playing with " + gameBoard.playerInTurnMarker() + " won.";
+        } else {
+            gameBoard.nextPlayer();
+        }
     } catch (e) {
         message = e.message;
     }
@@ -171,7 +177,8 @@ router.get("/place/:x/:y", (req, res) => {
         "boardSize": gameBoard.getSize(),
         "nextPlayer": gameBoard.playerInTurn(),
         "nextPlayerMarker": gameBoard.playerInTurnMarker(),
-        "boardIsFull": gameBoard.isFull()
+        "boardIsFull": gameBoard.isFull(),
+        "winner" : winningMessage
     });
 });
 

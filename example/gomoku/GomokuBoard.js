@@ -65,8 +65,7 @@ var GomokuBoard = {
             throw new Error("The position is already taken.");
         }
 
-        this.placeMarker(position)
-            .nextPlayer();
+        this.placeMarker(position);
     },
 
 
@@ -129,6 +128,20 @@ var GomokuBoard = {
             throw new Error("Position is outside of the board.");
         }
 
+        return this.positionHelper(x, y);
+    },
+
+
+
+    /**
+     * Position helper that only calculates the value, so it does not throw error in winningMove.
+     *
+     * @param  Integer x Where to check 0-(size-1).
+     * @param  Integer y Where to check 0-(size-1).
+     *
+     * @return Integer as internal board position, can be outside board.
+     */
+    positionHelper :function (x, y) {
         return x + y * this.size;
     },
 
@@ -233,6 +246,61 @@ var GomokuBoard = {
         }
 
         return ascii;
+    },
+
+
+
+    /**
+     * Returns if the last move was a winning move.
+     *
+     * @return Boolean
+     */
+    isWinningMove : function (x, y) {
+        return this.checkDirection(x, y, 1, 1) ||
+                this.checkDirection(x, y, 0, 1) ||
+                this.checkDirection(x, y, -1, 1) ||
+                this.checkDirection(x, y, 1, 0);
+    },
+
+
+
+    /**
+     * Returns if one direction has 5 in a row.
+     *
+     * @return Boolean
+     */
+    checkDirection : function (x, y, deltaX, deltaY) {
+        var fiveInARow = false;
+
+        var startOffset = 4;
+        var startPosition = this.positionHelper(x - startOffset * deltaX, y - startOffset * deltaY);
+        while (startPosition < 0) {
+            startOffset--;
+            startPosition = this.positionHelper(x - startOffset * deltaX, y - startOffset * deltaY);
+        }
+
+        var positionArray = [];
+        for (var i = 0; i <= startOffset; i++) {
+            var markers = [];
+            for (var j = 0; j < 5; j++) {
+                var currentPosition = this.positionHelper(x - (startOffset - i - j) * deltaX, y - (startOffset - i - j) * deltaY);
+                if (currentPosition < this.size * this.size) {
+                    markers.push(this.board[currentPosition]);
+                } else {
+                    markers.push(0);
+                }
+            }
+
+            fiveInARow = markers.every(function (value, index, originalArray) {
+                return value === originalArray[0];
+            });
+
+            if (fiveInARow) {
+                break;
+            }
+        }
+
+        return fiveInARow;
     }
 };
 
