@@ -38,7 +38,7 @@ var app = {
 
         var button = document.getElementsByClassName("alertButton")[0];
         app.addEventListeners(button, function() {
-            alert("hej");
+            window.alert("hej");
         });
     },
 
