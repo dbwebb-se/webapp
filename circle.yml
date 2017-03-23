@@ -1,6 +1,6 @@
 test:
     pre:
-        make install
+      - make install
 
 notify:
     webhooks:
