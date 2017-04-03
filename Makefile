@@ -69,7 +69,7 @@ PHPMD   := bin/phpmd
 .PHONY: prepare
 prepare:
 	@$(call HELPTEXT,$@)
-	[ -d build ]   || install -d build
+	[ -d build ]   || install -d build/webroot
 	[ -d bin/pip ] || install -d bin/pip
 
 
