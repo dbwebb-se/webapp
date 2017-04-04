@@ -32,7 +32,7 @@ var Booli = {
                 hash : sha1(Booli.callerId + currentTime + Booli.secretKey + currentUnique)
             }
         }).then(function (result) {
-            Booli.list = result.listings
+            Booli.list = result.listings;
         });
     }
 };
