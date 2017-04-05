@@ -5,8 +5,7 @@
 
 // The main class for the Gomoku game
 var GomokuBoard = require("./GomokuBoard");
-var gameBoard = Object.create(GomokuBoard);
-gameBoard.clear();
+
 
 
 // A better router to create a handler for all routes
@@ -18,6 +17,11 @@ var router = new Router();
 // Import the http server as base
 var http = require("http");
 var url = require("url");
+
+
+
+// Setup for multiplayer support
+var games = {};
 
 
 
@@ -38,6 +42,61 @@ function sendJSONResponse(res, content, code) {
 
 
 /**
+ * Returns a unique game id for multiplayer server, 8 character alphanumeric
+ *
+ * @return string, 8 character alphanumeric
+ */
+function getUniqueGameID() {
+    var id = alphanumericString();
+    while (Object.keys(games).indexOf(id) > -1) {
+        id = alphanumericString();
+    }
+    return id;
+}
+
+
+
+/**
+ * Returns alphanumeric string
+ *
+ * @param Integer len, is the length of the random alphanumeric string
+ *
+ * @return alphanumeric string of length
+ */
+function alphanumericString(len) {
+    len = (typeof len !== 'undefined') ?  len : 8;
+    var alphanum = "";
+    var possibleCharacters = "ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvxyz0123456789";
+    for (var i = 0; i < len; i++) {
+        alphanum += possibleCharacters.charAt(Math.floor(Math.random() * (possibleCharacters.length - 1)));
+    }
+    return alphanum;
+}
+
+
+
+/**
+ * Returns game with given id
+ *
+ * @param String gameID, alphanumeric string that is used as gameID
+ *
+ * @return gameboard object if game exists
+ *
+ */
+function getGame(gameID, res) {
+    if (games.hasOwnProperty(gameID)) {
+        return games[gameID];
+    } else {
+        sendJSONResponse(res, {
+            "message": "No game with Game ID: " + gameID
+        });
+        return false;
+    }
+}
+
+
+
+/**
  * Display a helptext about the API.
  *
  * @param Object req The request
@@ -47,12 +106,12 @@ router.get("/", (req, res) => {
 
     res.writeHead(200, "Content-Type: text/plain");
     res.write("Welcome the GomokuBoard server. This is the API of what can be done.\n\n" +
-        " /             Display this helptext.\n" +
-        " /start/:size  Start a new game with a board of :size.\n" +
-        " /view         View details on the game.\n" +
-        " /view/ascii   View the gameboard and whos next in turn.\n" +
-        " /view/json    View the gameboard in raw json and whos next in turn.\n" +
-        " /place/:x/:y  Place a marker at choosen place.\n"
+        " /                         Display this helptext.\n" +
+        " /start/:size              Start a new game with a board of :size.\n" +
+        " /view/:gameid             View details on the game.\n" +
+        " /view/ascii/:gameid       View the gameboard and whos next in turn.\n" +
+        " /view/json/:gameid        View the gameboard in raw json and whos next in turn.\n" +
+        " /place/:x/:y/:gameid      Place a marker at choosen place.\n"
     );
     res.end();
 });
@@ -73,7 +132,12 @@ router.get("/start/:size", (req, res) => {
     // Init the Gomoku board
     var message = "The board is initialized.";
     try {
-        gameBoard.start(size);
+        var uniqueGameID = getUniqueGameID();
+        games[uniqueGameID] = Object.create(GomokuBoard);
+
+        var currentGame = getGame(uniqueGameID, res);
+        currentGame.clear();
+        currentGame.start(size);
     } catch (e) {
         message = e.message;
     }
@@ -81,9 +145,10 @@ router.get("/start/:size", (req, res) => {
     // Send the response
     sendJSONResponse(res, {
         "message": message,
-        "boardSize": gameBoard.getSize(),
-        "nextPlayer": gameBoard.playerInTurn(),
-        "nextPlayerMarker": gameBoard.playerInTurnMarker()
+        "boardSize": currentGame.getSize(),
+        "nextPlayer": currentGame.playerInTurn(),
+        "nextPlayerMarker": currentGame.playerInTurnMarker(),
+        "gameID" : uniqueGameID
     });
 });
 
@@ -95,14 +160,18 @@ router.get("/start/:size", (req, res) => {
  * @param Object req The request
  * @param Object res The response
  */
-router.get("/view", (req, res) => {
+router.get("/view/:gameid", (req, res) => {
+    var gameID = req.params.gameid;
 
-    sendJSONResponse(res, {
-        "boardSize": gameBoard.getSize(),
-        "nextPlayer": gameBoard.playerInTurn(),
-        "nextPlayerMarker": gameBoard.playerInTurnMarker(),
-        "boardAscii": gameBoard.asAscii()
-    });
+    var currentGame = getGame(gameID, res);
+    if (currentGame) {
+        sendJSONResponse(res, {
+            "boardSize": currentGame.getSize(),
+            "nextPlayer": currentGame.playerInTurn(),
+            "nextPlayerMarker": currentGame.playerInTurnMarker(),
+            "boardAscii": currentGame.asAscii()
+        });
+    }
 });
 
 
@@ -113,14 +182,18 @@ router.get("/view", (req, res) => {
  * @param Object req The request
  * @param Object res The response
  */
-router.get("/view/json", (req, res) => {
+router.get("/view/json/:gameid", (req, res) => {
+    var gameID = req.params.gameid;
 
-    sendJSONResponse(res, {
-        "boardSize": gameBoard.getSize(),
-        "nextPlayer": gameBoard.playerInTurn(),
-        "nextPlayerMarker": gameBoard.playerInTurnMarker(),
-        "board": gameBoard.board
-    });
+    var currentGame = getGame(gameID, res);
+    if (currentGame) {
+        sendJSONResponse(res, {
+            "boardSize": currentGame.getSize(),
+            "nextPlayer": currentGame.playerInTurn(),
+            "nextPlayerMarker": currentGame.playerInTurnMarker(),
+            "board": currentGame.board
+        });
+    }
 });
 
 
@@ -131,16 +204,20 @@ router.get("/view/json", (req, res) => {
  * @param Object req The request
  * @param Object res The response
  */
-router.get("/view/ascii", (req, res) => {
+router.get("/view/ascii/:gameid", (req, res) => {
+    var gameID = req.params.gameid;
 
-    res.writeHead(200, "Content-Type: text/plain");
-    res.write(gameBoard.asAscii() +
-        "\nPlayer in turn is '" +
-        gameBoard.playerInTurn() +
-        "' playing the marker " +
-        gameBoard.playerInTurnMarker() +
-        ".\n");
-    res.end();
+    var currentGame = getGame(gameID, res);
+    if (currentGame) {
+        res.writeHead(200, "Content-Type: text/plain");
+        res.write(currentGame.asAscii() +
+            "\nPlayer in turn is '" +
+            currentGame.playerInTurn() +
+            "' playing the marker " +
+            currentGame.playerInTurnMarker() +
+            ".\n");
+        res.end();
+    }
 });
 
 
@@ -151,38 +228,44 @@ router.get("/view/ascii", (req, res) => {
  * @param Object req The request
  * @param Object res The response
  */
-router.get("/place/:x/:y", (req, res) => {
+router.get("/place/:x/:y/:gameid", (req, res) => {
 
     // get the value of the parameter :x and :y
     var x = Number.parseInt(req.params.x);
     var y = Number.parseInt(req.params.y);
 
-    // Place the marker
-    var message = "Ok.";
-    var winningMessage = "No winner.";
-    var winner = "None";
-    try {
-        gameBoard.place(x, y);
-        if (gameBoard.isWinningMove(x, y)) {
-            winner = gameBoard.playerInTurn();
-            winningMessage = winner + " playing with " + gameBoard.playerInTurnMarker() + " won.";
-        } else {
-            gameBoard.nextPlayer();
-        }
-    } catch (e) {
-        message = e.message;
-    }
+    var gameID = req.params.gameid;
+    var currentGame = getGame(gameID, res);
+    if (currentGame) {
+        // Place the marker
+        var message = "Ok.";
+        var winningMessage = "No winner.";
+        var winner = "None";
+        try {
+            currentGame.place(x, y);
+            if (currentGame.isWinningMove(x, y)) {
+                winner = currentGame.playerInTurn();
+                winningMessage = winner + " playing with " + currentGame.playerInTurnMarker() + " won.";
 
-    sendJSONResponse(res, {
-        "action": "Trying to place " + x + ", " + y,
-        "message": message,
-        "boardSize": gameBoard.getSize(),
-        "nextPlayer": gameBoard.playerInTurn(),
-        "nextPlayerMarker": gameBoard.playerInTurnMarker(),
-        "boardIsFull": gameBoard.isFull(),
-        "winner" : winner,
-        "winningMessage" : winningMessage
-    });
+                delete games[gameID];
+            } else {
+                currentGame.nextPlayer();
+            }
+        } catch (e) {
+            message = e.message;
+        }
+
+        sendJSONResponse(res, {
+            "action": "Trying to place " + x + ", " + y,
+            "message": message,
+            "boardSize": currentGame.getSize(),
+            "nextPlayer": currentGame.playerInTurn(),
+            "nextPlayerMarker": currentGame.playerInTurnMarker(),
+            "boardIsFull": currentGame.isFull(),
+            "winner" : winner,
+            "winningMessage" : winningMessage
+        });
+    }
 });
 
 
