@@ -83,15 +83,38 @@ function alphanumericString(len) {
  * @return gameboard object if game exists
  *
  */
-function getGame(gameID, res) {
+function getBoard(gameID, res) {
     if (games.hasOwnProperty(gameID)) {
-        return games[gameID];
+        return games[gameID].board;
     } else {
         sendJSONResponse(res, {
             "message": "No game with Game ID: " + gameID
         });
         return false;
     }
+}
+
+
+
+/**
+ * Creates game with one player, waiting for another player
+ *
+ * @param String player name
+ *
+ * @return String unique id
+ */
+function createGame(name) {
+    var uniqueGameID = getUniqueGameID();
+    var newBoard = Object.create(GomokuBoard);
+    games[uniqueGameID] = {
+        board : newBoard,
+        timestamp : Date.now(),
+        name : name,
+        started : false
+    };
+
+    games[uniqueGameID].board.player1 = name;
+    return uniqueGameID;
 }
 
 
@@ -124,20 +147,19 @@ router.get("/", (req, res) => {
  * @param Object req The request
  * @param Object res The response
  */
-router.get("/start/:size", (req, res) => {
+router.get("/start/:size/:name", (req, res) => {
 
     // get the value of the parameter :size
     var size = req.params.size;
+    var name = req.params.name;
 
     // Init the Gomoku board
     var message = "The board is initialized.";
     try {
-        var uniqueGameID = getUniqueGameID();
-        games[uniqueGameID] = Object.create(GomokuBoard);
-
-        var currentGame = getGame(uniqueGameID, res);
-        currentGame.clear();
-        currentGame.start(size);
+        var uniqueGameID = createGame(name);
+        var currentBoard = getBoard(uniqueGameID, res);
+        currentBoard.clear();
+        currentBoard.start(size);
     } catch (e) {
         message = e.message;
     }
@@ -145,9 +167,9 @@ router.get("/start/:size", (req, res) => {
     // Send the response
     sendJSONResponse(res, {
         "message": message,
-        "boardSize": currentGame.getSize(),
-        "nextPlayer": currentGame.playerInTurn(),
-        "nextPlayerMarker": currentGame.playerInTurnMarker(),
+        "boardSize": currentBoard.getSize(),
+        "nextPlayer": currentBoard.playerInTurn(),
+        "nextPlayerMarker": currentBoard.playerInTurnMarker(),
         "gameID" : uniqueGameID
     });
 });
@@ -163,13 +185,13 @@ router.get("/start/:size", (req, res) => {
 router.get("/view/:gameid", (req, res) => {
     var gameID = req.params.gameid;
 
-    var currentGame = getGame(gameID, res);
-    if (currentGame) {
+    var currentBoard = getBoard(gameID, res);
+    if (currentBoard) {
         sendJSONResponse(res, {
-            "boardSize": currentGame.getSize(),
-            "nextPlayer": currentGame.playerInTurn(),
-            "nextPlayerMarker": currentGame.playerInTurnMarker(),
-            "boardAscii": currentGame.asAscii()
+            "boardSize": currentBoard.getSize(),
+            "nextPlayer": currentBoard.playerInTurn(),
+            "nextPlayerMarker": currentBoard.playerInTurnMarker(),
+            "boardAscii": currentBoard.asAscii()
         });
     }
 });
@@ -185,13 +207,13 @@ router.get("/view/:gameid", (req, res) => {
 router.get("/view/json/:gameid", (req, res) => {
     var gameID = req.params.gameid;
 
-    var currentGame = getGame(gameID, res);
-    if (currentGame) {
+    var currentBoard = getBoard(gameID, res);
+    if (currentBoard) {
         sendJSONResponse(res, {
-            "boardSize": currentGame.getSize(),
-            "nextPlayer": currentGame.playerInTurn(),
-            "nextPlayerMarker": currentGame.playerInTurnMarker(),
-            "board": currentGame.board
+            "boardSize": currentBoard.getSize(),
+            "nextPlayer": currentBoard.playerInTurn(),
+            "nextPlayerMarker": currentBoard.playerInTurnMarker(),
+            "board": currentBoard.board
         });
     }
 });
@@ -207,14 +229,14 @@ router.get("/view/json/:gameid", (req, res) => {
 router.get("/view/ascii/:gameid", (req, res) => {
     var gameID = req.params.gameid;
 
-    var currentGame = getGame(gameID, res);
-    if (currentGame) {
+    var currentBoard = getBoard(gameID, res);
+    if (currentBoard) {
         res.writeHead(200, "Content-Type: text/plain");
-        res.write(currentGame.asAscii() +
+        res.write(currentBoard.asAscii() +
             "\nPlayer in turn is '" +
-            currentGame.playerInTurn() +
+            currentBoard.playerInTurn() +
             "' playing the marker " +
-            currentGame.playerInTurnMarker() +
+            currentBoard.playerInTurnMarker() +
             ".\n");
         res.end();
     }
@@ -235,21 +257,21 @@ router.get("/place/:x/:y/:gameid", (req, res) => {
     var y = Number.parseInt(req.params.y);
 
     var gameID = req.params.gameid;
-    var currentGame = getGame(gameID, res);
-    if (currentGame) {
+    var currentBoard = getBoard(gameID, res);
+    if (currentBoard) {
         // Place the marker
         var message = "Ok.";
         var winningMessage = "No winner.";
         var winner = "None";
         try {
-            currentGame.place(x, y);
-            if (currentGame.isWinningMove(x, y)) {
-                winner = currentGame.playerInTurn();
-                winningMessage = winner + " playing with " + currentGame.playerInTurnMarker() + " won.";
+            currentBoard.place(x, y);
+            if (currentBoard.isWinningMove(x, y)) {
+                winner = currentBoard.playerInTurn();
+                winningMessage = winner + " playing with " + currentBoard.playerInTurnMarker() + " won.";
 
                 delete games[gameID];
             } else {
-                currentGame.nextPlayer();
+                currentBoard.nextPlayer();
             }
         } catch (e) {
             message = e.message;
@@ -258,12 +280,50 @@ router.get("/place/:x/:y/:gameid", (req, res) => {
         sendJSONResponse(res, {
             "action": "Trying to place " + x + ", " + y,
             "message": message,
-            "boardSize": currentGame.getSize(),
-            "nextPlayer": currentGame.playerInTurn(),
-            "nextPlayerMarker": currentGame.playerInTurnMarker(),
-            "boardIsFull": currentGame.isFull(),
+            "boardSize": currentBoard.getSize(),
+            "nextPlayer": currentBoard.playerInTurn(),
+            "nextPlayerMarker": currentBoard.playerInTurnMarker(),
+            "boardIsFull": currentBoard.isFull(),
             "winner" : winner,
             "winningMessage" : winningMessage
+        });
+    }
+});
+
+
+
+/**
+ * Returns all games with only one player
+ *
+ * @param Object req The request
+ * @param Object res The response
+ */
+router.get("/games", (req, res) => {
+    sendJSONResponse(res, {
+        "games": Object.keys(games)
+        .map(function (id) { return { name : games[id].name, id : id }; })
+        .filter(function (game) { return games[game.id].started === false })
+    });
+});
+
+
+
+/**
+ * Returns all games with only one player
+ *
+ * @param Object req The request
+ * @param Object res The response
+ */
+router.get("/start_game/:gameid", (req, res) => {
+    var gameID = req.params.gameid;
+
+    var currentBoard = getBoard(gameID, res);
+    if (currentBoard) {
+        games[gameID].started = true;
+        sendJSONResponse(res, {
+            "boardSize": currentBoard.getSize(),
+            "nextPlayer": currentBoard.playerInTurn(),
+            "nextPlayerMarker": currentBoard.playerInTurnMarker()
         });
     }
 });
