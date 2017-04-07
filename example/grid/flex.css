@@ -1,0 +1,38 @@
+html, body {
+    margin:0;
+    padding:0;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.widget {
+    height: 200px;
+    padding: 10px;
+    box-sizing: border-box;
+    border:2px solid #CCC;
+    flex: 0 0 98%;
+    margin: 0 1% 10px;
+}
+
+/* Media queries for .widget */
+@media (min-width: 500px) {
+    .widget {
+        flex: 0 0 48.0%;
+    }
+}
+
+@media (min-width: 700px) {
+    .widget {
+        flex: 0 0 31.3333333333333%;
+    }
+}
+
+@media (min-width: 980px) {
+    .widget {
+        flex: 0 0 23.0%;
+    }
+}
