@@ -42,21 +42,6 @@ function sendJSONResponse(res, content, code) {
 
 
 /**
- * Returns a unique game id for multiplayer server, 8 character alphanumeric
- *
- * @return string, 8 character alphanumeric
- */
-function getUniqueGameID() {
-    var id = alphanumericString();
-    while (Object.keys(games).indexOf(id) > -1) {
-        id = alphanumericString();
-    }
-    return id;
-}
-
-
-
-/**
  * Returns alphanumeric string
  *
  * @param Integer len, is the length of the random alphanumeric string
@@ -71,6 +56,21 @@ function alphanumericString(len) {
         alphanum += possibleCharacters.charAt(Math.floor(Math.random() * (possibleCharacters.length - 1)));
     }
     return alphanum;
+}
+
+
+
+/**
+ * Returns a unique game id for multiplayer server, 8 character alphanumeric
+ *
+ * @return string, 8 character alphanumeric
+ */
+function getUniqueGameID() {
+    var id = alphanumericString();
+    while (Object.keys(games).indexOf(id) > -1) {
+        id = alphanumericString();
+    }
+    return id;
 }
 
 
@@ -155,9 +155,11 @@ router.get("/start/:size/:name", (req, res) => {
 
     // Init the Gomoku board
     var message = "The board is initialized.";
+    var currentBoard;
+    var uniqueGameID;
     try {
-        var uniqueGameID = createGame(name);
-        var currentBoard = getBoard(uniqueGameID, res);
+        uniqueGameID = createGame(name);
+        currentBoard = getBoard(uniqueGameID, res);
         currentBoard.clear();
         currentBoard.start(size);
     } catch (e) {
@@ -302,7 +304,7 @@ router.get("/games", (req, res) => {
     sendJSONResponse(res, {
         "games": Object.keys(games)
         .map(function (id) { return { name : games[id].name, id : id }; })
-        .filter(function (game) { return games[game.id].started === false })
+        .filter(function (game) { return games[game.id].started === false; })
     });
 });
 
