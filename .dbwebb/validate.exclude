@@ -4,6 +4,7 @@
 # Paths start from courserepo, so path to me is "./me".
 #
 
+# Start by removing some common -files and add some +subdirs
 -*/.git/*
 -*/build/*
 -*/cache/*
@@ -18,43 +19,8 @@
 
 -./me/*/platforms/*
 +./me/*/platforms/browser/www/*.html
-+./me/*/platforms/browser/www/css/*
-+./me/*/platforms/browser/www/js/*
++./me/*/platforms/browser/www/css/*.css
++./me/*/platforms/browser/www/js/*.js
 
-
-#-*/phpliteadmin*
-#-*.tpl.php
-#-*/font-awesome.css
-#-*/lessc.inc.php
-
-
-#find "./me/kmom06/" -type f -not -path "*/.git/*" -not -path "*/build/*" -not -path "*/cache/*" -not -path "*/docs/*" -not -path "*/lib/*" -not -path "*.min.*" -not -path "*.png" -not -path "*.jpg"  -not -path "./me/*/vendor/*" -not -path "./me/*/node_modules/*"  -not -path "./me/*/platforms/*" -path "./me/*/platforms/browser/www/*.html"
-
-
-#
-# Basis for the original expression within dbwebb validate
-#
-#EXCLUDE_PATHS='\*/example/webgl/\* \*/libs/\* \*/lib/\* \*/node_modules/\* \*/platforms/\* \*/plugins/\* \*/docs/api/\* \*/vendor/\* \*/3pp/\* \*/example/lekplats/\* \*/css/anax-grid/\* \*/me/anax-flat/\* \*/cache/\* \*/build/\* \*/.git/\* \*/slide/\*'
-#EXCLUDE_FILES='phpliteadmin\* \*.min.\* \*.tpl.php font-awesome.css lessc.inc.php'
-#-*/example/webgl/*
-#-*/libs/*
-#-*/lib/*
-#-*/node_modules/*
-#-*/platforms/*
-#-*/plugins/*
-#-*/docs/api/*
-#-*/vendor/*
-#-*/3pp/*
-#-*/example/lekplats/*
-#-*/css/anax-grid/*
-#-*/me/anax-flat/*
-#-*/cache/*
-#-*/build/*
-#-*/.git/*
-#-*/slide/*
-
-#-*/phpliteadmin*
-#-*.min.*
-#-*.tpl.php
-#-*/font-awesome.css
-#-*/lessc.inc.php
+# -- Really remove files, even if found below +subdirs
+--*font-awesome*
