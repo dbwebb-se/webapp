@@ -15,21 +15,15 @@ GET /
 Plain text response. Shows welcome message and available routes.
 
 *Response.*
-
+```
 Welcome the GomokuBoard server. This is the API of what can be done.
-
 /             Display this helptext.
-
 /start/:size  Start a new game with a board of :size.
-
 /view         View details on the game.
-
 /view/ascii   View the gameboard and whos next in turn.
-
 /view/json    Get the gameboard in raw json and whos next in turn.
-
 /place/:x/:y  Place a marker at choosen place. Returns if there is player that has 5 in a row and has won the game.
-
+```
 
 
 GET /start/:size
@@ -112,7 +106,7 @@ View the gameboard and whos next in turn.
 
 
 *Response*
-
+```
 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
 0|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
 1|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
@@ -136,7 +130,7 @@ View the gameboard and whos next in turn.
 19|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
 
 Player in turn is 'Player 1' playing the marker X.
-
+```
 
 
 GET /view/json
