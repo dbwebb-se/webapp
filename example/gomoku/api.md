@@ -18,12 +18,12 @@ Plain text response. Shows welcome message and available routes.
 
 Welcome the GomokuBoard server. This is the API of what can be done.
 
- /             Display this helptext.
- /start/:size  Start a new game with a board of :size.
- /view         View details on the game.
- /view/ascii   View the gameboard and whos next in turn.
- /view/json    Get the gameboard in raw json and whos next in turn.
- /place/:x/:y  Place a marker at choosen place. Returns if there is player that has 5 in a row and has won the game.
+/             Display this helptext.
+/start/:size  Start a new game with a board of :size.
+/view         View details on the game.
+/view/ascii   View the gameboard and whos next in turn.
+/view/json    Get the gameboard in raw json and whos next in turn.
+/place/:x/:y  Place a marker at choosen place. Returns if there is player that has 5 in a row and has won the game.  
 
 
 
