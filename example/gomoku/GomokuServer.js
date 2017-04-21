@@ -51,8 +51,8 @@ router.get("/", (req, res) => {
         " /start/:size  Start a new game with a board of :size.\n" +
         " /view         View details on the game.\n" +
         " /view/ascii   View the gameboard and whos next in turn.\n" +
-        " /view/json    View the gameboard in raw json and whos next in turn.\n" +
-        " /place/:x/:y  Place a marker at choosen place.\n"
+        " /view/json    Get the gameboard in raw json and whos next in turn.\n" +
+        " /place/:x/:y  Place a marker at choosen place. Returns if there is player that has 5 in a row.\n"
     );
     res.end();
 });
