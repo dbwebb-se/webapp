@@ -30,7 +30,10 @@ var url = require("url");
  */
 function sendJSONResponse(res, content, code) {
     code = (typeof code !== 'undefined') ?  code : 200;
-    res.writeHead(code, "Content-Type: application/json");
+    res.writeHead(code, {
+        "Content-Type": "text/plain",
+        "Access-Control-Allow-Origin": "*",
+    });
     res.write(JSON.stringify(content, null, "    "));
     res.end();
 }
@@ -44,8 +47,10 @@ function sendJSONResponse(res, content, code) {
  * @param Object res The response
  */
 router.get("/", (req, res) => {
-
-    res.writeHead(200, "Content-Type: text/plain");
+    res.writeHead(200, {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": req.headers.origin,
+    });
     res.write("Welcome the GomokuBoard server. This is the API of what can be done.\n\n" +
         " /             Display this helptext.\n" +
         " /start/:size  Start a new game with a board of :size.\n" +
@@ -132,8 +137,10 @@ router.get("/view/json", (req, res) => {
  * @param Object res The response
  */
 router.get("/view/ascii", (req, res) => {
-
-    res.writeHead(200, "Content-Type: text/plain");
+    res.writeHead(200, {
+        "Content-Type": "text/plain",
+        "Access-Control-Allow-Origin": req.headers.origin,
+    });
     res.write(gameBoard.asAscii() +
         "\nPlayer in turn is '" +
         gameBoard.playerInTurn() +
