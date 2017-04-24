@@ -4,15 +4,7 @@ var m = require("mithril");
 var fileNameAndroid = "www/peopleInfo.json";
 var fileNameBrowser = "peopleInfo.json";
 
-var People = {
-    data: [],
-
-    load: function () {
-        if (People.data.length === 0) {
-            loadPeopleData();
-        }
-    }
-};
+var People = {};
 
 function fail (err) {
     console.log("Error: ", err);
@@ -35,7 +27,6 @@ function getDataAndroid() {
     window.resolveLocalFileSystemURL(cordova.file.applicationDirectory + fileNameAndroid, readData, fail);
 }
 
-
 function getDataBrowser() {
     m.request({
         method: "GET",
@@ -54,5 +45,15 @@ function loadPeopleData() {
         getDataBrowser();
     }
 }
+
+People = {
+    data: [],
+
+    load: function () {
+        if (People.data.length === 0) {
+            loadPeopleData();
+        }
+    }
+};
 
 module.exports = People;
