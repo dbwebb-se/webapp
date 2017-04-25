@@ -38,7 +38,7 @@ function getDataBrowser() {
 }
 
 function loadPeopleData() {
-    var isAndroid = (device.platform === "Android") ? true : false;
+    var isAndroid = (device.platform === "Android");
     if (isAndroid) {
         getDataAndroid();
     } else {
