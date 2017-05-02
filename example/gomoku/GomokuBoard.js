@@ -285,12 +285,9 @@ var GomokuBoard = {
                 var currentX = x - (startOffset - i - j) * deltaX;
                 var currentY = y - (startOffset - i - j) * deltaY;
 
-                console.log(currentX, currentY, this.size)
-
                 var currentPosition = this.positionHelper(currentX, currentY);
 
                 if (currentX >= 0 && currentX < this.size && currentY >= 0 && currentY < this.size) {
-                    console.log("Inside");
                     markers.push(this.board[currentPosition]);
                 } else {
                     markers.push(0);
