@@ -124,7 +124,7 @@ var GomokuBoard = {
      * @return Integer as internal board position.
      */
     getPosition : function (x, y) {
-        if (x < 0 || x > this.size || y < 0 || y > this.size) {
+        if (x < 0 || x >= this.size || y < 0 || y >= this.size) {
             throw new Error("Position is outside of the board.");
         }
 
