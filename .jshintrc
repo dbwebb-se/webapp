@@ -10,7 +10,7 @@
     "nonbsp": true,
     "nonew": true,
     "notypeof": true,
-    "predef": ["console", "window", "document"],
+    "predef": ["console", "window", "document", "device", "cordova", "FileReader"],
     "undef": true,
     "strict": true,
     "unused": true,

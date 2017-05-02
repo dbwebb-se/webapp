@@ -1,0 +1,23 @@
+[
+  {
+    "index": 0,
+    "balance": "$1,082.91",
+    "age": 24,
+    "name": "Shari Castro",
+    "address": "331 Grattan Street, Garberville, Connecticut, 7899"
+  },
+  {
+    "index": 1,
+    "balance": "$3,414.10",
+    "age": 21,
+    "name": "Payne Burke",
+    "address": "575 Christopher Avenue, Sisquoc, Arkansas, 6638"
+  },
+  {
+    "index": 2,
+    "balance": "$1,784.90",
+    "age": 26,
+    "name": "Obrien Newman",
+    "address": "528 Pitkin Avenue, Hendersonville, Louisiana, 2918"
+  }
+]

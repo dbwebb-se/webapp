@@ -12,8 +12,9 @@ var Booli = {
         var characters = "ABCDEFGHIJKLMNOPQabcdefghijklmnopq0123456789";
         var uniqueString = "";
         for (var i = 0; i < 16; i++) {
-            uniqueString += characters.charAt(Math.random(0, characters.length - 1));
+            uniqueString += characters.charAt(Math.floor(Math.random() * ( characters.length - 1)));
         }
+        console.log(uniqueString);
         return uniqueString;
     },
     loadList : function () {
@@ -25,7 +26,7 @@ var Booli = {
             data : {
                 q : Booli.searchTerm,
                 callerId : Booli.callerId,
-                limit : 3,
+                limit : 10,
                 offset : 0,
                 time : currentTime,
                 unique : currentUnique,

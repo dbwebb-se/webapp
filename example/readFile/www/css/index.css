@@ -1,0 +1,34 @@
+html, body {
+    margin:0;
+    padding:0;
+}
+
+/* Base definition for units smaller than 576p x*/
+.widget {
+    width: 98.0%;
+    height: 200px;
+    float:left;
+    margin: 0 1.0% 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    border:2px solid #CCC;
+}
+
+/* Media queries for .widget */
+@media (min-width: 500px) {
+    .widget {
+        width: 48.0%;
+    }
+}
+
+@media (min-width: 700px) {
+    .widget {
+        width: 31.3333333333333%;
+    }
+}
+
+@media (min-width: 980px) {
+    .widget {
+        width: 23.0%;
+    }
+}
