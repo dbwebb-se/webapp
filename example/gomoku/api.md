@@ -71,14 +71,6 @@ View details on the game.
 
 
 
-### Parameters
-
-| Name   | Required | Example value | Description |
-|:------:|:--------:|:-------------:|:------------|
-| gameid | yes      | 42580         | The numerical ID of the game |
-| map    | yes      | maze-of-doom  | The maze to be loaded into the game, with or without `.json`.|
-| type   | no       | csv           | The prefered response content-type. |
-
 *JSON response*
 
 ```json
