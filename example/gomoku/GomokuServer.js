@@ -47,7 +47,7 @@ function sendJSONResponse(res, content, code) {
  * @param Object res The response
  */
 router.get("/", (req, res) => {
-    res.writeHead(code, {
+    res.writeHead(200, {
         "Content-Type": "text/plain",
         "Access-Control-Allow-Origin": "*",
     });
