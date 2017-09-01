@@ -28,32 +28,7 @@ Feel free to help building up the repository with more content suited for traini
 
 
 
-History
--------------------
-
-v1.1.2 (2016-09-13)
-
-* Added dir `lib/jquery` to `me`.
-
-
-v1.1.1 (2016-08-17)
-
-* Removed dir `old`.
-
-
-v1.1.0 (2016-08-17)
-
-* Added new test suite for travis and circle.
-
-
-v1.0.0 (2016-08-17)
-
-* Added mithril examples for kmom04.
-* Started work in january 2015, planned release end of august 2015.
-
-
-
 ```                                                            
  .                                                             
-..:  Copyright (c) 2015-2016 Mikael Roos, me@mikaelroos.se   
+..:  Copyright (c) 2015-2017 Mikael Roos et al, mos@dbwebb.se   
 ```                                                            
