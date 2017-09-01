@@ -10,9 +10,24 @@
 /.*rc
 /.*.xml
 /.*.conf
+/.*.json
+
+# Python generated file
+- __pycache__/
 
 /example/
 /example/**
+
+#/me/
+#- /me/anax-lite/.bin
+#- /me/anax-lite/cache/cimage/*
+#- vendor/mos/cimage/webroot
+#- vendor/**/config
+#- vendor/**/docs
+#- vendor/**/test
+#- node_modules/
+#/me/**
+
 
 /me/
 
@@ -127,6 +142,7 @@
 - /me/redovisa/platforms/browser/www/node_modules/**
 /me/redovisa/platforms/browser/www/*
 /me/redovisa/platforms/browser/www/**
+
 
 
 - */
