@@ -30,120 +30,94 @@
 
 
 /me/
+- node_modules/
+- plugins/
+- hooks/
+platforms/browser/www/config.xml
+- config.xml
 
-# kmom01
-/me/kmom01/
-
-# kmom02/
-/me/kmom02/
-/me/kmom02/nobel/
-/me/kmom02/nobel/platforms/
-/me/kmom02/nobel/platforms/android/
-/me/kmom02/nobel/platforms/android/build/
-/me/kmom02/nobel/platforms/android/build/outputs/
-/me/kmom02/nobel/platforms/android/build/outputs/apk/
-/me/kmom02/nobel/platforms/android/build/outputs/apk/*
-/me/kmom02/nobel/platforms/android/build/outputs/apk/**
-/me/kmom02/nobel/platforms/browser/
-/me/kmom02/nobel/platforms/browser/www/
-- /me/kmom02/nobel/platforms/browser/www/node_modules/
-- /me/kmom02/nobel/platforms/browser/www/node_modules/*
-- /me/kmom02/nobel/platforms/browser/www/node_modules/**
-/me/kmom02/nobel/platforms/browser/www/*
-/me/kmom02/nobel/platforms/browser/www/**
-
-/me/kmom02/jq/
-/me/kmom02/jq/*
-/me/kmom02/jq/**
+# kmom02
+kmom02/
+kmom02/nobel/
+kmom02/nobel/platforms/
+kmom02/nobel/platforms/android/
+kmom02/nobel/platforms/android/build/
+kmom02/nobel/platforms/android/build/outputs/
+kmom02/nobel/platforms/android/build/outputs/apk/
+kmom02/nobel/platforms/android/build/outputs/apk/*
+kmom02/nobel/platforms/android/build/outputs/apk/**
+kmom02/nobel/platforms/browser/
+kmom02/nobel/platforms/browser/www/
+kmom02/nobel/platforms/browser/www/*
+kmom02/nobel/platforms/browser/www/**
 
 # kmom03
-/me/kmom03/
-/me/kmom03/dashboard/
-/me/kmom03/dashboard/platforms/
-/me/kmom03/dashboard/platforms/browser/
-/me/kmom03/dashboard/platforms/browser/www/
-- /me/kmom03/dashboard/platforms/browser/www/node_modules/
-- /me/kmom03/dashboard/platforms/browser/www/node_modules/*
-- /me/kmom03/dashboard/platforms/browser/www/node_modules/**
-/me/kmom03/dashboard/platforms/browser/www/*
-/me/kmom03/dashboard/platforms/browser/www/**
-
-/me/kmom03/grid/
-/me/kmom03/grid/*
-/me/kmom03/grid/**
+kmom03/
+kmom03/dashboard/
+kmom03/dashboard/platforms/
+kmom03/dashboard/platforms/browser/
+kmom03/dashboard/platforms/browser/www/
+kmom03/dashboard/platforms/browser/www/*
+kmom03/dashboard/platforms/browser/www/**
+- kmom03/dashboard/**
 
 # kmom04
-/me/kmom04/
-/me/kmom04/winecellar/
-/me/kmom04/winecellar/platforms/
-/me/kmom04/winecellar/platforms/android/
-/me/kmom04/winecellar/platforms/android/build/
-/me/kmom04/winecellar/platforms/android/build/outputs/
-/me/kmom04/winecellar/platforms/android/build/outputs/apk/
-/me/kmom04/winecellar/platforms/android/build/outputs/apk/*
-/me/kmom04/winecellar/platforms/android/build/outputs/apk/**
-/me/kmom04/winecellar/platforms/browser/
-/me/kmom04/winecellar/platforms/browser/www/
-- /me/kmom04/winecellar/platforms/browser/www/node_modules/
-- /me/kmom04/winecellar/platforms/browser/www/node_modules/*
-- /me/kmom04/winecellar/platforms/browser/www/node_modules/**
-/me/kmom04/winecellar/platforms/browser/www/*
-/me/kmom04/winecellar/platforms/browser/www/**
+kmom04/
+kmom04/winecellar/
+kmom04/winecellar/platforms/
+kmom04/winecellar/platforms/android/
+kmom04/winecellar/platforms/android/build/
+kmom04/winecellar/platforms/android/build/outputs/
+kmom04/winecellar/platforms/android/build/outputs/apk/
+kmom04/winecellar/platforms/android/build/outputs/apk/*
+kmom04/winecellar/platforms/android/build/outputs/apk/**
+kmom04/winecellar/platforms/browser/
+kmom04/winecellar/platforms/browser/www/
+kmom04/winecellar/platforms/browser/www/*
+kmom04/winecellar/platforms/browser/www/**
 
 # kmom05
-/me/kmom05/
-/me/kmom05/pizza/
-/me/kmom05/pizza/platforms/
-/me/kmom05/pizza/platforms/browser/
-/me/kmom05/pizza/platforms/browser/www/
-- /me/kmom05/pizza/platforms/browser/www/node_modules/
-- /me/kmom05/pizza/platforms/browser/www/node_modules/*
-- /me/kmom05/pizza/platforms/browser/www/node_modules/**
-/me/kmom05/pizza/platforms/browser/www/*
-/me/kmom05/pizza/platforms/browser/www/**
+kmom05/
+kmom05/pizza/
+kmom05/pizza/platforms/
+kmom05/pizza/platforms/browser/
+kmom05/pizza/platforms/browser/www/
+kmom05/pizza/platforms/browser/www/*
+kmom05/pizza/platforms/browser/www/**
 
 # kmom06
-/me/kmom06/
-/me/kmom06/gomoku/
-/me/kmom06/gomoku/platforms/
-/me/kmom06/gomoku/platforms/browser/
-/me/kmom06/gomoku/platforms/browser/www/
-- /me/kmom06/gomoku/platforms/browser/www/node_modules/
-- /me/kmom06/gomoku/platforms/browser/www/node_modules/*
-- /me/kmom06/gomoku/platforms/browser/www/node_modules/**
-/me/kmom06/gomoku/platforms/browser/www/*
-/me/kmom06/gomoku/platforms/browser/www/**
+kmom06/
+kmom06/gomoku/
+kmom06/gomoku/platforms/
+kmom06/gomoku/platforms/browser/
+kmom06/gomoku/platforms/browser/www/
+kmom06/gomoku/platforms/browser/www/*
+kmom06/gomoku/platforms/browser/www/**
 
 # kmom10
-/me/kmom10/
-/me/kmom10/proj/
-/me/kmom10/proj/platforms/
-/me/kmom10/proj/platforms/android/
-/me/kmom10/proj/platforms/android/build/
-/me/kmom10/proj/platforms/android/build/outputs/
-/me/kmom10/proj/platforms/android/build/outputs/apk/
-/me/kmom10/proj/platforms/android/build/outputs/apk/*
-/me/kmom10/proj/platforms/android/build/outputs/apk/**
-/me/kmom10/proj/platforms/browser/
-/me/kmom10/proj/platforms/browser/www/
-- /me/kmom10/proj/platforms/browser/www/node_modules/
-- /me/kmom10/proj/platforms/browser/www/node_modules/*
-- /me/kmom10/proj/platforms/browser/www/node_modules/**
-/me/kmom10/proj/platforms/browser/www/*
-/me/kmom10/proj/platforms/browser/www/**
+kmom10/
+kmom10/proj/
+kmom10/proj/platforms/
+kmom10/proj/platforms/android/
+kmom10/proj/platforms/android/build/
+kmom10/proj/platforms/android/build/outputs/
+kmom10/proj/platforms/android/build/outputs/apk/
+kmom10/proj/platforms/android/build/outputs/apk/*
+kmom10/proj/platforms/android/build/outputs/apk/**
+kmom10/proj/platforms/browser/
+kmom10/proj/platforms/browser/www/
+kmom10/proj/platforms/browser/www/*
+kmom10/proj/platforms/browser/www/**
 
 # Redovisa
-/me/redovisa/
-/me/redovisa/platforms/
-/me/redovisa/platforms/browser/
-/me/redovisa/platforms/browser/www/
-- /me/redovisa/platforms/browser/www/node_modules/
-- /me/redovisa/platforms/browser/www/node_modules/*
-- /me/redovisa/platforms/browser/www/node_modules/**
-/me/redovisa/platforms/browser/www/*
-/me/redovisa/platforms/browser/www/**
+redovisa/
+redovisa/platforms/
+redovisa/platforms/browser/
+redovisa/platforms/browser/www/
+redovisa/platforms/browser/www/*
+redovisa/platforms/browser/www/**
 
-
+/me/**
 
 - */
 - *
