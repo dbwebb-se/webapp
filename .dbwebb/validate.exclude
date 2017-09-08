@@ -18,6 +18,9 @@
 -./me/*/node_modules/*
 
 -./me/*/platforms/*
+-./me/*/www/*
+-./me/*/plugins/*
+-./me/*/bin/*
 +./me/*/platforms/browser/www/*.html
 +./me/*/platforms/browser/www/css/*.css
 +./me/*/platforms/browser/www/js/*.js
