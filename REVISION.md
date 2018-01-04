@@ -2,7 +2,7 @@ Revision History
 ===================
 
 
-v2.0.2 (2017-09-01)
+v2.0.2 (2018-01-03)
 -------------------
 
 * Prepare to upgrade course to v3.
