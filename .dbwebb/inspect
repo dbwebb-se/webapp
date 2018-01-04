@@ -1,0 +1,98 @@
+#
+# Inspect, tools to inspect a kmom.
+#
+# Usage: dbwebb inspect kmom01
+#
+# Sequence executed:
+# webapp(), webappkmom01(), webapplast()
+#
+
+
+#
+# Test webapp general
+#
+webapp()
+{
+    inspectIntro
+}
+
+
+
+#
+# Test general, last in sequence
+#
+webapplast()
+{
+    inspectMe "me/redovisa"
+}
+
+
+
+#
+# Test webapp kmom01
+#
+webappkmom01()
+{
+    :
+}
+
+
+
+#
+# Test webapp kmom02
+#
+webappkmom02()
+{
+    inspectExerciseHeader "jq" "uppgift/sokverktyg-for-json-filer" "$KMOM/jq"
+    inspectCommand "solution.bash" "$THEDIR/me/$KMOM/jq" "./solution.bash"
+}
+
+
+
+#
+# Test webapp kmom03
+#
+webappkmom03()
+{
+    :
+}
+
+
+
+#
+# Test webapp kmom04
+#
+webappkmom04()
+{
+    :
+}
+
+
+
+#
+# Test webapp kmom
+#
+webappkmom05()
+{
+    :
+}
+
+
+
+#
+# Test webapp kmom
+#
+webappkmom06()
+{
+    :
+}
+
+
+
+#
+# Test webapp kmom
+#
+webappkmom10()
+{
+    :
+}
