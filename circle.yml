@@ -1,7 +1,0 @@
-test:
-    pre:
-      - make install
-
-notify:
-    webhooks:
-        - url: https://webhooks.gitter.im/e/2aa0ff244b84877f12aa
