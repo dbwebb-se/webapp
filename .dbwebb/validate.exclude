@@ -10,9 +10,22 @@
 -*/cache/*
 -*/docs/*
 -*/lib/*
+-*/old/*
 -*.min.*
 -*.png
 -*.jpg
+-./.venv
+
+-*/build/*
+-*/coverage/*
+-*/node_modules/*
+-*/vendor/*
+
++./build/webroot/*
+-./build/webroot/*/build/*
+-./build/webroot/*/coverage/*
+-./build/webroot/*/node_modules/*
+-./build/webroot/*/vendor/*
 
 -./me/*/vendor/*
 -./me/*/node_modules/*

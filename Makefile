@@ -1,11 +1,11 @@
-#!/usr/bin/env make -f
-#
-# Makefile for course repos
-#
+#!/usr/bin/env make
+# 
+# Course repo, to work with a dbwebb course.
+# See organisation on GitHub: https://github.com/dbwebb-se
 
 # ---------------------------------------------------------------------------
 #
-# General setup
+# General stuff, reusable for all Makefiles.
 #
 
 # Detect OS
@@ -31,26 +31,31 @@ WHERE-AM-I = $(CURDIR)/$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 THIS_MAKEFILE := $(call WHERE-AM-I)
 
 # Echo some nice helptext based on the target comment
-HELPTEXT = $(ECHO) "$(ACTION)--->" `egrep "^\# target: $(1) " $(THIS_MAKEFILE) | sed "s/\# target: $(1)[ ]*-[ ]* / /g"` "$(NO_COLOR)"
+HELPTEXT = $(ECHO) "$(ACTION)--->" $(shell egrep "^\# target: $(1) " $(THIS_MAKEFILE) | sed "s/\# target: $(1)[ ]*-[ ]* / /g") "$(NO_COLOR)"
+
+# Check version  and path to command and display on one line
+CHECK_VERSION = printf "%-15s %-10s %s\n" "`basename $(1)`" "`$(1) --version $(2)`" "`which $(1)`"
 
 # target: help                    - Displays help with targets available.
 .PHONY:  help
 help:
 	@$(call HELPTEXT,$@)
-	@echo "Usage:"
-	@echo " make [target] ..."
-	@echo "target:"
-	@egrep "^# target:" Makefile | sed 's/# target: / /g'
+	@sed '/^$$/Q' $(THIS_MAKEFILE) | tail +3 | sed 's/#\s*//g'
+	@$(ECHO) "Usage:"
+	@$(ECHO) " make [target] ..."
+	@$(ECHO) "target:"
+	@egrep '^# target:' $(THIS_MAKEFILE) | sed 's/# target: / /g'
 
 
 
 # ---------------------------------------------------------------------------
 #
 # Specifics
-# 
+#
 
 # Add local bin path for test tools
-PATH := "$(PWD)/bin:$(PWD)/vendor/bin:$(PWD)/node_modules/.bin:$(PATH)"
+PATH := $(PWD)/bin:$(PWD)/vendor/bin:$(PWD)/node_modules/.bin:$(PATH)
+SHELL := env PATH=$(PATH) $(SHELL)
 
 # Tools
 DBWEBB   		:= bin/dbwebb
@@ -62,8 +67,8 @@ PHPMD   := bin/phpmd
 
 
 # ----------------------------------------------------------------------------
-# 
-# Highlevel targets 
+#
+# Highlevel targets
 #
 # target: prepare                 - Prepare the build directory.
 .PHONY: prepare
@@ -84,8 +89,8 @@ install: prepare dbwebb-validate-install dbwebb-inspect-install dbwebb-install n
 
 	curl -Lso $(PHPMD) http://static.phpmd.org/php/latest/phpmd.phar && chmod 755 $(PHPMD)
 
-	@# Shellcheck 
-	@# tree (inspect) 
+	@# Shellcheck
+	@# tree (inspect)
 	@# python through reqs and venv
 	@# Add to check on dbwebb-cli to try all parts php in path, make, composer, node, npm, python3, python, mm.
 
@@ -98,9 +103,9 @@ check: dbwebb-validate-check
 
 
 
-# target: test                    - Install test tools & run tests.
+# target: test                    - Install test tools and run tests.
 .PHONY: test
-test: check dbwebb-publish-run dbwebb-testrepo
+test: check dbwebb-publish-example dbwebb-testrepo
 	@$(call HELPTEXT,$@)
 
 
@@ -133,8 +138,8 @@ clean-all: clean
 
 
 # ----------------------------------------------------------------------------
-# 
-# Shortcuts for frequent usage 
+#
+# Shortcuts for frequent usage
 #
 # target: validate                - Execute dbwebb validate what=part-to-validate.
 .PHONY: validate
@@ -150,7 +155,7 @@ publish: dbwebb-publish
 
 
 
-# target: inspect                 - Execute dbwebb inspect what=kmom01.
+# target: inspect                 - Execute dbwebb inspect options="" what=kmom01.
 .PHONY: inspect
 inspect: dbwebb-inspect
 	@$(call HELPTEXT,$@)
@@ -158,8 +163,36 @@ inspect: dbwebb-inspect
 
 
 # ----------------------------------------------------------------------------
-# 
-# dbwebb cli 
+#
+# Python
+#
+# target: python-install          - Install Python utilities locally.
+.PHONY: python-install
+python-install: prepare
+	@$(call HELPTEXT,$@)
+	[ ! -f .requirements.txt ] || python3 -m pip install --requirement .requirements.txt
+
+
+
+# target: python-upgrade          - Upgrade Python utilities locally.
+.PHONY: python-upgrade
+python-upgrade: prepare
+	@$(call HELPTEXT,$@)
+	[ ! -f .requirements.txt ] || python3 -m pip install --upgrade --requirement .requirements.txt
+
+
+
+# target: python-venv             - Create Python virtual environment .venv.
+.PHONY: python-venv
+python-venv:
+	@$(call HELPTEXT,$@)
+	python3 -m venv .venv
+
+
+
+# ----------------------------------------------------------------------------
+#
+# dbwebb cli
 #
 # target: dbwebb-install          - Download and install dbwebb-cli.
 .PHONY: dbwebb-install
@@ -168,6 +201,8 @@ dbwebb-install: prepare
 	wget --quiet -O $(DBWEBB) https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2
 	chmod 755 $(DBWEBB)
 	$(DBWEBB) config create noinput
+	(cd bin; rm -f dbwebb-validate1; ln -s dbwebb-validate dbwebb-validate1)
+	(cd bin; rm -f dbwebb-inspect1; ln -s dbwebb-inspect dbwebb-inspect1)
 
 
 
@@ -180,7 +215,7 @@ dbwebb-testrepo:
 
 
 # ----------------------------------------------------------------------------
-# 
+#
 # dbwebb validate & publish
 #
 # target: dbwebb-validate-install - Download and install dbwebb-validate.
@@ -200,41 +235,32 @@ dbwebb-validate-check:
 
 
 
-# target: dbwebb-validate-run     - Run tests on /example with dbwebb-validate.
-.PHONY: dbwebb-validate-run
-dbwebb-validate-run:
-	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) $(DBWEBB_VALIDATE) example
-
-
-
-# target: dbwebb-validate         - Execute dbwebb validate what=part-to-validate.
+# target: dbwebb-validate         - Execute dbwebb validate options="" what=part-to-validate.
 .PHONY: dbwebb-validate
 dbwebb-validate:
 	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) $(DBWEBB_VALIDATE) $(what) $(arg1) $(kmom)
+	env PATH=$(PATH) $(DBWEBB_VALIDATE) $(options) $(what)
 
 
 
-# target: dbwebb-publish-run      - Run tests on /example with dbwebb-publish.
-.PHONY: dbwebb-publish-run
-dbwebb-publish-run:
-	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) $(DBWEBB_VALIDATE) --publish --publish-to build/webroot/ example
-
-
-
-# target: dbwebb-publish          - Execute dbwebb publish what=part-to-validate-publish.
+# target: dbwebb-publish          - Execute dbwebb publish options="" what=part-to-validate-publish.
 .PHONY: dbwebb-publish
-dbwebb-publish:
+dbwebb-publish: prepare
 	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) $(DBWEBB_VALIDATE) --publish --publish-to build/webroot/ $(what) $(arg1) $(kmom)
+	env PATH=$(PATH) $(DBWEBB_VALIDATE) --publish --publish-to build/webroot/ --publish-root . $(options) $(what)
+
+
+# target: dbwebb-publish-example  - Execute dbwebb publish /example ro build/webroot
+.PHONY: dbwebb-publish-example
+dbwebb-publish-example: prepare
+	@$(call HELPTEXT,$@)
+	env PATH=$(PATH) $(DBWEBB_VALIDATE) --publish --publish-to build/webroot/ --publish-root . $(options) example
 
 
 
 # ----------------------------------------------------------------------------
-# 
-# dbwebb inspect 
+#
+# dbwebb inspect
 #
 # target: dbwebb-inspect-install  - Download and install dbwebb-inspect.
 .PHONY: dbwebb-inspect-install
@@ -257,12 +283,12 @@ dbwebb-inspect-check:
 .PHONY: dbwebb-inspect
 dbwebb-inspect:
 	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) $(DBWEBB_INSPECT) . $(what) $(arg1) $(kmom)
+	env PATH=$(PATH) $(DBWEBB_INSPECT) $(options) . $(what)
 
 
 
 # ----------------------------------------------------------------------------
-# 
+#
 # npm
 #
 # target: npm-install             - Install npm packages for development.
@@ -282,8 +308,8 @@ npm-update:
 
 
 # ----------------------------------------------------------------------------
-# 
-# composer 
+#
+# composer
 #
 # target: composer-install        - Install composer packages for development.
 .PHONY: composer-install

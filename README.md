@@ -7,20 +7,16 @@ Webbapplikationer för mobila enheter (Web applications for mobile devices) - we
 
 Course material for webapp-course, aimed at a swedish target audience as an introduction to web programmering for computer science students at University level. 
 
-Relased as part of a University course presented at:
+Relased as part of a University course: https://dbwebb.se/kurser/webapp
 
-* http://dbwebb.se/webapp
-
-The usage of this repo is also documented here:
-
-* http://dbwebb.se/dbwebb-cli
+The course repo is managed by a [dbwebb command line utility](https://dbwebb.se/dbwebb-cli).
 
 
 
 Acknowledgement
 -------------------
 
-This is a co-effort of several people using freely available documentation and tools from the open source community. 
+This is a co-effort of several people using freely available documentation and tools from the open source community.
 
 For contributors, see the commit history and the issues.
 
@@ -28,7 +24,7 @@ Feel free to help building up the repository with more content suited for traini
 
 
 
-```                                                            
- .                                                             
-..:  Copyright (c) 2015-2017 Mikael Roos et al, mos@dbwebb.se   
-```                                                            
+```
+ .
+..:  Copyright (c) 2015-2018 dbwebb et al, info@dbwebb.se
+```
