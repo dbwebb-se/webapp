@@ -12,10 +12,9 @@
 /.*.conf
 /.*.json
 
-# Python generated file
-- __pycache__/
-
 /example/
+- build/
+- node_modules/
 /example/**
 
 #/me/
@@ -30,6 +29,7 @@
 
 
 /me/
+- build/
 - node_modules/
 #- plugins/
 - hooks/
