@@ -17,7 +17,7 @@
  * under the License.
  */
 * {
-    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
 body {
@@ -25,7 +25,6 @@ body {
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -ms-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-
 }
 
 .app {
@@ -37,6 +36,7 @@ body {
 h1 {
     text-align: center;
 }
+
 div {
     text-align: center;
     display: block;
@@ -45,5 +45,6 @@ div {
 button {
     width: 50%;
     margin: 0 auto;
-    /*display: inline-block;*/
+
+    /* display: inline-block; */
 }

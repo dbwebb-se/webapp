@@ -1,0 +1,40 @@
+html {
+    font-size: 100%;
+}
+
+main {
+    padding: 0.6rem;
+}
+
+h1,
+h2,
+h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+h2 {
+    margin-bottom: 0.6rem;
+}
+
+h4 {
+    margin-bottom: 0.2rem;
+    margin-top: 1.8rem;
+    line-height: 1.4;
+}
+
+h4:first-of-type {
+    margin-top: 0.6rem;
+}
+
+p {
+    margin-top: 0.2rem;
+    line-height: 1.4;
+    font-family: 'Merriweather', serif;
+    font-size: 1rem;
+}
+
+@media (min-width: 64em) {
+    html {
+        font-size: 112.5%;
+    }
+}

@@ -1,3 +1,5 @@
+/* global cordova, device */
+
 "use strict";
 
 var m = require("mithril");
@@ -5,7 +7,7 @@ var sha1 = require("sha1");
 var fileName = "booli3.json";
 var Booli = {};
 
-function fail (err) {
+function fail(err) {
     console.log("Error: ", err);
 }
 
@@ -15,7 +17,6 @@ function addDateToData() {
 
 function writeFile(fileEntry) {
     fileEntry.createWriter(function (fileWriter) {
-
         fileWriter.onwrite = function() {
             console.log("Successful file write...");
         };
@@ -54,6 +55,7 @@ function updateDataAndroid(result) {
 function checkDate() {
     var diff  = Math.abs(Booli.dataDate - Date.now());
     var diffInMin = Math.ceil(diff) / (1000 * 60);
+
     // If data is older than 10 minutes
     if (diffInMin > 10) {
         Booli.getDataBrowser(updateDataAndroid);
@@ -69,6 +71,7 @@ function readFile(fileEntry) {
         reader.onloadend = function() {
             console.log("file read: ", JSON.parse(this.result));
             var result = JSON.parse(this.result);
+
             Booli.list = result.listings;
             Booli.dataDate = result.date;
             checkDate();
@@ -78,52 +81,54 @@ function readFile(fileEntry) {
 }
 
 function getDataAndroid() {
-    window.resolveLocalFileSystemURL(cordova.file.dataDirectory + fileName, readFile, function(err) {
-        // Check if file doesnt exists
-        if (err.code === 1) {
-            // File doesn't exist
-            Booli.getDataBrowser(updateDataAndroid);
-        } else {
-            // Other error
-            fail(err);
-        }
-    });
+    window.resolveLocalFileSystemURL(cordova.file.dataDirectory + fileName,
+        readFile,
+        function(err) {
+            // Check if file doesnt exists
+            if (err.code === 1) {
+                // File doesn't exist
+                Booli.getDataBrowser(updateDataAndroid);
+            } else {
+                // Other error
+                fail(err);
+            }
+        });
 }
 
 Booli = {
-    searchTerm : "karlskrona",
-    list : [],
-    callerId : "efo",
-    secretKey : "ofqGqQTo2D0pOneeNqRpTuNVl9fgNHGGxIFVG5qX",
-    dataDate : Date.now(),
-    makeUnique : function () {
+    searchTerm: "karlskrona",
+    list: [],
+    callerId: "efo",
+    secretKey: "ofqGqQTo2D0pOneeNqRpTuNVl9fgNHGGxIFVG5qX",
+    dataDate: Date.now(),
+    makeUnique: function () {
         var characters = "ABCDEFGHIJKLMNOPQabcdefghijklmnopq0123456789";
         var uniqueString = "";
+
         for (var i = 0; i < 16; i++) {
             uniqueString += characters.charAt(Math.floor(Math.random() * ( characters.length - 1)));
         }
         return uniqueString;
     },
-
-    getDataBrowser : function(callbackIfSuccess) {
+    getDataBrowser: function(callbackIfSuccess) {
         Booli.dataDate = Date.now();
         var currentUnique = Booli.makeUnique();
+
         m.request({
-            method : "GET",
-            url : "https://api.booli.se/listings",
-            data : {
-                q : Booli.searchTerm,
-                callerId : Booli.callerId,
-                limit : 10,
-                offset : 0,
-                time : Booli.dataDate,
-                unique : currentUnique,
-                hash : sha1(Booli.callerId + Booli.dataDate + Booli.secretKey + currentUnique)
+            method: "GET",
+            url: "https://api.booli.se/listings",
+            data: {
+                q: Booli.searchTerm,
+                callerId: Booli.callerId,
+                limit: 10,
+                offset: 0,
+                time: Booli.dataDate,
+                unique: currentUnique,
+                hash: sha1(Booli.callerId + Booli.dataDate + Booli.secretKey + currentUnique)
             }
         }).then(callbackIfSuccess);
     },
-
-    loadList : function () {
+    loadList: function () {
         if (device.platform === "Android") {
             getDataAndroid();
         } else {

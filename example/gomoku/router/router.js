@@ -43,9 +43,7 @@ function trimSlashes(str) {
 /**
  * Utility
  */
-function buildRequest (req, res) {
-    // stupid jshint gives error on res not being used..
-    /*jshint unused:false*/
+function buildRequest(req) {
     req = req || {};
     req.params = {};
     req.query = url.parse(req.url, true).query;
@@ -145,7 +143,6 @@ function buildResponse(req, res) {
  * @version 1.1
  */
 class Router {
-
     constructor() {
         this.routes = [];
         this.methods = {
@@ -163,7 +160,6 @@ class Router {
      * @param Function  handler The function for the route.
      */
     add(method, path, handler) {
-
         if (typeof handler !== 'function') {
             throw 'No handler function was passed';
         }
@@ -200,7 +196,6 @@ class Router {
      * @param  {[type]} res HTTP response object
      */
     route(req, res) {
-
         // Extend request and response object.
         req = buildRequest(req, res);
         res = buildResponse(req, res);
@@ -213,7 +208,8 @@ class Router {
         var urlParams = path.split('/');
 
         // Filter out the routes to process..
-        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+        // https://developer.mozilla.org/en-US/ ->
+        // <- docs/Web/JavaScript/Reference/Global_Objects/Array/filter
         var routesToProcess = this.routes.filter(function (r) {
             // remove trailing slash from the current path, if they exist.
             r.path = trimSlashes(r.path);
@@ -249,6 +245,7 @@ class Router {
             }
 
             var counter = 0;
+
             for (var x = 0; x < urlParams.length; x += 1)  {
                 // Do the actual check if the route matches.
                 if (urlParams[x] === params[x] || params[x].includes(':')) {
@@ -268,12 +265,12 @@ class Router {
 
         // Handle the request.
         routesToProcess.forEach(function (route) {
-
             req.on('end', () => {
                 // Does the raw body have any data?
                 if (req.rawBody !== '') {
                     console.log(req.headers['content-type']);
                     var body;
+
                     // What type of data is? Which method of parsing
                     // the data does I need?
                     switch (req.headers['content-type']) {
@@ -317,6 +314,7 @@ class Router {
         }
 
         var oldLen = this.routes.length;
+
         callback();
         var length = this.routes.length - oldLen;
 
@@ -324,7 +322,6 @@ class Router {
             this.routes[i - 1].path = path + this.routes[i - 1].path;
         }
     }
-
 }
 
 

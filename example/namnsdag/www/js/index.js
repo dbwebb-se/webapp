@@ -23,7 +23,7 @@ m.route(document.body, "/", {
             return m(Layout, m(Days));
         }
     },
-    "/nameday/:date" : {
+    "/nameday/:date": {
         render: function (vnode) {
             return m(Layout, m(Nameday, vnode.attrs));
         }

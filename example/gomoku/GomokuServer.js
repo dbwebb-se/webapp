@@ -6,6 +6,7 @@
 // The main class for the Gomoku game
 var GomokuBoard = require("./GomokuBoard");
 var gameBoard = Object.create(GomokuBoard);
+
 gameBoard.clear();
 
 
@@ -57,7 +58,8 @@ router.get("/", (req, res) => {
         " /view         View details on the game.\n" +
         " /view/ascii   View the gameboard and whos next in turn.\n" +
         " /view/json    Get the gameboard in raw json and whos next in turn.\n" +
-        " /place/:x/:y  Place a marker at choosen place. Returns if there is player that has 5 in a row.\n"
+        " /place/:x/:y  Place a marker at choosen place." +
+        " Returns if there is player that has 5 in a row.\n"
     );
     res.end();
 });
@@ -71,12 +73,12 @@ router.get("/", (req, res) => {
  * @param Object res The response
  */
 router.get("/start/:size", (req, res) => {
-
     // get the value of the parameter :size
     var size = req.params.size;
 
     // Init the Gomoku board
     var message = "The board is initialized.";
+
     try {
         gameBoard.start(size);
     } catch (e) {
@@ -101,7 +103,6 @@ router.get("/start/:size", (req, res) => {
  * @param Object res The response
  */
 router.get("/view", (req, res) => {
-
     sendJSONResponse(res, {
         "boardSize": gameBoard.getSize(),
         "nextPlayer": gameBoard.playerInTurn(),
@@ -119,7 +120,6 @@ router.get("/view", (req, res) => {
  * @param Object res The response
  */
 router.get("/view/json", (req, res) => {
-
     sendJSONResponse(res, {
         "boardSize": gameBoard.getSize(),
         "nextPlayer": gameBoard.playerInTurn(),
@@ -159,7 +159,6 @@ router.get("/view/ascii", (req, res) => {
  * @param Object res The response
  */
 router.get("/place/:x/:y", (req, res) => {
-
     // get the value of the parameter :x and :y
     var x = Number.parseInt(req.params.x);
     var y = Number.parseInt(req.params.y);
@@ -168,6 +167,7 @@ router.get("/place/:x/:y", (req, res) => {
     var message = "Ok.";
     var winningMessage = "No winner.";
     var winner = "None";
+
     try {
         gameBoard.place(x, y);
         if (gameBoard.isWinningMove(x, y)) {
@@ -187,8 +187,8 @@ router.get("/place/:x/:y", (req, res) => {
         "nextPlayer": gameBoard.playerInTurn(),
         "nextPlayerMarker": gameBoard.playerInTurnMarker(),
         "boardIsFull": gameBoard.isFull(),
-        "winner" : winner,
-        "winningMessage" : winningMessage
+        "winner": winner,
+        "winningMessage": winningMessage
     });
 });
 

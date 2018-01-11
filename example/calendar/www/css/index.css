@@ -1,11 +1,11 @@
 .day {
     width: 98%;
-    margin: 0 1.0% 10px;
-    padding:10px;
+    margin: 0 1% 10px;
+    padding: 10px;
     box-sizing: border-box;
-    border:1px solid #CCC;
+    border: 1px solid #ccc;
 }
 
 .red-day {
-    background-color: #FFAAAA;
+    background-color: #faa;
 }

@@ -5,6 +5,7 @@ var People = require("../models/people");
 var Person = {
     view: function(vnode) {
         var person = vnode.attrs;
+
         return m("div.widget",
             [
                 m("p", "Name: " + person.name),

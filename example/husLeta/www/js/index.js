@@ -9,8 +9,8 @@ var app = {
     },
     onDeviceReady: function() {
         m.route(document.body, "/", {
-            "/" : Home,
-            "/search" : Search
+            "/": Home,
+            "/search": Search
         });
     }
 };

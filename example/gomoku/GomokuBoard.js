@@ -4,10 +4,10 @@
  *
  */
 var GomokuBoard = {
-    board : [],
-    player1 : "Player 1",
-    player2 : "Player 2",
-    marker : ["_", "X", "O"],
+    board: [],
+    player1: "Player 1",
+    player2: "Player 2",
+    marker: ["_", "X", "O"],
 
 
 
@@ -15,7 +15,7 @@ var GomokuBoard = {
      * Clear the board.
      *
      */
-    clear : function () {
+    clear: function () {
         this.board = [];
         this.player = 0;
         this.size = null;
@@ -31,7 +31,7 @@ var GomokuBoard = {
      * @throws Error size is not within 10-99.
      *
      */
-    start : function (size) {
+    start: function (size) {
         size = (typeof size !== 'undefined') ?  size : 20;
         this.clear();
 
@@ -58,7 +58,7 @@ var GomokuBoard = {
      * @throws Error if the position is already taken.
      *
      */
-    place : function (x, y) {
+    place: function (x, y) {
         var position = this.getPosition(x, y);
 
         if (this.isTaken(position)) {
@@ -76,7 +76,7 @@ var GomokuBoard = {
      * @return Integer | null
      *
      */
-    getSize : function () {
+    getSize: function () {
         return this.size;
     },
 
@@ -90,7 +90,7 @@ var GomokuBoard = {
      * @return true | false
      *
      */
-    isTaken : function (position) {
+    isTaken: function (position) {
         return (this.board[position] === 0) ? false : true;
     },
 
@@ -107,7 +107,7 @@ var GomokuBoard = {
      * @return true | false
      *
      */
-    isPositionTaken : function (x, y) {
+    isPositionTaken: function (x, y) {
         return this.isTaken(this.getPosition(x, y));
     },
 
@@ -123,7 +123,7 @@ var GomokuBoard = {
      *
      * @return Integer as internal board position.
      */
-    getPosition : function (x, y) {
+    getPosition: function (x, y) {
         if (x < 0 || x >= this.size || y < 0 || y >= this.size) {
             throw new Error("Position is outside of the board.");
         }
@@ -141,7 +141,7 @@ var GomokuBoard = {
      *
      * @return Integer as internal board position, can be outside board.
      */
-    positionHelper :function (x, y) {
+    positionHelper: function (x, y) {
         return x + y * this.size;
     },
 
@@ -153,7 +153,7 @@ var GomokuBoard = {
      * @return true | false
      *
      */
-    isFull : function () {
+    isFull: function () {
         return this.board.every((currentValue) => {
             return currentValue !== 0;
         });
@@ -168,7 +168,7 @@ var GomokuBoard = {
      *
      * @return this
      */
-    placeMarker : function (position) {
+    placeMarker: function (position) {
         this.board[position] = this.player;
         return this;
     },
@@ -180,7 +180,7 @@ var GomokuBoard = {
      *
      * @return String
      */
-    playerInTurn : function () {
+    playerInTurn: function () {
         var player = "No player";
 
         if (this.player === 1) {
@@ -199,7 +199,7 @@ var GomokuBoard = {
      *
      * @return String
      */
-    playerInTurnMarker : function () {
+    playerInTurnMarker: function () {
         return this.marker[this.player];
     },
 
@@ -211,7 +211,7 @@ var GomokuBoard = {
      * @return void
      *
      */
-    nextPlayer : function () {
+    nextPlayer: function () {
         this.player = (this.player === 1) ? 2 : 1;
     },
 
@@ -222,7 +222,7 @@ var GomokuBoard = {
      *
      * @return String
      */
-    asAscii : function () {
+    asAscii: function () {
         var x, y, value,
             ascii = "";
 
@@ -255,7 +255,7 @@ var GomokuBoard = {
      *
      * @return Boolean
      */
-    isWinningMove : function (x, y) {
+    isWinningMove: function (x, y) {
         return this.checkDirection(x, y, 1, 1) ||
                 this.checkDirection(x, y, 0, 1) ||
                 this.checkDirection(x, y, -1, 1) ||
@@ -269,11 +269,11 @@ var GomokuBoard = {
      *
      * @return Boolean
      */
-    checkDirection : function (x, y, deltaX, deltaY) {
+    checkDirection: function (x, y, deltaX, deltaY) {
         var fiveInARow = false;
-
         var startOffset = 4;
         var startPosition = this.positionHelper(x - startOffset * deltaX, y - startOffset * deltaY);
+
         while (startPosition < 0) {
             startOffset--;
             startPosition = this.positionHelper(x - startOffset * deltaX, y - startOffset * deltaY);
@@ -281,13 +281,14 @@ var GomokuBoard = {
 
         for (var i = 0; i <= startOffset; i++) {
             var markers = [];
+
             for (var j = 0; j < 5; j++) {
                 var currentX = x - (startOffset - i - j) * deltaX;
                 var currentY = y - (startOffset - i - j) * deltaY;
-
                 var currentPosition = this.positionHelper(currentX, currentY);
 
-                if (currentX >= 0 && currentX < this.size && currentY >= 0 && currentY < this.size) {
+                if (currentX >= 0 && currentX < this.size &&
+                        currentY >= 0 && currentY < this.size) {
                     markers.push(this.board[currentPosition]);
                 } else {
                     markers.push(0);

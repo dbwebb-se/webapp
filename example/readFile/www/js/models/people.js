@@ -1,4 +1,7 @@
+/* global cordova device */
+
 "use strict";
+
 var m = require("mithril");
 
 var fileNameAndroid = "www/peopleInfo.json";
@@ -6,7 +9,7 @@ var fileNameBrowser = "peopleInfo.json";
 
 var People = {};
 
-function fail (err) {
+function fail(err) {
     console.log("Error: ", err);
 }
 
@@ -15,7 +18,6 @@ function readData(fileEntry) {
         var reader = new FileReader();
 
         reader.onloadend = function() {
-            console.log(JSON.parse(this.result));
             People.data = JSON.parse(this.result);
             m.redraw();
         };
@@ -24,21 +26,24 @@ function readData(fileEntry) {
 }
 
 function getDataAndroid() {
-    window.resolveLocalFileSystemURL(cordova.file.applicationDirectory + fileNameAndroid, readData, fail);
+    window
+        .resolveLocalFileSystemURL(cordova.file.applicationDirectory + fileNameAndroid,
+            readData,
+            fail);
 }
 
 function getDataBrowser() {
     m.request({
         method: "GET",
         url: fileNameBrowser
-    })
-    .then(function (items) {
+    }).then(function (items) {
         People.data = items;
     });
 }
 
 function loadPeopleData() {
     var isAndroid = (device.platform === "Android");
+
     if (isAndroid) {
         getDataAndroid();
     } else {

@@ -1,6 +1,4 @@
-/**
- * Router tests
- */
+/* global describe, beforeEach, afterEach, it */
 "use strict";
 
 process.env.NODE_ENV = 'test';
@@ -10,6 +8,7 @@ var http = require('http');
 // Dependencies needed for tests.
 var assert = require('assert');
 var request = require('supertest');
+
 describe('Router', () => {
     var router;
 
@@ -29,7 +28,6 @@ describe('Router', () => {
     }
 
     describe('Route', () => {
-
         it('Should remove trailing slashes from path', (done) => {
             router.get('/animal/', (req, res) => {
                 res.end('animal');
@@ -116,8 +114,6 @@ describe('Router', () => {
                     .expect(404, done);
             });
 
-
-
             it('Multiple get requests', (done) => {
                 router.get('/a', (req, res) => {
                     res.end('a');
@@ -152,6 +148,7 @@ describe('Router', () => {
             it('/hello with json-data', (done) => {
                 router.post('/hello', (req, res) => {
                     var word = req.body.a + ' ' + req.body.b;
+
                     res.end(word, 200);
                 });
 
@@ -171,6 +168,7 @@ describe('Router', () => {
             it('/world with query-data', (done) => {
                 router.post('/world', (req, res) => {
                     var word = req.body.a + ' ' + req.body.b;
+
                     res.end(word, 200);
                 });
 
@@ -188,14 +186,11 @@ describe('Router', () => {
                         done();
                     });
             });
-
         });
-
     });
 
     describe('Group method', () => {
         it('GROUP laravel style', (done) => {
-
             // Group all routes inside to /api/v1
             router.group('/api/v1', () => {
                 router.get('/test', (req, res) => {
@@ -276,7 +271,6 @@ describe('Router', () => {
         });
 
         it('/ route in a group', (done) => {
-
             router.group('/api', function() {
                 router.get('/', function (req, res) {
                     res.send('GET /');
@@ -309,7 +303,6 @@ describe('Router', () => {
 
                 // /api/v1/
                 router.group('/v1', function() {
-
                     // /api/v1/
                     router.get('/', function(req, res) {
                         res.send('/api/v1/');
@@ -321,17 +314,16 @@ describe('Router', () => {
 
                     // /api/v1/something/
                     router.group('/something', function() {
-
                         // /api/v1/something/kalle
                         router.get('/kalle', function (req, res) {
                             res.send('kalle');
                         });
                     });
-
                 });
             });
 
             var req = request(setupServer());
+
             req
                 .get('/api/v1')
                 .expect(200, '/api/v1/')
@@ -398,14 +390,11 @@ describe('Router', () => {
                 .expect(200)
                 .expect('Content-Type', /json/, done);
         });
-
     });
 
     describe('The request object', () => {
-
         it('Query parameters empty', (done) => {
             router.get('/animal', (req, res) => {
-
                 if (req.query instanceof Object && Object.keys(req.query).length === 0) {
                     res.end('empty');
                 } else {
@@ -414,6 +403,7 @@ describe('Router', () => {
             });
 
             var req = request(setupServer());
+
             req
                 .get('/animal') // Without a query param -> empty
                 .expect(200, 'empty')
@@ -427,6 +417,7 @@ describe('Router', () => {
         it('Should be able to use request params', (done) => {
             router.get('/animal', (req, res) => {
                 var query = req.query.id;
+
                 res.end('animal' + query);
             });
 
@@ -438,6 +429,7 @@ describe('Router', () => {
         it('GET with params', (done) => {
             router.get('/animal/:name', (req, res) => {
                 var name = req.params.name;
+
                 res.end('Animal ' + name);
             });
 
@@ -461,6 +453,7 @@ describe('Router', () => {
 
         it('GET with many params', (done) => {
             var b, c, d;
+
             router.get('/a/:b/:c/:d', (req, res) => {
                 b = req.params.b;
                 c = req.params.c;

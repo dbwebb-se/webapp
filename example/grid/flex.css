@@ -1,19 +1,19 @@
-html, body {
-    margin:0;
-    padding:0;
+html,
+body {
+    margin: 0;
+    padding: 0;
 }
 
 .flex-container {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row || wrap;
 }
 
 .widget {
     height: 200px;
     padding: 10px;
     box-sizing: border-box;
-    border:2px solid #CCC;
+    border: 2px solid #ccc;
     flex: 0 0 98%;
     margin: 0 1% 10px;
 }
@@ -21,7 +21,7 @@ html, body {
 /* Media queries for .widget */
 @media (min-width: 500px) {
     .widget {
-        flex: 0 0 48.0%;
+        flex: 0 0 48%;
     }
 }
 
@@ -33,6 +33,6 @@ html, body {
 
 @media (min-width: 980px) {
     .widget {
-        flex: 0 0 23.0%;
+        flex: 0 0 23%;
     }
 }

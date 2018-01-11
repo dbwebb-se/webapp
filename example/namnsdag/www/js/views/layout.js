@@ -4,7 +4,7 @@ var m = require("mithril");
 module.exports = {
     view: function(vnode) {
         return m("main", [
-            m("navbar", [
+            m("div.navbar", [
                 m("div.container", [
                     m("h2.brand", "Emil Folino"),
                     m("ul.nav", [
