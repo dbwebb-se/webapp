@@ -23,8 +23,14 @@ var home = (function () {
         greeting.textContent = timeOfDayGreeting +
             ", jag heter Emil Folino och är lärare i kursen webapp. ";
 
+        var image = document.createElement("img");
+
+        image.src = "emilfolino.jpg";
+        image.alt = "Emil Folino";
+
         window.mainContainer.appendChild(title);
         window.mainContainer.appendChild(greeting);
+        window.mainContainer.appendChild(image);
 
         window.rootElement.appendChild(window.mainContainer);
 

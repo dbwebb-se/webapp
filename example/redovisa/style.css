@@ -19,6 +19,10 @@ body {
     font-size: 1.2rem;
 }
 
+.container img {
+    width: 100%;
+}
+
 .bottom-nav {
     position: fixed;
     bottom: 0;
