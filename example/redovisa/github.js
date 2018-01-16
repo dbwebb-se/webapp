@@ -26,7 +26,9 @@ var github = (function () {
             window.rootElement.appendChild(window.mainContainer);
 
             menu.showMenu("folder");
-        });
+        }).catch(function(error) {
+            console.log('The fetch operation failed due to the following error: ', error.message);
+        });;
 
         // var githubRequest = new XMLHttpRequest();
         // githubRequest.addEventListener("load", renderGithubRepos);
