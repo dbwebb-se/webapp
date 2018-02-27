@@ -5,46 +5,34 @@
 #
 
 # kmom01
-me/kmom01/me1
-me/kmom01/meapp
+me/kmom01/typography
+me/kmom01/lager1
 
 # kmom02
-me/kmom02/me2
-# version 2
-me/kmom02/nobel
 me/kmom02/jq
+me/kmom02/buttons
+me/kmom02/lager2
 
 # kmom03
-me/kmom03/me3
-me/kmom03/ajax
-me/kmom03/jq
-# version 2
-me/kmom03/dashboard
-me/kmom03/grid
+me/kmom03/nobel
+me/kmom03/formular
+me/kmom03/lager3
 
 # kmom04
-me/kmom04/me4
-me/kmom04/mithril
-# version 2
-me/kmom04/winecellar
+me/kmom04/tabeller
+me/kmom04/lager4
 
 # kmom05
-me/kmom05/me5
-# version 2
-me/kmom05/pizza
+me/kmom05/hello
+me/kmom05/lager5
 
 # kmom06
-me/kmom06/me6
-me/kmom06/cordova
-# version 2
-me/kmom06/gomoku
+me/kmom06/animation
+me/kmom06/gps
+me/kmom06/lager6
 
 # kmom10
 me/kmom10/proj
 
-# lib
-me/lib/jquery
-
 # redovisa
-# version 2
 me/redovisa
