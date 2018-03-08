@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     margin: 0;
     height: 100%;
 }
@@ -15,8 +16,7 @@ a {
     height: 100%;
     color: #fcfcfc;
     padding: 1rem;
-
-    animation: moveFromRight .4s ease both;
+    animation: moveFromRight 0.4s ease both;
 }
 
 .slide-in a {
@@ -24,7 +24,7 @@ a {
 }
 
 .slide-out {
-    animation: moveToRight .4s ease both;
+    animation: moveToRight 0.4s ease both;
 }
 
 .detail-1 {
@@ -32,7 +32,7 @@ a {
 }
 
 .detail-2 {
-    background-color: #0074D9;
+    background-color: #0074d9;
 }
 
 @keyframes moveFromRight {
@@ -40,6 +40,5 @@ a {
 }
 
 @keyframes moveToRight {
-    from { }
     to { transform: translateX(100%); }
 }

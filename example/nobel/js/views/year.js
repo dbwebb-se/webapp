@@ -1,7 +1,7 @@
 "use strict";
 
 var m = require("mithril");
-var nobel = require("../models/nobel.js")
+var nobel = require("../models/nobel.js");
 
 module.exports = {
     oninit: function(vnode) {

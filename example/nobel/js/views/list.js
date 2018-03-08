@@ -10,8 +10,8 @@ module.exports = {
         while (startYear <= endYear) {
             years.push(
                 m("a.button.blue-button.full-width-button",
-                { href: "/year/" + startYear, oncreate: m.route.link },
-                startYear));
+                    { href: "/year/" + startYear, oncreate: m.route.link },
+                    startYear));
             startYear++;
         }
 

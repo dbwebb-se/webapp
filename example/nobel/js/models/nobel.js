@@ -8,8 +8,7 @@ var nobel = {
         return m.request({
             method: "GET",
             url: "http://api.nobelprize.org/v1/prize.json?year=" + year
-        })
-        .then(function(result) {
+        }).then(function(result) {
             nobel.current = result;
         });
     }
