@@ -1,0 +1,97 @@
+.button {
+    color: $almost-black;
+    background-color: $white;
+    background-image: linear-gradient($white, darken($white, 20%));
+    border: 1px solid darken($white, 20%);
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: $font-header;
+    font-size: $body-font-size;
+    padding: 0.4rem 1rem;
+    text-align: center;
+    border-radius: 0.2rem;
+    line-height: $line-height;
+}
+
+.button:hover {
+    background-color: darken($white, 30%);
+    background-image: none;
+}
+
+.button:active {
+    background-color: darken($white, 35%);
+    background-image: none;
+    box-shadow: inset 0 2px 4px rgba(red($black),green($black),blue($black),0.15);
+}
+
+.full-width-button {
+    width: 100%;
+}
+
+.blue-button {
+    color: #fff;
+    background-color: $blue;
+    background-image: linear-gradient($blue, darken($blue, 20%));
+    border-color: darken($blue, 20%);
+}
+
+.blue-button:hover {
+    background-color: darken($blue, 30%);
+    background-image: none;
+}
+
+.blue-button:active {
+    background-color: darken($blue, 35%);
+    background-image: none;
+}
+
+.red-button {
+    color: #fff;
+    background-color: $red;
+    background-image: linear-gradient($red, darken($red, 20%));
+    border-color: darken($red, 20%);
+}
+
+.red-button:hover {
+    background-color: darken($red, 30%);
+    background-image: none;
+}
+
+.red-button:active {
+    background-color: darken($red, 35%);
+    background-image: none;
+}
+
+.yellow-button {
+    color: #fff;
+    background-color: $yellow;
+    background-image: linear-gradient($yellow, darken($yellow, 20%));
+    border-color: darken($yellow, 20%);
+}
+
+.yellow-button:hover {
+    background-color: darken($yellow, 30%);
+    background-image: none;
+}
+
+.yellow-button:active {
+    background-color: darken($yellow, 35%);
+    background-image: none;
+}
+
+.green-button {
+    color: #fff;
+    background-color: $green;
+    background-image: linear-gradient($green, darken($green, 20%));
+    border-color: darken($green, 20%);
+}
+
+.green-button:hover {
+    background-color: darken($green, 30%);
+    background-image: none;
+}
+
+.green-button:active {
+    background-color: darken($green, 35%);
+    background-image: none;
+}
