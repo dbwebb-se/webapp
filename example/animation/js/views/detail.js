@@ -6,7 +6,10 @@ module.exports = {
     onbeforeremove: function(vnode) {
         vnode.dom.classList.add("slide-out");
         return new Promise(function(resolve) {
-            setTimeout(resolve, 250);
+            setTimeout(function() {
+                vnode.dom.classList.remove("slide-out");
+                resolve();
+            }, 250);
         });
     },
     view: function(vnode) {
