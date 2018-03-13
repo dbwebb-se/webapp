@@ -8,19 +8,12 @@
     "start": "webpack -d",
     "watch": "webpack -d --watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/emilfolino/nobel.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/emilfolino/nobel/issues"
-  },
-  "homepage": "https://github.com/emilfolino/nobel#readme",
   "dependencies": {
     "mithril": "^1.1.6",
-    "webpack": "^3.10.0"
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.11"
   }
 }
