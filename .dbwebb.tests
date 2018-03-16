@@ -112,6 +112,8 @@ dbwebb validate hello
 
 # https://dbwebb.se/uppgift/lager-appen-del-5
 test -d me/kmom05/lager5
+mkdir -p me/kmom05/lager5/platforms/browser/www/
+cp example/splashScreen/www/index.html me/kmom05/lager5/platforms/browser/www/
 dbwebb validate lager5
 
 
@@ -135,6 +137,8 @@ dbwebb validate gps
 
 # https://dbwebb.se/uppgift/lager-appen-del-6
 test -d me/kmom06/lager6
+mkdir -p me/kmom06/lager6/platforms/browser/www/
+cp example/splashScreen/www/index.html me/kmom06/lager6/platforms/browser/www/
 dbwebb validate lager6
 
 
@@ -146,6 +150,8 @@ dbwebb validate lager6
 
 # https://dbwebb.se/kurser/webapp-v3/kmom10
 test -d me/kmom10/proj
+mkdir -p me/kmom10/proj/platforms/browser/www/
+cp example/splashScreen/www/index.html me/kmom10/proj/platforms/browser/www/
 dbwebb validate proj
 
 
@@ -156,8 +162,8 @@ dbwebb validate proj
 #
 make dbwebb-inspect options="--yes --no-validate" what=kmom01
 make dbwebb-inspect options="--yes --no-validate" what=kmom02
-#make dbwebb-inspect options="--yes --no-validate" what=kmom03
-#make dbwebb-inspect options="--yes --no-validate" what=kmom04
-#make dbwebb-inspect options="--yes --no-validate" what=kmom05
-#make dbwebb-inspect options="--yes --no-validate" what=kmom06
-#make dbwebb-inspect options="--yes --no-validate" what=kmom10
+make dbwebb-inspect options="--yes --no-validate" what=kmom03
+make dbwebb-inspect options="--yes --no-validate" what=kmom04
+make dbwebb-inspect options="--yes --no-validate" what=kmom05
+make dbwebb-inspect options="--yes --no-validate" what=kmom06
+make dbwebb-inspect options="--yes --no-validate" what=kmom10

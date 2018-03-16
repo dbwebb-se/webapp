@@ -33,6 +33,7 @@ webapplast()
 #
 webappkmom01()
 {
+    inspectExerciseHeader "lager1" "uppgift/lager-appen-del-1" "$KMOM/lager1"
     printUrl "" "me/$KMOM/lager1"
 }
 
@@ -46,6 +47,7 @@ webappkmom02()
     inspectExerciseHeader "jq" "uppgift/sokverktyg-for-json-filer" "$KMOM/jq"
     inspectCommand "solution.bash" "$THEDIR/me/$KMOM/jq" "./solution.bash"
 
+    inspectExerciseHeader "lager2" "uppgift/lager-appen-del-2" "$KMOM/lager2"
     printUrl "" "me/$KMOM/lager2"
 }
 
@@ -56,7 +58,8 @@ webappkmom02()
 #
 webappkmom03()
 {
-    :
+    inspectExerciseHeader "lager3" "uppgift/lager-appen-del-3" "$KMOM/lager3"
+    printUrl "" "me/$KMOM/lager3"
 }
 
 
@@ -66,7 +69,8 @@ webappkmom03()
 #
 webappkmom04()
 {
-    :
+    inspectExerciseHeader "lager4" "uppgift/lager-appen-del-4" "$KMOM/lager4"
+    printUrl "" "me/$KMOM/lager4"
 }
 
 
@@ -76,7 +80,8 @@ webappkmom04()
 #
 webappkmom05()
 {
-    :
+    inspectExerciseHeader "lager5" "uppgift/lager-appen-del-5" "$KMOM/lager5"
+    printUrl "" "me/$KMOM/lager5/platforms/browser/www/"
 }
 
 
@@ -86,7 +91,8 @@ webappkmom05()
 #
 webappkmom06()
 {
-    :
+    inspectExerciseHeader "lager6" "uppgift/lager-appen-del-6" "$KMOM/lager6"
+    printUrl "" "me/$KMOM/lager6/platforms/browser/www/"
 }
 
 
@@ -96,5 +102,6 @@ webappkmom06()
 #
 webappkmom10()
 {
-    :
+    inspectExerciseHeader "proj" "kurser/webapp-v3/kmom10" "$KMOM/proj"
+    printUrl "" "me/$KMOM/proj/platforms/browser/www/"
 }
