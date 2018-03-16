@@ -12,10 +12,7 @@ dbwebb init-me
 #
 
 # lager1
-
 test -d me/kmom01/lager1
-cd me/kmom01/lager1 && touch index.html
-
 dbwebb validate lager1
 
 
@@ -26,7 +23,9 @@ test -d me/redovisa
 
 # https://dbwebb.se/uppgift/spa-me-app
 # https://dbwebb.se/kunskap/en-single-page-application-me-app
-cd me/redovisa && touch index.html style.css main.js
+cp example/redovisa/index.html me/redovisa/
+cp example/redovisa/style.css me/redovisa/
+cp example/redovisa/main.js me/redovisa/
 cd me/redovisa && wget https://necolas.github.io/normalize.css/8.0.0/normalize.css -O normalize.min.css
 
 dbwebb validate redovisa
@@ -43,34 +42,57 @@ test -d me/kmom02/jq
 cp example/instagram/tag-dbwebb.json me/kmom02/jq
 dbwebb validate jq
 
-# https://dbwebb.se/uppgift/skapa-en-nobel-app
+
+
+# https://dbwebb.se/kunskap/knappar-for-mobilen
 test -d me/kmom02/buttons
 dbwebb validate buttons
 
+
+
+# https://dbwebb.se/uppgift/lager-appen-del-2
 test -d me/kmom02/lager2
 dbwebb validate lager2
+
+
 
 # --------------------------------------------------------------------------
 #
 # Kmom03
 #
 
-# https://dbwebb.se/kunskap/ett-enkelt-grid-for-alla-vara-enheter
-test -d me/kmom03/grid
-cd me/kmom03/grid && touch index.html style.css
+# https://dbwebb.se/kunskap/kom-igang-med-mithril-v2
+test -d me/kmom03/nobel
+dbwebb validate nobel
 
-# https://dbwebb.se/uppgift/mithril-dashboard
-test -d me/kmom03/dashboard
-dbwebb validate dashboard
+
+
+# https://dbwebb.se/kunskap/ett-mobilanpassad-formular
+test -d me/kmom03/formular
+dbwebb validate formular
+
+
+
+# https://dbwebb.se/uppgift/lager-appen-del-3
+test -d me/kmom03/lager3
+dbwebb validate lager3
+
+
 
 # --------------------------------------------------------------------------
 #
 # Kmom04
 #
 
-# https://dbwebb.se/uppgift/vinkallare-appen
-test -d me/kmom04/winecellar
-dbwebb validate winecellar
+# https://dbwebb.se/kunskap/tabeller-i-mobila-enheter
+test -d me/kmom04/tabeller
+dbwebb validate tabeller
+
+
+
+# https://uppgift/lager-appen-del-4
+test -d me/kmom04/lager4
+dbwebb validate lager4
 
 
 
@@ -79,9 +101,16 @@ dbwebb validate winecellar
 # Kmom05
 #
 
-# https://dbwebb.se/uppgift/me-app-till-din-lokala-pizzeria-v2
-test -d me/kmom05/pizza
-dbwebb validate pizza
+# https://dbwebb.se/kunskap/kom-igang-med-cordova
+# https://dbwebb.se/kunskap/splash-screen-och-ikon
+test -d me/kmom05/hello
+dbwebb validate hello
+
+
+
+# https://dbwebb.se/uppgift/lager-appen-del-5
+test -d me/kmom05/lager5
+dbwebb validate lager5
 
 
 
@@ -90,16 +119,30 @@ dbwebb validate pizza
 # Kmom06
 #
 
-# https://dbwebb.se/uppgift/gomoku-klient-i-mithril
-test -d me/kmom06/gomoku
-dbwebb validate gomoku
+# https://dbwebb.se/kunskap/animationer-och-overgangar
+test -d me/kmom06/animation
+dbwebb validate animation
+
+
+
+# https://dbwebb.se/kunskap/gps-och-karta
+test -d me/kmom06/gps
+dbwebb validate gps
+
+
+
+# https://dbwebb.se/uppgift/lager-appen-del-6
+test -d me/kmom06/lager6
+dbwebb validate lager6
+
+
 
 # --------------------------------------------------------------------------
 #
 # Kmom10
 #
 
-# https://dbwebb.se/uppgift/gomoku-klient-i-mithril
+# https://dbwebb.se/kurser/webapp-v3/kmom10
 test -d me/kmom10/proj
 dbwebb validate proj
 
