@@ -152,7 +152,7 @@ dbwebb validate proj
 #
 # Inspect
 #
-#make dbwebb-inspect options="--yes --no-validate" what=kmom01
+make dbwebb-inspect options="--yes --no-validate" what=kmom01
 #make dbwebb-inspect options="--yes --no-validate" what=kmom02
 #make dbwebb-inspect options="--yes --no-validate" what=kmom03
 #make dbwebb-inspect options="--yes --no-validate" what=kmom04

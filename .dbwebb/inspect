@@ -33,7 +33,7 @@ webapplast()
 #
 webappkmom01()
 {
-    printUrl "index.html" "me/$KMOM/lager1"
+    printUrl "" "me/$KMOM/lager1"
 }
 
 
