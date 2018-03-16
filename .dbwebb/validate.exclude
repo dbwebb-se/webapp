@@ -40,5 +40,12 @@
 +./me/*/platforms/browser/www/css/*.css
 +./me/*/platforms/browser/www/js/*.js
 
+--./me/*/platforms/*/cordova.js
+--./me/*/platforms/*/cordova_plugins.js
+--./me/*/platforms/*/cordova-js-src/*
+
+--./me/*/platforms/ios/*
+
+
 # -- Really remove files, even if found below +subdirs
 --*font-awesome*
