@@ -20,6 +20,7 @@
 -*/coverage/*
 -*/node_modules/*
 -*/vendor/*
+-*/dist/*
 
 +./build/webroot/*
 -./build/webroot/*/build/*
