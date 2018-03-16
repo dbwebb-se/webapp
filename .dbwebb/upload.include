@@ -17,88 +17,92 @@
 - node_modules/
 /example/**
 
-#/me/
-#- /me/anax-lite/.bin
-#- /me/anax-lite/cache/cimage/*
-#- vendor/mos/cimage/webroot
-#- vendor/**/config
-#- vendor/**/docs
-#- vendor/**/test
-#- node_modules/
-#/me/**
-
-
 /me/
 - build/
 - node_modules/
-#- plugins/
+- plugins/
 - hooks/
 platforms/browser/www/config.xml
 - config.xml
 
+#kmom01
+kmom01/
+kmom01/lager1/
+kmom01/lager1/*
+kmom01/lager1/**
+
+
+
 # kmom02
 kmom02/
-kmom02/nobel/
-kmom02/nobel/platforms/
-kmom02/nobel/platforms/android/
-kmom02/nobel/platforms/android/build/
-kmom02/nobel/platforms/android/build/outputs/
-kmom02/nobel/platforms/android/build/outputs/apk/
-kmom02/nobel/platforms/android/build/outputs/apk/*
-kmom02/nobel/platforms/android/build/outputs/apk/**
-kmom02/nobel/platforms/browser/
-kmom02/nobel/platforms/browser/www/
-kmom02/nobel/platforms/browser/www/*
-kmom02/nobel/platforms/browser/www/**
-- kmom02/nobel/**
+kmom02/jq/
+kmom02/jq/*
+kmom02/jq/**
+kmom02/lager2/
+kmom02/lager2/*
+kmom02/lager2/**
+- kmom02/lager2/node_modules/
+
 
 
 # kmom03
 kmom03/
-kmom03/dashboard/
-kmom03/dashboard/platforms/
-kmom03/dashboard/platforms/browser/
-kmom03/dashboard/platforms/browser/www/
-kmom03/dashboard/platforms/browser/www/*
-kmom03/dashboard/platforms/browser/www/**
-- kmom03/dashboard/**
+kmom03/lager3/
+kmom03/lager3/*
+kmom03/lager3/**
+- kmom03/lager3/node_modules/
+
+
 
 # kmom04
 kmom04/
-kmom04/winecellar/
-kmom04/winecellar/platforms/
-kmom04/winecellar/platforms/android/
-kmom04/winecellar/platforms/android/build/
-kmom04/winecellar/platforms/android/build/outputs/
-kmom04/winecellar/platforms/android/build/outputs/apk/
-kmom04/winecellar/platforms/android/build/outputs/apk/*
-kmom04/winecellar/platforms/android/build/outputs/apk/**
-kmom04/winecellar/platforms/browser/
-kmom04/winecellar/platforms/browser/www/
-kmom04/winecellar/platforms/browser/www/*
-kmom04/winecellar/platforms/browser/www/**
-- kmom04/wincecellar/**
+kmom04/lager4/
+kmom04/lager4/*
+kmom04/lager4/**
+- kmom04/lager4/node_modules/
+
 
 
 # kmom05
 kmom05/
-kmom05/pizza/
-kmom05/pizza/platforms/
-kmom05/pizza/platforms/browser/
-kmom05/pizza/platforms/browser/www/
-kmom05/pizza/platforms/browser/www/*
-kmom05/pizza/platforms/browser/www/**
-- kmom05/pizza/**
+kmom05/lager5/
+kmom05/lager5/platforms/
+kmom05/lager5/platforms/android/
+kmom05/lager5/platforms/android/build/
+kmom05/lager5/platforms/android/build/outputs/
+kmom05/lager5/platforms/android/build/outputs/apk/
+kmom05/lager5/platforms/android/build/outputs/apk/*
+kmom05/lager5/platforms/android/build/outputs/apk/**
+kmom05/lager5/platforms/browser/
+kmom05/lager5/platforms/browser/www/
+kmom05/lager5/platforms/browser/www/*
+kmom05/lager5/platforms/browser/www/**
+kmom05/lager5/platforms/ios/
+kmom05/lager5/platforms/ios/*
+kmom05/lager5/platforms/ios/**
+- kmom05/lager5/**
+
+
 
 # kmom06
 kmom06/
-kmom06/gomoku/
-kmom06/gomoku/platforms/
-kmom06/gomoku/platforms/browser/
-kmom06/gomoku/platforms/browser/www/
-kmom06/gomoku/platforms/browser/www/*
-kmom06/gomoku/platforms/browser/www/**
-- kmom06/gomoku/**
+kmom06/lager6/
+kmom06/lager6/platforms/
+kmom06/lager6/platforms/android/
+kmom06/lager6/platforms/android/build/
+kmom06/lager6/platforms/android/build/outputs/
+kmom06/lager6/platforms/android/build/outputs/apk/
+kmom06/lager6/platforms/android/build/outputs/apk/*
+kmom06/lager6/platforms/android/build/outputs/apk/**
+kmom06/lager6/platforms/browser/
+kmom06/lager6/platforms/browser/www/
+kmom06/lager6/platforms/browser/www/*
+kmom06/lager6/platforms/browser/www/**
+kmom06/lager6/platforms/ios/
+kmom06/lager6/platforms/ios/*
+kmom06/lager6/platforms/ios/**
+- kmom06/lager6/**
+
 
 
 # kmom10
@@ -115,12 +119,15 @@ kmom10/proj/platforms/browser/
 kmom10/proj/platforms/browser/www/
 kmom10/proj/platforms/browser/www/*
 kmom10/proj/platforms/browser/www/**
+kmom10/proj/platforms/ios/
+kmom10/proj/platforms/ios/*
+kmom10/proj/platforms/ios/**
 - kmom10/proj/**
+
 
 
 # Redovisa
 redovisa/**
-
 
 /me/**
 
