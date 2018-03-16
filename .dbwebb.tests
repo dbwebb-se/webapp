@@ -40,6 +40,8 @@ dbwebb validate redovisa
 # https://dbwebb.se/uppgift/sokverktyg-for-json-filer
 test -d me/kmom02/jq
 cp example/instagram/tag-dbwebb.json me/kmom02/jq
+cp example/solution/solution.bash me/kmom02/jq/
+chmod +x me/kmom02/jq/solution.bash
 dbwebb validate jq
 
 
@@ -153,7 +155,7 @@ dbwebb validate proj
 # Inspect
 #
 make dbwebb-inspect options="--yes --no-validate" what=kmom01
-#make dbwebb-inspect options="--yes --no-validate" what=kmom02
+make dbwebb-inspect options="--yes --no-validate" what=kmom02
 #make dbwebb-inspect options="--yes --no-validate" what=kmom03
 #make dbwebb-inspect options="--yes --no-validate" what=kmom04
 #make dbwebb-inspect options="--yes --no-validate" what=kmom05
