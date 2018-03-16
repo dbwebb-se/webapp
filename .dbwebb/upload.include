@@ -119,13 +119,7 @@ kmom10/proj/platforms/browser/www/**
 
 
 # Redovisa
-redovisa/
-redovisa/platforms/
-redovisa/platforms/browser/
-redovisa/platforms/browser/www/
-redovisa/platforms/browser/www/*
-redovisa/platforms/browser/www/**
-- redovisa/**
+redovisa/**
 
 
 /me/**

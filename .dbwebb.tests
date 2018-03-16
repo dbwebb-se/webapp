@@ -10,14 +10,26 @@ dbwebb init-me
 #
 # Kmom01
 #
-test -d me/redovisa
 
-# http://local.dbwebb.se/kunskap/kom-igang-med-mithril-och-webpack
-cd me/redovisa && mkdir www www/js www/js/views && touch www/js/views/me.js
+# lager1
+
+test -d me/kmom01/lager1
+cd me/kmom01/lager1 && touch index.html
+
+dbwebb validate lager1
+
+
 
 # redovisa
-dbwebb validate redovisa
 
+test -d me/redovisa
+
+# https://dbwebb.se/uppgift/spa-me-app
+# https://dbwebb.se/kunskap/en-single-page-application-me-app
+cd me/redovisa && touch index.html style.css main.js
+cd me/redovisa && wget https://necolas.github.io/normalize.css/8.0.0/normalize.css -O normalize.min.css
+
+dbwebb validate redovisa
 
 
 
@@ -26,27 +38,28 @@ dbwebb validate redovisa
 # Kmom02
 #
 
-# http://local.dbwebb.se/uppgift/sokverktyg-for-json-filer
+# https://dbwebb.se/uppgift/sokverktyg-for-json-filer
 test -d me/kmom02/jq
 cp example/instagram/tag-dbwebb.json me/kmom02/jq
 dbwebb validate jq
 
-# http://local.dbwebb.se/uppgift/skapa-en-nobel-app
-test -d me/kmom02/nobel
-dbwebb validate nobel
+# https://dbwebb.se/uppgift/skapa-en-nobel-app
+test -d me/kmom02/buttons
+dbwebb validate buttons
 
-
+test -d me/kmom02/lager2
+dbwebb validate lager2
 
 # --------------------------------------------------------------------------
 #
 # Kmom03
 #
 
-# http://local.dbwebb.se/kunskap/ett-enkelt-grid-for-alla-vara-enheter
+# https://dbwebb.se/kunskap/ett-enkelt-grid-for-alla-vara-enheter
 test -d me/kmom03/grid
 cd me/kmom03/grid && touch index.html style.css
 
-# http://local.dbwebb.se/uppgift/mithril-dashboard
+# https://dbwebb.se/uppgift/mithril-dashboard
 test -d me/kmom03/dashboard
 dbwebb validate dashboard
 
@@ -55,7 +68,7 @@ dbwebb validate dashboard
 # Kmom04
 #
 
-# http://local.dbwebb.se/uppgift/vinkallare-appen
+# https://dbwebb.se/uppgift/vinkallare-appen
 test -d me/kmom04/winecellar
 dbwebb validate winecellar
 
@@ -66,7 +79,7 @@ dbwebb validate winecellar
 # Kmom05
 #
 
-# http://local.dbwebb.se/uppgift/me-app-till-din-lokala-pizzeria-v2
+# https://dbwebb.se/uppgift/me-app-till-din-lokala-pizzeria-v2
 test -d me/kmom05/pizza
 dbwebb validate pizza
 
@@ -77,7 +90,7 @@ dbwebb validate pizza
 # Kmom06
 #
 
-# http://local.dbwebb.se/uppgift/gomoku-klient-i-mithril
+# https://dbwebb.se/uppgift/gomoku-klient-i-mithril
 test -d me/kmom06/gomoku
 dbwebb validate gomoku
 
@@ -86,7 +99,7 @@ dbwebb validate gomoku
 # Kmom10
 #
 
-# http://local.dbwebb.se/uppgift/gomoku-klient-i-mithril
+# https://dbwebb.se/uppgift/gomoku-klient-i-mithril
 test -d me/kmom10/proj
 dbwebb validate proj
 
