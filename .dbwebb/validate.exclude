@@ -1,6 +1,6 @@
 #
 # dbwebb validate exclude and include files for validate and publish.
-# 
+#
 # Paths start from courserepo, so path to me is "./me".
 #
 
@@ -34,6 +34,7 @@
 -./me/*/www/*
 -./me/*/plugins/*
 -./me/*/bin/*
+-./me/*/dist/*
 +./me/*/platforms/browser/www/*.html
 +./me/*/platforms/browser/www/css/*.css
 +./me/*/platforms/browser/www/js/*.js

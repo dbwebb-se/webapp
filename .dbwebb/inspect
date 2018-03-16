@@ -33,7 +33,7 @@ webapplast()
 #
 webappkmom01()
 {
-    :
+    printUrl "index.html" "$KMOM/lager1"
 }
 
 
@@ -45,6 +45,8 @@ webappkmom02()
 {
     inspectExerciseHeader "jq" "uppgift/sokverktyg-for-json-filer" "$KMOM/jq"
     inspectCommand "solution.bash" "$THEDIR/me/$KMOM/jq" "./solution.bash"
+
+    printUrl "index.html" "$KMOM/lager2"
 }
 
 
