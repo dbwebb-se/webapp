@@ -67,11 +67,10 @@ kmom04/lager4/**
 kmom05/
 kmom05/lager5/
 kmom05/lager5/config.xml
-kmom05/lager5/platforms/
-kmom05/lager5/platforms/browser/
-kmom05/lager5/platforms/browser/www/
-kmom05/lager5/platforms/browser/www/*
-kmom05/lager5/platforms/browser/www/**
+kmom05/lager5/package.json
+kmom05/lager5/www/
+kmom05/lager5/www/*
+kmom05/lager5/www/**
 - kmom05/lager5/**
 
 - kmom05/hello/
