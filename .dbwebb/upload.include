@@ -74,6 +74,10 @@ kmom05/lager5/platforms/browser/www/*
 kmom05/lager5/platforms/browser/www/**
 - kmom05/lager5/**
 
+- kmom05/hello/
+- kmom05/hello/*
+- kmom05/hello/**
+
 
 
 # kmom06
@@ -86,6 +90,10 @@ kmom06/lager6/platforms/browser/www/
 kmom06/lager6/platforms/browser/www/*
 kmom06/lager6/platforms/browser/www/**
 - kmom06/lager6/**
+
+- kmom06/gps/*
+- kmom06/gps/*
+- kmom06/gps/**
 
 
 
