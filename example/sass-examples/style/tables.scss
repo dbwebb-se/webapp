@@ -60,14 +60,14 @@
         }
 
         td:before {
+            /* För att visa tabell rubrik */
             content: attr(data-title);
-            /* Now like a table header */
+            /* Använder top och left för efterlikna padding */
             position: absolute;
-            /* Mimic padding */
-            top: 6px;
-            left: 6px;
+            top: 0.33rem;
+            left: 0.33rem;
             width: 45%;
-            padding-right: 10px;
+            padding-right: 0.55rem;
             white-space: nowrap;
             text-align:left;
             font-weight: bold;
