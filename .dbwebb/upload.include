@@ -70,6 +70,9 @@ kmom05/lager5/webpack.config.js
 kmom05/lager5/www/
 kmom05/lager5/www/*
 kmom05/lager5/www/**
+kmom05/lager5/res/
+kmom05/lager5/res/*
+kmom05/lager5/res/**
 - kmom05/lager5/**
 
 - kmom05/hello/
@@ -87,6 +90,9 @@ kmom06/lager6/webpack.config.js
 kmom06/lager6/www/
 kmom06/lager6/www/*
 kmom06/lager6/www/**
+kmom06/lager6/res/
+kmom06/lager6/res/*
+kmom06/lager6/res/**
 - kmom06/lager6/**
 
 - kmom06/gps/*
@@ -104,6 +110,9 @@ kmom10/proj/webpack.config.js
 kmom10/proj/www/
 kmom10/proj/www/*
 kmom10/proj/www/**
+kmom10/proj/res/
+kmom10/proj/res/*
+kmom10/proj/res/**
 - kmom10/proj/**
 
 
