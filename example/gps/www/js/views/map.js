@@ -23,15 +23,12 @@ function showMap() {
         "Rödebybacken": [56.261121, 15.628609]
     };
 
-    var addresses = [
-        "Bastionsgatan 14, 371 32 Karlskrona, Sweden",
-        "Krutholmskajen 1, 371 38 Karlskrona, Sweden"
-    ];
-
     map = L.map('map').setView(places["BTH"], 13);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',    {
+        attribution: `&copy;
+        <a href="https://www.openstreetmap.org/copyright">
+        OpenStreetMap</a> contributors`
     }).addTo(map);
     var geocoder = new geosearch.OpenStreetMapProvider();
 
@@ -41,15 +38,22 @@ function showMap() {
         }
     }
 
-    addresses.map(function(address) {
+    var addresses = [
+        "Bastionsgatan 1, Karlskrona",
+        "Kärleksstigen 1, Karlskrona"
+    ];
+
+    for (var i = 0; i < addresses.length; i++) {
+        console.log(addresses[i]);
         geocoder
-        .search({ query: address })
-        .then(function(result) {
-            if (result.length > 0) {
-                L.marker([result[0].y, result[0].x]).addTo(map).bindPopup(result[0].label);
-            }
-        });
-    });
+            .search({ query: addresses[i] })
+            .then(function(result) {
+                console.log(result);
+                if (result.length > 0) {
+                    L.marker([result[0].y, result[0].x]).addTo(map).bindPopup(result[0].label);
+                }
+            });
+    }
 }
 
 function showPosition() {
