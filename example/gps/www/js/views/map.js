@@ -1,18 +1,26 @@
-/* global google */
-
 "use strict";
 
 var m = require("mithril");
+var L = require("leaflet");
+var geosearch = require("leaflet-geosearch");
+
 var position = require("../models/position.js");
 
-var locationMarker;
+var map;
+var locationMarker = L.icon({
+    iconUrl: 'location.png',
+
+    iconSize:     [24, 24],
+    iconAnchor:   [12, 12],
+    popupAnchor:  [0, 0]
+});
 
 function showMap() {
     var places = {
-        "BTH": { lat: 56.181932, lng: 15.590525 },
-        "Stortorget": { lat: 56.160817, lng: 15.586703 },
-        "Hoglands Park": { lat: 56.164077, lng: 15.585887 },
-        "Rödebybacken": { lat: 56.261121, lng: 15.628609 }
+        "BTH": [56.181932, 15.590525],
+        "Stortorget": [56.160817, 15.586703],
+        "Hoglands Park": [56.164077, 15.585887],
+        "Rödebybacken": [56.261121, 15.628609]
     };
 
     var addresses = [
@@ -20,58 +28,36 @@ function showMap() {
         "Krutholmskajen 1, 371 38 Karlskrona, Sweden"
     ];
 
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 8,
-        center: places["BTH"]
-    });
+    map = L.map('map').setView(places["BTH"], 13);
 
-    var geocoder = new google.maps.Geocoder();
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    var geocoder = new geosearch.OpenStreetMapProvider();
 
     for (var place in places) {
         if (places.hasOwnProperty(place)) {
-            new google.maps.Marker({
-                position: places[place],
-                map: map,
-                title: place
-            });
+            L.marker(places[place]).addTo(map).bindPopup(place);
         }
     }
 
     addresses.map(function(address) {
-        geocoder.geocode({'address': address}, function(results, status) {
-            if (status === 'OK') {
-                new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location
-                });
-            } else {
-                alert('Geocode was not successful for the following reason: ' + status);
+        geocoder
+        .search({ query: address })
+        .then(function(result) {
+            if (result.length > 0) {
+                L.marker([result[0].y, result[0].x]).addTo(map).bindPopup(result[0].label);
             }
         });
-    });
-
-    locationMarker = new google.maps.Marker({
-        clickable: false,
-        icon: new google.maps.MarkerImage(
-            'https://maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
-            new google.maps.Size(22, 22),
-            new google.maps.Point(0, 18),
-            new google.maps.Point(11, 11)
-        ),
-        shadow: null,
-        zIndex: 999,
-        map: map
     });
 }
 
 function showPosition() {
     if (position.currentPosition.latitude && position.currentPosition.longitude) {
-        var myPosition = new google.maps.LatLng(
-            position.currentPosition.latitude,
-            position.currentPosition.longitude
-        );
-
-        locationMarker.setPosition(myPosition);
+        L.marker(
+            [position.currentPosition.latitude, position.currentPosition.longitude],
+            {icon: locationMarker}
+        ).addTo(map).bindPopup("Din plats");
     }
 }
 
