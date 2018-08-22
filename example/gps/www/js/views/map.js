@@ -30,7 +30,6 @@ function showMap() {
         <a href="https://www.openstreetmap.org/copyright">
         OpenStreetMap</a> contributors`
     }).addTo(map);
-    var geocoder = new geosearch.OpenStreetMapProvider();
 
     for (var place in places) {
         if (places.hasOwnProperty(place)) {
@@ -38,17 +37,17 @@ function showMap() {
         }
     }
 
+    var geocoder = new geosearch.OpenStreetMapProvider();
+
     var addresses = [
         "Bastionsgatan 1, Karlskrona",
         "Kärleksstigen 1, Karlskrona"
     ];
 
     for (var i = 0; i < addresses.length; i++) {
-        console.log(addresses[i]);
         geocoder
             .search({ query: addresses[i] })
             .then(function(result) {
-                console.log(result);
                 if (result.length > 0) {
                     L.marker([result[0].y, result[0].x]).addTo(map).bindPopup(result[0].label);
                 }
