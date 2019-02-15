@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Source+Sans+Pro');
+
+
 html {
     font-size: 100%;
 }
@@ -6,16 +9,15 @@ body {
     line-height: 1.4;
 }
 
-/* main {
+main {
     padding: 1.4rem 0.6rem;
-} */
+}
 
 h1,
 h2,
 h4 {
     margin-top: 0;
-
-    /* font-family: 'Source Sans Pro', sans-serif; */
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 h1 {
@@ -35,8 +37,7 @@ h4 {
 
 p {
     margin-top: 0;
-
-    /* font-family: 'Merriweather', serif; */
+    font-family: 'Merriweather', serif;
     margin-bottom: 1.4rem;
     font-size: 1rem;
 }
