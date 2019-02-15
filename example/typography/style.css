@@ -14,6 +14,7 @@ h1,
 h2,
 h4 {
     margin-top: 0;
+
     /* font-family: 'Source Sans Pro', sans-serif; */
 }
 
@@ -23,7 +24,7 @@ h1 {
 }
 
 h2 {
-    font-size: 2.0rem;
+    font-size: 2rem;
     margin-bottom: 1.4rem;
 }
 
@@ -34,6 +35,7 @@ h4 {
 
 p {
     margin-top: 0;
+
     /* font-family: 'Merriweather', serif; */
     margin-bottom: 1.4rem;
     font-size: 1rem;
