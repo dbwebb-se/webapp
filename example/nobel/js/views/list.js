@@ -1,7 +1,7 @@
 "use strict";
-var m = require("mithril");
+import m from 'mithril';
 
-module.exports = {
+let list = {
     view: function() {
         var startYear = 2010;
         var endYear = 2017;
@@ -22,3 +22,5 @@ module.exports = {
         ];
     }
 };
+
+export { list };

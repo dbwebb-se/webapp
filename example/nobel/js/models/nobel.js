@@ -1,8 +1,8 @@
 "use strict";
 
-var m = require("mithril");
+import m from "mithril";
 
-var nobel = {
+let nobel = {
     current: { prizes: [] },
     load: function(year) {
         return m.request({
@@ -14,4 +14,4 @@ var nobel = {
     }
 };
 
-module.exports = nobel;
+export { nobel };

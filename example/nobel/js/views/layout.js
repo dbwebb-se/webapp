@@ -1,8 +1,8 @@
 "use strict";
 
-var m = require("mithril");
+import m from 'mithril';
 
-module.exports = {
+let layout = {
     view: function(vnode) {
         return [
             m("nav.top-nav",
@@ -17,3 +17,5 @@ module.exports = {
         ];
     }
 };
+
+export { layout };

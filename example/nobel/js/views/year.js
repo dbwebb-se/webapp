@@ -1,9 +1,9 @@
 "use strict";
 
-var m = require("mithril");
-var nobel = require("../models/nobel.js");
+import m from 'mithril';
+import { nobel } from "../models/nobel.js";
 
-module.exports = {
+let year = {
     oninit: function(vnode) {
         nobel.load(vnode.attrs.year);
     },
@@ -21,3 +21,5 @@ module.exports = {
         ];
     }
 };
+
+export { year };

@@ -1,9 +1,9 @@
 "use strict";
+import m from 'mithril';
 
-var m = require("mithril");
-var layout = require("./views/layout");
-var list = require("./views/list");
-var year = require("./views/year");
+import { layout } from './views/layout';
+import { list } from './views/list';
+import { year } from './views/year';
 
 m.route(document.body, "/", {
     "/": {
