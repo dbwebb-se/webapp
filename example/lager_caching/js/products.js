@@ -6,7 +6,7 @@ var products = {
             return callback();
         }
 
-        fetch("http://localhost:8111/v2/products?api_key=fdc42b2d941e8c6f7b38d974df3758ce")
+        fetch("https://lager.emilfolino.se/v2/products?api_key=[API_KEY]")
             .then(function(response) {
                 return response.json();
             })
