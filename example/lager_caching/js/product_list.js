@@ -7,6 +7,8 @@ let productList = {
     },
 
     renderProducts: function() {
+        let root = document.getElementById("root");
+
         root.innerHTML = "<h2>Produkter</h2>";
 
         products.allProducts.map(function (product) {
