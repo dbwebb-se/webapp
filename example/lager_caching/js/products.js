@@ -7,14 +7,14 @@ var products = {
         }
 
         fetch("http://localhost:8111/v2/products?api_key=fdc42b2d941e8c6f7b38d974df3758ce")
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(result) {
-            products.allProducts = result.data;
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(result) {
+                products.allProducts = result.data;
 
-            return callback();
-        });
+                return callback();
+            });
     },
 
     getProduct: function(productId) {

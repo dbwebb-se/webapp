@@ -13,6 +13,7 @@ const utils = {
 
     removeNodes: function(id) {
         let element = document.getElementById(id);
+
         if (element) {
             while (element.firstChild) {
                 element.removeChild(element.firstChild);
