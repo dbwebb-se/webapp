@@ -1,11 +1,11 @@
 "use strict";
-var m = require("mithril");
+import m from "mithril";
 
-var Layout = require("./views/layout");
-var Me = require("./views/me");
-var Hobby = require("./views/hobby");
-var Days = require("./views/days");
-var Nameday = require("./views/nameday");
+import Layout from "./views/layout";
+import Me from "./views/me";
+import Hobby from "./views/hobby";
+import Days from "./views/days";
+import Nameday from "./views/nameday";
 
 m.route(document.body, "/", {
     "/": {

@@ -1,11 +1,11 @@
 "use strict";
-var m = require("mithril");
+import m from "mithril";
 
-var Nameday = {
+const NamedayModel = {
     currentDate: "1970-01-01",
     currentNames: "",
     load: function (date) {
-        Nameday.currentDate = date;
+        NamedayModel.currentDate = date;
 
         var dateArray = date.split("-");
         var apiURL = "https://api.dryg.net/dagar/v2.1/" +
@@ -15,9 +15,9 @@ var Nameday = {
             method: "GET",
             url: apiURL
         }).then(function (result) {
-            Nameday.currentNames = result.dagar[0].namnsdag.join(" - ");
+            NamedayModel.currentNames = result.dagar[0].namnsdag.join(" - ");
         });
     }
 };
 
-module.exports = Nameday;
+export default NamedayModel;

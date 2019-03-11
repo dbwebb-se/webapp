@@ -1,7 +1,8 @@
 "use strict";
-var m = require("mithril");
 
-module.exports = {
+import m from "mithril";
+
+const Me = {
     view: function() {
         return [
             m("h1", "Emil Folino"),
@@ -10,3 +11,5 @@ module.exports = {
         ];
     }
 };
+
+export default Me;

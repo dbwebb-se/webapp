@@ -1,7 +1,8 @@
 "use strict";
-var m = require("mithril");
 
-module.exports = {
+import m from "mithril";
+
+const Hobby = {
     view: function() {
         return [
             m("h1", "My hobby"),
@@ -9,3 +10,5 @@ module.exports = {
         ];
     }
 };
+
+export default Hobby;

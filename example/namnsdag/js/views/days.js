@@ -1,5 +1,6 @@
 "use strict";
-var m = require("mithril");
+
+import m from "mithril";
 
 function zeroPad(number) {
     if (number < 10) {
@@ -14,7 +15,7 @@ function formatDate(date) {
         zeroPad(parseInt(date.getDate()));
 }
 
-module.exports = {
+const Days = {
     view: function() {
         var today = new Date();
         var days = [];
@@ -38,3 +39,5 @@ module.exports = {
         ];
     }
 };
+
+export default Days;

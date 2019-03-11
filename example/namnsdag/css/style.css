@@ -12,6 +12,8 @@ main .navbar {
     font-family: Helvetica, Verdana, sans-serif;
     display: block;
     color: white;
+    padding: 8px 0;
+    margin-bottom: 20px;
 }
 
 main .navbar::after {
