@@ -1,5 +1,6 @@
 "use strict";
-var m = require("mithril");
+
+import m from "mithril";
 
 function zeroPad(number) {
     if (number < 10) {
@@ -8,7 +9,7 @@ function zeroPad(number) {
     return number;
 }
 
-var Calendar = {
+const CalendarModel = {
     days: [],
     load: function () {
         var today = new Date();
@@ -20,7 +21,7 @@ var Calendar = {
             method: "GET",
             url: apiURL
         }).then(function (result) {
-            Calendar.days = result.dagar.map(function (dag) {
+            CalendarModel.days = result.dagar.map(function (dag) {
                 return {
                     date: dag.datum,
                     weekday: dag.veckodag,
@@ -31,4 +32,4 @@ var Calendar = {
     }
 };
 
-module.exports = Calendar;
+export default CalendarModel;

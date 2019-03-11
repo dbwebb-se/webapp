@@ -1,9 +1,9 @@
 "use strict";
-var m = require("mithril");
+import m from "mithril";
 
-var CalendarModel = require("../models/calendar");
+import CalendarModel from "../models/calendar";
 
-var Day = {
+const Day = {
     view: function (vnode) {
         return m("div.day" + vnode.attrs.red_day, [
             m("p", [m("strong", vnode.attrs.date)]),
@@ -12,7 +12,7 @@ var Day = {
     }
 };
 
-module.exports = {
+const Calendar = {
     oninit: function () {
         CalendarModel.load();
     },
@@ -25,3 +25,5 @@ module.exports = {
         ];
     }
 };
+
+export default Calendar;
