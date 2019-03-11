@@ -4,14 +4,17 @@
   "description": "A me-app in mithril",
   "main": "index.js",
   "scripts": {
-    "start": "webpack js/index.js bin/app.js -d",
-    "test": "webpack js/index.js bin/app.js -d --watch"
+    "start": "webpack -d",
+    "watch": "webpack -d --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mithril": "^1.0.1",
-    "webpack": "^2.2.1"
+    "mithril": "^2.0.0-rc.4"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
   }
 }
