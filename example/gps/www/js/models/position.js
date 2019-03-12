@@ -1,8 +1,8 @@
 "use strict";
 
-var m = require("mithril");
+import m from "mithril";
 
-var position = {
+const position = {
     currentPosition: {},
 
     getPosition: function() {
@@ -25,4 +25,4 @@ var position = {
     }
 };
 
-module.exports = position;
+export default position;

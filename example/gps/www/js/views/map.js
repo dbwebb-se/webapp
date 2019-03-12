@@ -1,15 +1,18 @@
 "use strict";
 
-var m = require("mithril");
-var L = require("leaflet");
-var geosearch = require("leaflet-geosearch");
+import m from "mithril";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import geosearch from "leaflet-geosearch";
+import position from "../models/position.js";
 
-var position = require("../models/position.js");
+import locationIcon from "../../location.png";
+import "leaflet/dist/images/marker-icon-2x.png";
+import "leaflet/dist/images/marker-shadow.png";
 
 var map;
 var locationMarker = L.icon({
-    iconUrl: 'location.png',
-
+    iconUrl: locationIcon,
     iconSize:     [24, 24],
     iconAnchor:   [12, 12],
     popupAnchor:  [0, 0]
@@ -49,7 +52,9 @@ function showMap() {
             .search({ query: addresses[i] })
             .then(function(result) {
                 if (result.length > 0) {
-                    L.marker([result[0].y, result[0].x]).addTo(map).bindPopup(result[0].label);
+                    L.marker(
+                        [result[0].y, result[0].x]
+                    ).addTo(map).bindPopup(result[0].label);
                 }
             });
     }
@@ -58,13 +63,18 @@ function showMap() {
 function showPosition() {
     if (position.currentPosition.latitude && position.currentPosition.longitude) {
         L.marker(
-            [position.currentPosition.latitude, position.currentPosition.longitude],
-            {icon: locationMarker}
+            [
+                position.currentPosition.latitude,
+                position.currentPosition.longitude
+            ],
+            {
+                icon: locationMarker
+            }
         ).addTo(map).bindPopup("Din plats");
     }
 }
 
-module.exports = {
+const mapView = {
     oninit: position.getPosition,
     oncreate: function() {
         showMap();
@@ -77,3 +87,5 @@ module.exports = {
         ];
     }
 };
+
+export default mapView;
