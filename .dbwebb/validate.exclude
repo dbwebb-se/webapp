@@ -21,6 +21,7 @@
 -*/node_modules/*
 -*/vendor/*
 -*/dist/*
+-*/www/app.js
 
 +./build/webroot/*
 -./build/webroot/*/build/*
