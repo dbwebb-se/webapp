@@ -29,7 +29,7 @@
     <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
         <string>I will use your GPS position to show on a map.</string>
     </edit-config>
-    <engine name="browser" spec="5.0.4" />
+    <engine name="browser" spec="^5.0.4" />
     <engine name="ios" spec="^4.5.5" />
     <engine name="android" spec="7.1.4" />
 </widget>
