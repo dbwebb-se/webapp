@@ -28,6 +28,8 @@
 -./build/webroot/*/coverage/*
 -./build/webroot/*/node_modules/*
 -./build/webroot/*/vendor/*
+-./build/webroot/*/platforms/*
+-./build/webroot/*/plugins/*
 
 -./me/*/vendor/*
 -./me/*/node_modules/*
