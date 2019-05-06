@@ -3,11 +3,12 @@
 import m from "mithril";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import geosearch from "leaflet-geosearch";
+import { OpenStreetMapProvider } from "leaflet-geosearch";
 import position from "../models/position.js";
 
 import locationIcon from "../../location.png";
 import "leaflet/dist/images/marker-icon-2x.png";
+import "leaflet/dist/images/marker-icon.png";
 import "leaflet/dist/images/marker-shadow.png";
 
 var map;
@@ -40,7 +41,7 @@ function showMap() {
         }
     }
 
-    var geocoder = new geosearch.OpenStreetMapProvider();
+    var geocoder = new OpenStreetMapProvider();
 
     var addresses = [
         "Bastionsgatan 1, Karlskrona",
