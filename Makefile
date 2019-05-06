@@ -1,5 +1,5 @@
 #!/usr/bin/env make
-# 
+#
 # Course repo, to work with a dbwebb course.
 # See organisation on GitHub: https://github.com/dbwebb-se
 
@@ -85,9 +85,9 @@ install: prepare dbwebb-validate-install dbwebb-inspect-install dbwebb-install n
 	@$(call HELPTEXT,$@)
 
 	@# Disable PHP tools with arguments
-	curl -Lso $(PHPCS) https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar && chmod 755 $(PHPCS)
-
-	curl -Lso $(PHPMD) http://static.phpmd.org/php/latest/phpmd.phar && chmod 755 $(PHPMD)
+	# curl -Lso $(PHPCS) https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar && chmod 755 $(PHPCS)
+    #
+	# curl -Lso $(PHPMD) http://static.phpmd.org/php/latest/phpmd.phar && chmod 755 $(PHPMD)
 
 	@# Shellcheck
 	@# tree (inspect)
