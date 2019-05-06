@@ -49,6 +49,11 @@
             left: -9999px;
         }
 
+        // För att inte tabellen ska kollapsa
+        tbody {
+            display: block;
+        }
+
         td {
             display: block;
             border: none;
