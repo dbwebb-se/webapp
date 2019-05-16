@@ -1,6 +1,6 @@
 "use strict";
 
-var m = require("mithril");
+import m from "mithril";
 
 var list = {
     view: function() {
@@ -15,4 +15,4 @@ var list = {
     }
 };
 
-module.exports = list;
+export default list;

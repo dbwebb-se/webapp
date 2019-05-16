@@ -1,8 +1,8 @@
 "use strict";
 
-var m = require("mithril");
+import m from "mithril";
 
-module.exports = {
+var detail = {
     onbeforeremove: function(vnode) {
         vnode.dom.classList.add("slide-out");
         return new Promise(function(resolve) {
@@ -19,3 +19,5 @@ module.exports = {
         ]);
     }
 };
+
+export default detail;

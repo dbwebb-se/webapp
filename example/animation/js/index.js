@@ -1,8 +1,8 @@
 "use strict";
 
-var m = require("mithril");
-var list = require("./views/list.js");
-var detail = require("./views/detail.js");
+import m from "mithril";
+import list from "./views/list.js";
+import detail from "./views/detail.js";
 
 m.route(document.body, "/list", {
     "/list": list,
