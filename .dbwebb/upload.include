@@ -107,6 +107,7 @@ kmom10/proj/
 kmom10/proj/config.xml
 kmom10/proj/package.json
 kmom10/proj/webpack.config.js
+kmom10/proj/*.md
 kmom10/proj/www/
 kmom10/proj/www/*
 kmom10/proj/www/**
