@@ -12,7 +12,7 @@
     "javascript-style-guide": "^0.9.10",
     "js-yaml": "^3.10.0",
     "jsonlint": "^1.6.2",
-    "stylelint": "^8.2.0",
+    "stylelint": "^13.2.1",
     "uglify-es": "^3.1.6"
   },
   "dependencies": {}
