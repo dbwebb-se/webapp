@@ -1,4 +1,4 @@
-/* global home, about, github, presentation */
+/* global home, about, github, report */
 
 "use strict";
 
@@ -9,7 +9,7 @@ var menu = (function () {
         var navElements = [{name: "Me", class: "home", nav: home.showHome},
             {name: "Om", class: "free_breakfast", nav: about.showAbout},
             {name: "Github", class: "folder", nav: github.showGithub},
-            {name: "Redovisning", class: "people", nav: presentation.showPresentation}];
+            {name: "Redovisning", class: "people", nav: report.showReport}];
 
         navElements.forEach(function (element) {
             var navElement = document.createElement("a");
