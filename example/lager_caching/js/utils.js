@@ -3,7 +3,7 @@ const utils = {
         let element = document.createElement(options.type || "div");
 
         for (let property in options) {
-            if (options.hasOwnProperty(property)) {
+            if (Object.prototype.hasOwnProperty.call(options, property)) {
                 element[property] = options[property];
             }
         }

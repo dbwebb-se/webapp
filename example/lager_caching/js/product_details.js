@@ -5,6 +5,7 @@ import utils from "./utils.js";
 
 let productDetails = {
     showProduct: function (productId) {
+        let root = document.getElementById("root");
         let product = products.getProduct(productId);
 
         utils.removeNodes("root");
