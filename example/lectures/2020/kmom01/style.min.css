@@ -1,0 +1,323 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Merriweather|Source+Sans+Pro");
+@import 'normalize.min.css';
+.container {
+  padding: 1rem;
+  margin-bottom: 3.2rem;
+  margin-top: 2rem;
+  line-height: 1.4;
+  font-size: 1.2rem;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  overflow: hidden;
+  border-top: 1px solid #ccc;
+  width: 100%;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.bottom-nav a {
+  text-align: center;
+  color: #666;
+}
+
+.bottom-nav a.active {
+  color: #0074d9;
+}
+
+.bottom-nav i {
+  display: block;
+}
+
+.bottom-nav span {
+  font-size: 0.7rem;
+}
+
+.top-nav {
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+  background-color: #999999;
+  width: 100%;
+  padding: 0.2rem 1rem;
+  text-align: center;
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.4rem;
+}
+
+.top-nav span {
+  position: absolute;
+  top: 0.2rem;
+  left: 0.8rem;
+  color: #0074d9;
+}
+
+.top-nav span i {
+  float: left;
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+body {
+  font-family: "Merriweather", sans-serif;
+}
+
+h1,
+h2,
+h4 {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+html {
+  font-size: 100%;
+}
+
+p {
+  font-size: 1.4rem;
+}
+
+h1 {
+  font-size: 2.4rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.6rem;
+}
+
+@media (min-width: 64em) {
+  html {
+    font-size: 112.5%;
+  }
+}
+h2 {
+  margin-bottom: 0.6rem;
+}
+
+h4 {
+  margin-bottom: 0.2rem;
+  margin-top: 1.8rem;
+  line-height: 1.4;
+}
+
+h4:first-of-type {
+  margin-top: 0.6rem;
+}
+
+p {
+  margin-top: 0.2rem;
+  line-height: 1.4;
+}
+
+.button {
+  color: #333;
+  background-color: #fff;
+  background-image: linear-gradient(#fff, #cccccc);
+  border: 1px solid #cccccc;
+  text-decoration: none;
+  box-sizing: border-box;
+  display: inline-block;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.4rem;
+  padding: 0.4rem 1rem;
+  text-align: center;
+  border-radius: 0.2rem;
+  line-height: 1.4;
+}
+
+.button:hover {
+  background-color: #b3b3b3;
+  background-image: none;
+}
+
+.button:active {
+  background-color: #a6a6a6;
+  background-image: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.full-width-button {
+  width: 100%;
+}
+
+.blue-button {
+  color: #fff;
+  background-color: #0074d9;
+  background-image: linear-gradient(#0074d9, #003d73);
+  border-color: #003d73;
+}
+
+.blue-button:hover {
+  background-color: #002240;
+  background-image: none;
+}
+
+.blue-button:active {
+  background-color: #001527;
+  background-image: none;
+}
+
+.red-button {
+  color: #fff;
+  background-color: #ff4136;
+  background-image: linear-gradient(#ff4136, #cf0b00);
+  border-color: #cf0b00;
+}
+
+.red-button:hover {
+  background-color: #9c0900;
+  background-image: none;
+}
+
+.red-button:active {
+  background-color: #830700;
+  background-image: none;
+}
+
+.yellow-button {
+  color: #fff;
+  background-color: #ffdc00;
+  background-image: linear-gradient(#ffdc00, #998400);
+  border-color: #998400;
+}
+
+.yellow-button:hover {
+  background-color: #665800;
+  background-image: none;
+}
+
+.yellow-button:active {
+  background-color: #4d4200;
+  background-image: none;
+}
+
+.green-button {
+  color: #fff;
+  background-color: #2ecc40;
+  background-image: linear-gradient(#2ecc40, #1b7926);
+  border-color: #1b7926;
+}
+
+.green-button:hover {
+  background-color: #124f19;
+  background-image: none;
+}
+
+.green-button:active {
+  background-color: #0d3a12;
+  background-image: none;
+}
+
+.input {
+  font-size: 1.4rem;
+  line-height: 1.4;
+  font-family: "Merriweather", sans-serif;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 0.2rem;
+  padding: 0.6rem 0.6rem;
+  box-sizing: border-box;
+  width: 32rem;
+  margin-bottom: 1.4rem;
+}
+
+.input-label {
+  font-weight: bold;
+  margin: 2rem 0 0 0;
+  display: block;
+}
+
+.input-label:first-of-type {
+  margin: 1rem 0 0 0;
+}
+
+.input-label::after {
+  content: ":";
+}
+
+@media (max-width: 667px) {
+  .input {
+    width: 100%;
+  }
+}
+.table {
+  box-sizing: border-box;
+  border-collapse: collapse;
+}
+.table th {
+  text-align: left;
+}
+.table td {
+  border-top: 1px solid #ccc;
+}
+.table th,
+.table td {
+  white-space: nowrap;
+  padding: 0.2rem 0.8rem;
+}
+.table .number-cell {
+  text-align: right;
+}
+
+.table-scroll {
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+}
+
+.table-striped tr:nth-of-type(2n) {
+  background-color: #eee;
+}
+
+@media only screen and (max-width: 668px) {
+  .table-stacked {
+    display: block;
+  }
+  .table-stacked tr {
+    display: block;
+  }
+  .table-stacked thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  .table-stacked tbody {
+    display: block;
+  }
+  .table-stacked td {
+    display: block;
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+    white-space: normal;
+    text-align: right;
+  }
+  .table-stacked td:before {
+    /* För att visa tabell rubrik */
+    content: attr(data-title);
+    /* Använder top och left för efterlikna padding */
+    position: absolute;
+    top: 0.33rem;
+    left: 0.33rem;
+    width: 45%;
+    padding-right: 0.55rem;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+  }
+}
