@@ -1,4 +1,4 @@
-(function IIFE () {
+(function IIFE() {
     var root = document.getElementById('root');
 
     var container = document.createElement("div");
