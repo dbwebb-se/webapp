@@ -36,7 +36,7 @@ function showMap() {
     }).addTo(map);
 
     for (var place in places) {
-        if (places.hasOwnProperty(place)) {
+        if (Object.prototype.hasOwnProperty.call(places, place)) {
             L.marker(places[place]).addTo(map).bindPopup(place);
         }
     }
