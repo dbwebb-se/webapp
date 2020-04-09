@@ -10,20 +10,17 @@ const Layout = {
                     m("ul.nav", [
                         m("li", [
                             m("a", {
-                                href: "/",
-                                oncreate: m.route.link
+                                href: "#!/"
                             }, "Me")
                         ]),
                         m("li", [
                             m("a", {
-                                href: "/hobby",
-                                oncreate: m.route.link
+                                href: "#!/hobby"
                             }, "Hobby")
                         ]),
                         m("li", [
                             m("a", {
-                                href: "/days",
-                                oncreate: m.route.link
+                                href: "#!/days"
                             }, "Namnsdag")
                         ])
                     ])

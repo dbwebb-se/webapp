@@ -6,7 +6,7 @@ module.exports = {
     view: function () {
         return [
             m("h1", "HusLeta"),
-            m("a", { href: "/search", oncreate: m.route.link }, "Search")
+            m("a", { href: "#!/search" }, "Search")
         ];
     }
 };

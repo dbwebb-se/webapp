@@ -9,8 +9,7 @@ const productLinks = {
                 m(
                     "a",
                     {
-                        href: "/product/" + product.id,
-                        oncreate: m.route.link
+                        href: "#!/product/" + product.id
                     },
                     product.name
                 )

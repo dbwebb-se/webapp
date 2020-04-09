@@ -14,7 +14,7 @@ var detail = {
     },
     view: function(vnode) {
         return m("div.slide-in.detail-" + vnode.attrs.detail, [
-            m("a", { href: "/list", oncreate: m.route.link }, "Tillbaka"),
+            m("a", { href: "#!/list" }, "Tillbaka"),
             m("h1", "Detaljer om " + vnode.attrs.detail)
         ]);
     }

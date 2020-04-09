@@ -10,7 +10,7 @@ let layout = {
                 [
                     m.route.get().split("/")[1] == "year" ?
                         m("span", [
-                            m("a", { href: "/", oncreate: m.route.link }, "Alla år")
+                            m("a", { href: "#!/" }, "Alla år")
                         ]) : null
                 ]),
             m("main.container", vnode.children)

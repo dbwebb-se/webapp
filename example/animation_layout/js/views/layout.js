@@ -8,10 +8,10 @@ let layout = {
             m("div.layout", vnode.children),
             m("footer.footer", [
                 m("a.list-item", {
-                    href: "/detail/1", oncreate: m.route.link
+                    href: "#!/detail/1"
                 }, "Siffran 1"),
                 m("a.list-item", {
-                    href: "/detail/2", oncreate: m.route.link
+                    href: "#!/detail/2"
                 }, "Siffran 2")
             ])
         ];

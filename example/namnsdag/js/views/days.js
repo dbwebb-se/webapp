@@ -33,7 +33,7 @@ const Days = {
             m("ul.days", days.map(function (day) {
                 return m("li",
                     [m("a",
-                        {href: "/nameday/" + formatDate(day), oncreate: m.route.link},
+                        { href: "#!/nameday/" + formatDate(day) },
                         formatDate(day))]);
             }))
         ];

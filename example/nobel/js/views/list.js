@@ -10,7 +10,7 @@ let list = {
         while (startYear <= endYear) {
             years.push(
                 m("a.button.blue-button.full-width-button",
-                    { href: "/year/" + startYear, oncreate: m.route.link },
+                    { href: "#!/year/" + startYear },
                     startYear));
             startYear++;
         }
