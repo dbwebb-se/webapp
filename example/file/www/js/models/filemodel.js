@@ -15,7 +15,7 @@ var fileModel = {
                 { create: true, exclusive: false },
                 function (fileEntry) {
                     fileModel.file = fileEntry;
-                    fileModel.writeToFile(fileModel.file, null, false);
+                    // fileModel.writeToFile(fileModel.file, null, false);
                 }, function() {
                     outputError("Error loading file");
                 });
