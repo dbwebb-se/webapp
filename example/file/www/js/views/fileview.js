@@ -8,7 +8,7 @@ var fileView = {
             m("h1", "Hello File"),
             m("input.input[type=text]", {
                 oninput: function(e) {
-                    fileModel.current = e.target.value
+                    fileModel.current = e.target.value;
                 },
                 value: fileModel.current
             }),

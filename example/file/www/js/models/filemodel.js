@@ -1,3 +1,5 @@
+/* global LocalFileSystem */
+
 import m from "mithril";
 
 var fileModel = {
@@ -14,12 +16,12 @@ var fileModel = {
                 function (fileEntry) {
                     fileModel.file = fileEntry;
                     fileModel.writeToFile(fileModel.file, null, false);
+                }, function() {
+                    outputError("Error loading file");
+                });
             }, function() {
-                outputError("Error loading file");
+                outputError("Error loading filesystem");
             });
-        }, function() {
-            outputError("Error loading filesystem");
-        });
     },
 
     writeToFile: function(fileEntry, data, append) {
@@ -35,8 +37,7 @@ var fileModel = {
             if (append) {
                 try {
                     fileWriter.seek(fileWriter.length);
-                }
-                catch (e) {
+                } catch (e) {
                     console.log("file doesn't exist!");
                 }
             }
@@ -58,16 +59,14 @@ var fileModel = {
             };
 
             reader.readAsText(file);
-
         }, function() {
             outputError("Error reading from file");
         });
     }
-
 };
 
 function outputError(errorMessage) {
-    console.error();
+    console.error(errorMessage);
 }
 
 export default fileModel;
