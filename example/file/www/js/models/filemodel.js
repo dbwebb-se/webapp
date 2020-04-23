@@ -19,9 +19,9 @@ var fileModel = {
                 }, function() {
                     outputError("Error loading file");
                 });
-            }, function() {
-                outputError("Error loading filesystem");
-            });
+        }, function() {
+            outputError("Error loading filesystem");
+        });
     },
 
     writeToFile: function(fileEntry, data, append) {
