@@ -164,4 +164,4 @@ make dbwebb-inspect options="--yes --no-validate" what=kmom03
 make dbwebb-inspect options="--yes --no-validate" what=kmom04
 make dbwebb-inspect options="--yes --no-validate" what=kmom05
 make dbwebb-inspect options="--yes --no-validate" what=kmom06
-make dbwebb-inspect options="--yes --no-validate" what=kmom10
+# make dbwebb-inspect options="--yes --no-validate" what=kmom10
