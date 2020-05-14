@@ -101,4 +101,6 @@ webappkmom06()
 webappkmom10()
 {
     inspectExerciseHeader "proj" "kurser/webapp-v3/kmom10" "$KMOM/proj"
+
+    viewFileContent "README.md" "me/$KMOM/proj"
 }
