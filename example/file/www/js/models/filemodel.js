@@ -14,8 +14,10 @@ var fileModel = {
                 "data.txt",
                 { create: true, exclusive: false },
                 function (fileEntry) {
+                    console.log(fileEntry);
                     fileModel.file = fileEntry;
                     // fileModel.writeToFile(fileModel.file, null, false);
+                    fileModel.readFromFile(fileEntry);
                 }, function() {
                     outputError("Error loading file");
                 });
@@ -49,6 +51,7 @@ var fileModel = {
     },
 
     readFromFile: function(fileEntry) {
+        console.log("readFromFile");
         fileEntry.file(function (file) {
             var reader = new FileReader();
 
