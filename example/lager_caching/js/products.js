@@ -1,4 +1,7 @@
 var products = {
+    apiKey: "6c5c540eda98783426450c3b8d63bdc4",
+    url: "https://lager.emilfolino.se/v2/products",
+
     allProducts: [],
 
     getAllProducts: function(callback) {
@@ -6,7 +9,7 @@ var products = {
             return callback();
         }
 
-        fetch("https://lager.emilfolino.se/v2/products?api_key=[API_KEY]")
+        fetch(products.url + "?api_key=" + products.apiKey)
             .then(function(response) {
                 return response.json();
             })

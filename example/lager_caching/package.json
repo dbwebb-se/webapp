@@ -2,16 +2,18 @@
   "name": "lager_caching",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./js/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack -d"
+    "start": "webpack --watch --config webpack.dev.config.js",
+    "build": "webpack --config webpack.prod.config.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^4.29.5",
-    "webpack-cli": "^3.2.3"
+    "clean-webpack-plugin": "^3.0.0",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
   }
 }
