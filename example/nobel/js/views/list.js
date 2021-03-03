@@ -4,7 +4,7 @@ import m from 'mithril';
 let list = {
     view: function() {
         var startYear = 2010;
-        var endYear = 2017;
+        var endYear = 2020;
         var years = [];
 
         while (startYear <= endYear) {
