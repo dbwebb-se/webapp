@@ -7,7 +7,7 @@ const Day = {
     view: function (vnode) {
         return m("div.day" + vnode.attrs.red_day, [
             m("p", [m("strong", vnode.attrs.date)]),
-            m("i", vnode.attrs.weekday)
+            m("i", vnode.attrs.weekday + ": " + vnode.attrs.namnsdag)
         ]);
     }
 };

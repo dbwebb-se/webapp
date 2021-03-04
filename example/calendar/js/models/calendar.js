@@ -21,11 +21,14 @@ const CalendarModel = {
             method: "GET",
             url: apiURL
         }).then(function (result) {
+            console.log(result)
+
             CalendarModel.days = result.dagar.map(function (dag) {
                 return {
                     date: dag.datum,
                     weekday: dag.veckodag,
-                    red_day: dag["röd dag"] === "Ja" ? ".red-day" : ""
+                    red_day: dag["röd dag"] === "Ja" ? ".red-day" : "",
+                    namnsdag: dag.namnsdag.join(" - ")
                 };
             });
         });
