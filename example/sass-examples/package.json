@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "style": "sass base.scss style.min.css",
-    "style-min": "sass base.scss style.min.css --style compressed"
+    "style": "sass base.scss style.min.css --no-source-map",
+    "style-min": "sass base.scss style.min.css --no-source-map --style compressed"
   },
   "keywords": [],
   "author": "",

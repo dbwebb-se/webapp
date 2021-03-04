@@ -1,0 +1,24 @@
+.card {
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 225px;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $body-font-size * $line-height;
+}
+
+.card-title {
+    font-size: $body-font-size;
+    display: block;
+    color: #222;
+    background-color: #5c9;
+    padding: 4px 12px;
+    margin-top: 0;
+}
+
+.card-info {
+    font-size: $body-font-size * 0.8;
+    color: #444;
+    padding: 4px 12px;
+}
