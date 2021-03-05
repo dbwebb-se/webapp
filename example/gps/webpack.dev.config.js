@@ -2,9 +2,11 @@ const path = require("path");
 
 module.exports = {
     entry: './www/js/index.js',
+    mode: 'development',
+    devtool: 'inline-source-map',
     output: {
         path: path.resolve(__dirname, 'www'),
-        filename: 'app.js'
+        filename: 'bundle.min.js'
     },
     module: {
         rules: [
