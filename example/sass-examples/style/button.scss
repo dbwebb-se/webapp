@@ -27,6 +27,8 @@
 
 .full-width-button {
     width: 100%;
+    display: block;
+    margin-bottom: $body-font-size * $line-height;
 }
 
 .blue-button {
