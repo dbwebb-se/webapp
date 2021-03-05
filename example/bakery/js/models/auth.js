@@ -5,7 +5,7 @@ const auth = {
     url: "https://lager.emilfolino.se/v2/auth/login",
     email: "",
     password: "",
-    token: "asdfasf",
+    token: "",
     login: function() {
         return m.request({
             method: "POST",
