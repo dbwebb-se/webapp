@@ -20,6 +20,11 @@ let list = {
     view: function() {
         return m("div.container" , [
             m("h1", "Kakor"),
+            m(
+                "a.button.blue-button.full-width-button",
+                { href: "#!/new" },
+                "Ny kaka"
+            ),
             m("div.cake-container", bakery.currentCakes.map(function(cake) {
                 return m(cakeComponent, cake);
             }))

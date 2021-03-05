@@ -30,8 +30,26 @@ var bakery = {
             url: bakery.url,
             body: bakery.current
         }).then(function() {
-            m.route.set("/");
+            bakery.resetCake();
+
+            return m.route.set("/");
         });
+    },
+    addCake: function() {
+        bakery.current.api_key = bakery.apiKey;
+
+        return m.request({
+            method: "POST",
+            url: bakery.url,
+            body: bakery.current
+        }).then(function() {
+            bakery.resetCake();
+
+            return m.route.set("/");
+        });
+    },
+    resetCake: function() {
+        bakery.current = {};
     }
 };
 
