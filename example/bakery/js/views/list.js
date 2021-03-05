@@ -6,6 +6,7 @@ import { bakery } from '../models/bakery.js';
 const cakeComponent = {
     view: function(vnode) {
         let current = vnode.attrs;
+
         return m("div.card", [
             m("p.card-title", current.name),
             m("p.card-info", "Pris: " + current.price + " Lagersaldo: " + current.stock),
@@ -18,7 +19,7 @@ const cakeComponent = {
 let list = {
     oninit: bakery.loadAll,
     view: function() {
-        return m("div.container" , [
+        return m("div.container", [
             m("h1", "Kakor"),
             m(
                 "a.button.blue-button.full-width-button",

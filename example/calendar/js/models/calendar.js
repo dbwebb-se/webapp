@@ -21,8 +21,6 @@ const CalendarModel = {
             method: "GET",
             url: apiURL
         }).then(function (result) {
-            console.log(result)
-
             CalendarModel.days = result.dagar.map(function (dag) {
                 return {
                     date: dag.datum,

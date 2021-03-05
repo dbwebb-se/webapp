@@ -16,8 +16,8 @@ var layout = {
         return [
             m("nav.top-nav", { textContent: "Emils konditori"}, [
                 topNav ? m("span", [
-                            m("a", { href: topNav.route }, topNav.title)
-                        ]) : null
+                    m("a", { href: topNav.route }, topNav.title)
+                ]) : null
             ]),
             m("main.container", vnode.children),
             m("nav.bottom-nav", layout.links.map(function(link) {

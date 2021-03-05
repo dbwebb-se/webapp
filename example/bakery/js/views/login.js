@@ -12,22 +12,22 @@ let login = {
                     event.preventDefault();
                     auth.login();
                 } }, [
-            m("label.input-label", "E-post"),
-            m("input.input[type=email][placeholder=E-post]", {
-                oninput: function (e) {
-                    auth.email = e.target.value;
-                },
-                value: auth.email
-            }),
-            m("label.input-label", "Lösenord"),
-            m("input.input[type=password][placeholder=Lösenord]", {
-                oninput: function (e) {
-                    auth.password = e.target.value;
-                },
-                value: auth.password
-            }),
-            m("input.button.green-button[type=submit][value=Logga in].button", "Logga in")
-        ]));
+                m("label.input-label", "E-post"),
+                m("input.input[type=email][placeholder=E-post]", {
+                    oninput: function (e) {
+                        auth.email = e.target.value;
+                    },
+                    value: auth.email
+                }),
+                m("label.input-label", "Lösenord"),
+                m("input.input[type=password][placeholder=Lösenord]", {
+                    oninput: function (e) {
+                        auth.password = e.target.value;
+                    },
+                    value: auth.password
+                }),
+                m("input.button.green-button[type=submit][value=Logga in].button", "Logga in")
+            ]));
     }
 };
 
