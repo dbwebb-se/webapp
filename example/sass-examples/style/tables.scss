@@ -61,12 +61,13 @@
             position: relative;
             padding-left: 50%;
             white-space: normal;
-            text-align:right;
+            text-align: right;
         }
 
-        td:before {
+        td::before {
             /* För att visa tabell rubrik */
             content: attr(data-title);
+
             /* Använder top och left för efterlikna padding */
             position: absolute;
             top: 0.33rem;
@@ -74,7 +75,7 @@
             width: 45%;
             padding-right: 0.55rem;
             white-space: nowrap;
-            text-align:left;
+            text-align: left;
             font-weight: bold;
         }
     }

@@ -8,10 +8,9 @@
     padding-bottom: 0.8rem;
     background: white;
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-flow: row nowrap;
     justify-content: space-evenly;
-    font-family: $font-header;    
+    font-family: $font-header;
 }
 
 .bottom-nav a {
@@ -53,7 +52,7 @@
 }
 
 .top-nav span i {
-    float:left;
+    float: left;
     font-size: 1.4rem;
     line-height: 1.2;
 }
