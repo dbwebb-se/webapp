@@ -23,7 +23,7 @@ I dessa två första kursmoment ska vi titta på JavaScript och hur språket är
 En del kommer säkert vara repetition från javascript i höstas, men hoppas bidra med lite nytt.
 
 
-__What does the research say?__
+#### What does the research say?
 
 [Factors and actors leading to the adoption of a JavaScript framework](https://link.springer.com/article/10.1007/s10664-018-9613-x)
 
@@ -39,7 +39,7 @@ Exempelprogram: `errors.js` och `scope.js`.
 
 
 
-__What does the research say?__
+#### What does the research say?
 
 Principle of Least Privilege (PoLP)
 
