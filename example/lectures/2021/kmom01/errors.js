@@ -2,4 +2,6 @@
 
 console.log(elephant);
 
-var elephant = ."elephant";
+// var elephant = ."elephant";
+
+console.log(elephant);
