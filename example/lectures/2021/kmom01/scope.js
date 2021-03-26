@@ -9,7 +9,8 @@ function printElephant() {
 
     if (elephant === "giraffe") {
         let elephant = "lion";
-        console.log(elephant)
+
+        console.log(elephant);
     }
 
     console.log(elephant);
