@@ -1,11 +1,20 @@
 "use strict";
 
-var elephant = "elephant";
+elephant = "elephant";
+
+var elephant = "buffalo";
 
 function printElephant() {
-    elephant = "giraffe";
+    var elephant = "giraffe";
+
+    if (elephant === "giraffe") {
+        let elephant = "lion";
+        console.log(elephant)
+    }
+
     console.log(elephant);
 }
 
-console.log(elephant);
 printElephant();
+
+console.log(elephant);
