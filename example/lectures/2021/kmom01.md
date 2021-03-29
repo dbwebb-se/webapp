@@ -69,3 +69,8 @@ Readability vs Legibility
 Aries Arditi, Jianna Cho, Serifs and font legibility, Vision Research, Volume 45, Issue 23, 2005, Pages 2926-2933, ISSN 0042-6989, https://doi.org/10.1016/j.visres.2005.06.013
 
 Michael Bernard, Chia Hui Liao, and Melissa Mills. 2001. The effects of font type and size on the legibility and reading time of online text by older adults. In CHI '01 Extended Abstracts on Human Factors in Computing Systems (CHI EA '01). Association for Computing Machinery, New York, NY, USA, 175–176. DOI:https://doi.org/10.1145/634067.634173
+
+
+## JSON-API
+
+HTTP-anrop och vad får vi tillbaka?
