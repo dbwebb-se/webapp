@@ -1,7 +1,7 @@
-"use strict";
+// "use strict";
 
-console.log(elephant);
+// console.log(elephant);
 
-// var elephant = ."elephant";
+// elephant = ."elephant";
 
-console.log(elephant);
+// console.log(elephant);

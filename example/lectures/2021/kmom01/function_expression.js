@@ -8,7 +8,7 @@ function getData(limit) {
     for (let i = 1; i <= limit; i++) {
         console.log(i, cache);
 
-        if (!cache.hasOwnProperty(i)) {
+        if (!Object.prototype.hasOwnProperty.call(cache, i)) {
             cache[i] = longComputationTime(i);
         }
     }
