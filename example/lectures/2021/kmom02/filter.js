@@ -1,3 +1,5 @@
+/* global util */
+
 (function iife() {
     function filterWithLoop(products) {
         // ** BEFORE **
@@ -16,8 +18,10 @@
 
     function filterWithFilter(products) {
         // ** AFTER **
+        console.log(products);
     }
 
     util.addElement("h1", "filter");
     util.fetchData(filterWithLoop);
+    util.fetchData(filterWithFilter);
 })();

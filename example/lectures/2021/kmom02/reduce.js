@@ -1,3 +1,5 @@
+/* global util */
+
 (function iife() {
     function calculatePrice(products) {
         console.log(products);

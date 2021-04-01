@@ -1,6 +1,8 @@
+/* global util */
+
 (function iife() {
     function outputElements(products) {
-        products.forEach(function(product, i) {
+        products.forEach(function(product) {
             util.addElement("p", product.name + " - " + product.price);
         });
     }

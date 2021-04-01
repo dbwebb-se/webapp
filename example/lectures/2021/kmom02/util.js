@@ -27,4 +27,4 @@ var util = (function() {
         addElement: addElement,
         fetchData: fetchData,
     };
-})();
+})(util);

@@ -11,3 +11,20 @@
 
     countdown(10);
 })();
+
+// const institution = [
+//     { name: "DIDA", parent: null},
+//     { name: "DIPT", parent: null},
+//     { name: "efo", parent: "DIDA"},
+//     { name: "mos", parent: "DIDA"},
+//     { name: "cjh", parent: "DIPT"},
+//     { name: "klw", parent: "DIDA"},
+//     { name: "aar", parent: "DIDA"},
+//     { name: "jbo", parent: "DIPT"},
+//     { name: "DV1609", parent: "efo"},
+//     { name: "PA1438", parent: "cjh"},
+//     { name: "PA1445", parent: "jbo"},
+//     { name: "DV1611", parent: "klw"},
+//     { name: "DV1608", parent: "mos"},
+//     { name: "DV1531", parent: "aar"},
+// ];
