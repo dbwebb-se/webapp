@@ -5,7 +5,7 @@ var emil = {
     age: 34,
 };
 
-var andreas = emil; // Borde använda Object.assig({}, emil);
+var andreas = emil; // AFTER: Object.assign({}, emil);
 
 console.log(emil, andreas);
 

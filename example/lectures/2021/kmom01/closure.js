@@ -14,7 +14,7 @@ function findCake(name) {
 
         return `En ${cake.name} kostar ${cake.price} kr`;
     };
-};
+}
 
 var cakes = [
     findCake("Äppelpaj"),

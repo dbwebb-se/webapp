@@ -7,3 +7,14 @@
 html {
     font-size: 100%;
 }
+
+.container {
+    width: 98%;
+    margin: 2em auto;
+}
+
+p {
+    font-size: 1.4em;
+    line-height: 1.4;
+    margin-bottom: 1.96em;
+}

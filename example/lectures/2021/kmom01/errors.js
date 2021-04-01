@@ -1,7 +1,19 @@
-// "use strict";
+"use strict";
 
+// ** Before **
+// console.log(elephant);
+//
+// elephant = ."elephant";
+//
 // console.log(elephant);
 
-// elephant = ."elephant";
 
+
+// ** After **
+// var elephant;
+//
+// console.log(elephant);
+//
+// elephant = "elephant";
+//
 // console.log(elephant);
