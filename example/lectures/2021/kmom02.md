@@ -60,6 +60,8 @@ John Backus. 1978. Can programming be liberated from the von Neumann style? a fu
 
 ## Knappar och SASS
 
+Tillbakablick på förra veckan: Typografi - [en modular skala](https://typographyhandbook.com/#font-sizing)
+
 Stora och lätta att trycka på både för höger- och vänsterhänta.
 
 #### What does the research say?
