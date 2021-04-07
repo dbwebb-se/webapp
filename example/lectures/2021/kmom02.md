@@ -20,6 +20,7 @@ Exempelprogram: `filter.js`, `map.js`, `reduce.js`.
 
 Funktionerna kan även samarbeta.
 
+#### 5-minutare: Vilka fördelar ser ni med dessa funktioner?
 
 #### Intermezzo: Let's Webpack
 
@@ -53,6 +54,9 @@ När en funktion anropar sig själv.
 
 Viktigt att ha ett slut villkor och att vi jobbar oss mot villkoret.
 
+Exempelprogram: `recursion.js`
+
+#### 5-minutare: har vi sett vissa funktionella inslag tidigare i utbildningarna?
 
 #### What does the research say?
 
