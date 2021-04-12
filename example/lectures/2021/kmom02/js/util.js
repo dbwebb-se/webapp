@@ -1,5 +1,5 @@
-var util = (function() {
-    function fetchData(callbackFunction) {
+var util = {
+    fetchData: function fetchData(callbackFunction) {
         const url = "https://lager.emilfolino.se/v2/products";
         const key = "6c5c540eda98783426450c3b8d63bdc4";
 
@@ -10,9 +10,9 @@ var util = (function() {
             .then(function(result) {
                 return callbackFunction(result.data);
             });
-    }
+    },
 
-    function addElement(tag, text) {
+    addElement: function addElement(tag, text) {
         const root = document.getElementById("root");
         let element = document.createElement(tag);
 
@@ -22,9 +22,6 @@ var util = (function() {
 
         return element;
     }
+};
 
-    return {
-        addElement: addElement,
-        fetchData: fetchData,
-    };
-})(util);
+export { util };
