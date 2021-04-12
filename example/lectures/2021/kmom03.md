@@ -10,4 +10,4 @@ Angular: [me-angular](https://github.com/emilfolino/me-angular) - [Dokumentation
 
 React: [me-react](https://github.com/emilfolino/me-react) - [Dokumentation](https://reactjs.org)
 
-Vue: [me-vue](https://github.com/emilfolino/me-vue) - [Dokumentation](https://vuejs.org)
+Vue: [me-vue](https://github.com/emilfolino/me-vue) - [Dokumentation](https://vuejs.org) - [CLI](https://cli.vuejs.org)
