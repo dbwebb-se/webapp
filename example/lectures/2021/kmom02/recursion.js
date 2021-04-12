@@ -44,4 +44,5 @@ function makeTree(inst, parent) {
 }
 
 let completeTree = makeTree(institution, null);
+
 console.log(completeTree);

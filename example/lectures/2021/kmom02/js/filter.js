@@ -1,4 +1,4 @@
-import { util } from "./util.js";    
+import { util } from "./util.js";
 
 (function iife() {
     function filterWithLoop(products) {
