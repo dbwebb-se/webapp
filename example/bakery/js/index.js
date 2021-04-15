@@ -32,9 +32,9 @@ m.route(document.body, "/", {
         onmatch: function() {
             if (auth.token) {
                 return newForm;
-            } else {
-                return m.route.set("/login");
             }
+
+            return m.route.set("/login");
         },
         render: function(vnode) {
             return m(layout, {
