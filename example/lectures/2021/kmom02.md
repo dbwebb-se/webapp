@@ -20,6 +20,7 @@ Exempelprogram: `filter.js`, `map.js`, `reduce.js`.
 
 Funktionerna kan även samarbeta.
 
+#### 5-minutare: Vilka fördelar ser ni med dessa funktioner?
 
 #### Intermezzo: Let's Webpack
 
@@ -53,12 +54,17 @@ När en funktion anropar sig själv.
 
 Viktigt att ha ett slut villkor och att vi jobbar oss mot villkoret.
 
+Exempelprogram: `recursion.js`
+
+#### 5-minutare: har vi sett vissa funktionella inslag tidigare i utbildningarna?
 
 #### What does the research say?
 
 John Backus. 1978. Can programming be liberated from the von Neumann style? a functional style and its algebra of programs. Commun. ACM 21, 8 (Aug. 1978), 613–641. DOI:https://doi.org/10.1145/359576.359579
 
 ## Knappar och SASS
+
+Tillbakablick på förra veckan: Typografi - [en modular skala](https://typographyhandbook.com/#font-sizing)
 
 Stora och lätta att trycka på både för höger- och vänsterhänta.
 
@@ -67,6 +73,11 @@ Stora och lätta att trycka på både för höger- och vänsterhänta.
 Da Tao, Juan Yuan, Shuang Liu, Xingda Qu, Effects of button design characteristics on performance and perceptions of touchscreen use, International Journal of Industrial Ergonomics, Volume 64, 2018, Pages 59-68, ISSN 0169-8141, https://doi.org/10.1016/j.ergon.2017.12.001
 
 [NN Group: Tablet Usability](https://www.nngroup.com/articles/tablet-usability/)
+
+
+### Utveckla på mobilen??
+
+Utvecklarverktyg på mobilen.
 
 
 ### SASS och webpack

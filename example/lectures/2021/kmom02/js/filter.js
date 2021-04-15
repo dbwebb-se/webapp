@@ -1,4 +1,4 @@
-/* global util */
+import { util } from "./util.js";
 
 (function iife() {
     function filterWithLoop(products) {
@@ -16,9 +16,15 @@
         console.log(cakes);
     }
 
+    function isCake(product) {
+        return product.specifiers === "Tårta";
+    }
+
     function filterWithFilter(products) {
         // ** AFTER **
-        console.log(products);
+        let cakes = products.filter(isCake).map(cake => cake.price);
+
+        console.log(cakes);
     }
 
     util.addElement("h1", "filter");

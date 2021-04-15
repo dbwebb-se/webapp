@@ -1,7 +1,9 @@
 function addScore(scoresArray, value) {
-    scoresArray.push(value);
+    let newScores = scoresArray.slice();
 
-    return scoresArray;
+    newScores.push(value);
+
+    return newScores;
 }
 
 function rollDices(scores) {
