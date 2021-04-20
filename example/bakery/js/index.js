@@ -47,7 +47,7 @@ m.route(document.body, "/", {
         render: function() {
             return m(layout, {
                 topNav: { route: "#!/", title: "Hem"},
-                bottomNav: "#!/"
+                bottomNav: "#!/login"
             }, m(login));
         }
     }
