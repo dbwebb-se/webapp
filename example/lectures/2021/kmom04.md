@@ -62,5 +62,6 @@ Svårt. Oändligt med yta vertikalt.
 
 * Ternary-operator
 * Active i menyn
+* value kopplat till modell (Andreas genomgång)
 * Vald i en select
 * Returvärden från fetch?
