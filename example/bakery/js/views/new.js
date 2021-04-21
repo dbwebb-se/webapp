@@ -12,7 +12,9 @@ let newForm = {
             m("form", {
                 onsubmit: function(event) {
                     event.preventDefault();
-                    bakery.addCake();
+                    if (bakery.current.specifiers) {
+                        bakery.addCake();
+                    }
                 } }, [
                 m("label.input-label", "Namn"),
                 m("input.input[type=text][placeholder=Name]", {
@@ -60,10 +62,14 @@ let newForm = {
                 m("select.input", {
                     onchange: function (e) {
                         bakery.current.specifiers = e.target.value;
-                    }
-                }, bakery.cakeTypes.map(function(cakeType) {
-                    return m("option", { value: cakeType }, cakeType);
-                })),
+                    },
+                    required: true
+                }, [
+                    m("option", { value: "" }, "Välj en typ"),
+                    bakery.cakeTypes.map(function(cakeType) {
+                        return m("option", { value: cakeType }, cakeType);
+                    })
+                ]),
                 m("input.button.green-button[type=submit][value=Save].button", "Skapa kaka")
             ])
         ]);

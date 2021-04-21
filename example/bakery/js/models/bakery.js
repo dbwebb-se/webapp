@@ -6,12 +6,16 @@ var bakery = {
     cakeTypes: ["Tårta", "Bröd", "Småkaka"],
     currentCakes: [],
     loadAll: function() {
-        return m.request({
-            method: "GET",
-            url: bakery.url + "?api_key=" + bakery.apiKey
-        }).then(function(result) {
-            bakery.currentCakes = result.data;
-        });
+        // setTimeout används enbart för att försinka hämtningen
+        // för att visa upp ternary-operator funktionaliteten
+        setTimeout(function() {
+            return m.request({
+                method: "GET",
+                url: bakery.url + "?api_key=" + bakery.apiKey
+            }).then(function(result) {
+                bakery.currentCakes = result.data;
+            });
+        }, 3000);
     },
     current: {},
     load: function(id) {

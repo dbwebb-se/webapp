@@ -43,6 +43,16 @@ m.route(document.body, "/", {
             }, vnode);
         }
     },
+    // Till m-funktionen kan vi skicka 2 eller 3 argument.
+    // 2-argument: m("p", "Hello") första argumentet är nuvarande
+    // element, andra argumentet är barn. Blir till följande HTML i
+    // DOM-trädet: <p>Hello</p>
+    // 3-argument: m("p", { class: "blue" }, "Hello") där andra
+    // argumentet är options till exempel en klass eller andra värden
+    // vi vill skicka med.
+
+    // I nedanstående exempel skickar med två värden topNav och
+    // bottomNav. Vi når de i layout under vnode.attrs
     "/login": {
         render: function() {
             return m(layout, {
