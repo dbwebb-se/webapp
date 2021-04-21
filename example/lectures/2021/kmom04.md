@@ -46,13 +46,13 @@ Svårt. Oändligt med yta vertikalt.
 
 ### Exempel
 
-[Bootstrap](https://getbootstrap.com)
+[Bootstrap](https://getbootstrap.com) - [Bootstrap Formulär](https://getbootstrap.com/docs/5.0/forms/overview/) - [Bootstrap Tabeller](https://getbootstrap.com/docs/5.0/content/tables/)
 
-[Foundation](https://get.foundation)
+[Foundation](https://get.foundation) - [Foundation Formulär](https://get.foundation/sites/docs/forms.html) - [Foundation Tabeller](https://get.foundation/sites/docs/table.html)
 
-[Material Design](https://material.io)
+[Material Design](https://material.io) - [Material Design Formulär](https://material.io/components/text-fields) - [Material Design Tabeller](https://material.io/components/data-tables)
 
-[Bulma](https://bulma.io)
+[Bulma](https://bulma.io) - [Bulma Formulär](https://bulma.io/documentation/form/) - [Bulma Tabeller](https://bulma.io/documentation/elements/table/)
 
 
 
