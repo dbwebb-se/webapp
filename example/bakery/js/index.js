@@ -10,7 +10,7 @@ import { list } from "./views/list.js";
 import { editForm } from "./views/form.js";
 import { newForm } from "./views/new.js";
 import { login } from "./views/login.js";
-
+import { buy } from "./views/buy.js";
 
 m.route(document.body, "/", {
     "/": {
@@ -59,6 +59,14 @@ m.route(document.body, "/", {
                 topNav: { route: "#!/", title: "Hem"},
                 bottomNav: "#!/login"
             }, m(login));
+        }
+    },
+    "/buy": {
+        render: function() {
+            return m(layout,{
+                topNav: { route: "#!/", title: "Hem"},
+                bottomNav: "#!/buy"
+            }, m(buy));
         }
     }
 });

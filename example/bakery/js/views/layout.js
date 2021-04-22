@@ -8,6 +8,7 @@ var layout = {
         { name: "Hem", route: "#!/" },
         { name: "Ny", route: "#!/new" },
         { name: "Logga in", route: "#!/login" },
+        { name: "Köp", route: "#!/buy" },
     ],
     view: function(vnode) {
         // För att förenkla nedanstående kod sparar jag i två variabler
