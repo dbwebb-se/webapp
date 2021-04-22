@@ -9,7 +9,10 @@ let buy = {
             m("div.orders", bakery.currentOrders.map(function(order) {
                 return m("div", [
                     m("span", order.name + ": " + order.order_items.reduce(function(string, oi) {
-                        return string + " " + oi.name + " " + oi.amount + " st á " + oi.price + " kr";
+                        return string + " " +
+                            oi.name + " " +
+                            oi.amount + " st á " +
+                            oi.price + " kr";
                     }, "")),
                     m("a", {
                         onclick: function() {

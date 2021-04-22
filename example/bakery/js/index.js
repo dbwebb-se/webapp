@@ -63,7 +63,7 @@ m.route(document.body, "/", {
     },
     "/buy": {
         render: function() {
-            return m(layout,{
+            return m(layout, {
                 topNav: { route: "#!/", title: "Hem"},
                 bottomNav: "#!/buy"
             }, m(buy));
