@@ -9,6 +9,7 @@ Hur kan vi bygga en app?
 * Cross-Compiled Apps - [Xamarin](https://dotnet.microsoft.com/apps/xamarin) - [React Native](https://reactnative.dev/) - [Flutter](https://flutter.dev/)
 * Native - [Xcode](https://developer.apple.com/) - [Android Studio](https://developer.android.com/studio)
 
+### Fördelar med appar?
 
 ## En app på AppStore
 
