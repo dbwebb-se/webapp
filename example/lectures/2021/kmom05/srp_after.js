@@ -2,12 +2,12 @@ import m from "mithril";
 
 const product = {
     getProduct: function getProduct(
-        product_id,
+        productId,
         amount,
         callback,
     ) {
         return m.request({
-            url: `URL/products/${product_id}`,
+            url: `URL/products/${productId}`,
             method: "GET",
         }).then(function(result) {
             if (callback) {
@@ -41,14 +41,14 @@ const deliveries = {
             url: "URL/deliveries",
             method: "POST",
             body: deliveries.current,
-        }).then(function(result) {
+        }).then(function() {
             product.getProduct(
                 deliveries.current.product_id,
                 deliveries.current.amount,
                 product.updateProduct,
             );
-        }).catch(function(error) {
+        }).catch(function() {
 
         });
     }
-}
+};

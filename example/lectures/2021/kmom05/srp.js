@@ -9,7 +9,7 @@ const deliveries = {
             url: "URL/deliveries",
             method: "POST",
             body: deliveries.current,
-        }).then(function(result) {
+        }).then(function() {
             return m.request({
                 url: `URL/products/${deliveries.current.product_id}`,
                 method: "GET",
@@ -27,8 +27,8 @@ const deliveries = {
                     console.log("updated");
                 });
             });
-        }).catch(function(error) {
+        }).catch(function() {
 
         });
     }
-}
+};
