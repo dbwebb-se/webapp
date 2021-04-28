@@ -2,6 +2,14 @@
 
 Hur kan vi bygga en app?
 
+4 alternativ:
+
+* [Progressive Web Apps](https://web.dev/progressive-web-apps/)
+* Web Apps in WebViews - [Cordova](https://cordova.apache.org/) - [Ionic](https://ionicframework.com/)
+* Cross-Compiled Apps - [Xamarin](https://dotnet.microsoft.com/apps/xamarin) - [React Native](https://reactnative.dev/) - [Flutter](https://flutter.dev/)
+* Native - [Xcode](https://developer.apple.com/) - [Android Studio](https://developer.android.com/studio)
+
+
 ## En app på AppStore
 
 StartClock
@@ -12,4 +20,4 @@ StartClock
 
 [Uncle Bob on SRP](https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html)
 
-
+Exempelprogram: `srp.js`
