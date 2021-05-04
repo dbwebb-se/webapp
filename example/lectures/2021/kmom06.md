@@ -16,7 +16,11 @@ Vilka hårdvaru-funktioner i den mobila enheten använder appen?
 
 [Zoom](https://leafletjs.com/examples/zoom-levels/)
 
+[Plugins](https://leafletjs.com/plugins.html) och [andra exempel](https://leafletjs.com/examples.html) som kan vara intressanta inför projektet.
+
 Hantering av asynkroniteten tillsammans med kartan.
+
+### Special Guest Star Researcher???
 
 ## Zoom-hangout
 
