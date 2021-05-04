@@ -1,5 +1,11 @@
 # kmom06
 
+## Nästa vecka
+
+Genomgång/föreläsning måndag
+
+Frågestund onsdag
+
 ## Native API:s
 
 [geolocation](https://github.com/apache/cordova-plugin-geolocation)
