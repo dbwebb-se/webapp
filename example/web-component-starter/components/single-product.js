@@ -1,8 +1,4 @@
 export default class SingleProduct extends HTMLElement {
-    constructor() {
-        super();
-    }
-
     // component attributes
     static get observedAttributes() {
         return ['product'];

@@ -13,7 +13,7 @@ export default class LagerTitle extends HTMLElement {
     // attribute change
     attributeChangedCallback(property, oldValue, newValue) {
         if (oldValue === newValue) return;
-        this[ property ] = newValue;
+        this[property] = newValue;
     }
 
     // connect component
