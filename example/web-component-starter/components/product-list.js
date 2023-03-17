@@ -18,7 +18,10 @@ export default class ProductList extends HTMLElement {
     }
 
     render() {
-        const list = this.products.map((product) => `<single-product product='${JSON.stringify(product)}'></single-product>`).join("");
+        const list = this.products.map((product) => {
+            return `<single-product product='${JSON.stringify(product)}'>
+                        </single-product>`;
+        }).join("");
 
         this.innerHTML = `<h2>Produktlista</h2>${list}`;
     }
