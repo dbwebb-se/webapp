@@ -15,7 +15,7 @@ export default class LagerTitle extends HTMLElement {
         if (oldValue === newValue) {
             return;
         }
-        
+
         this[property] = newValue;
     }
 
