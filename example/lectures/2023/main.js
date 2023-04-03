@@ -116,6 +116,8 @@ const data = `{
         return order.id <= 2;
     });
 
+    console.log(filteredArray);
+
     const mappedArray = parsedData.data.map((order) => order.name);
 
     console.log(mappedArray);
