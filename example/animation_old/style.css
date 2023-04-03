@@ -1,0 +1,44 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+
+a {
+    display: block;
+}
+
+.list {
+    padding: 1rem;
+}
+
+.slide-in {
+    height: 100%;
+    color: #fcfcfc;
+    padding: 1rem;
+    animation: moveFromRight 0.4s ease both;
+}
+
+.slide-in a {
+    color: #fcfcfc;
+}
+
+.slide-out {
+    animation: moveToRight 0.4s ease both;
+}
+
+.detail-1 {
+    background-color: #001f3f;
+}
+
+.detail-2 {
+    background-color: #0074d9;
+}
+
+@keyframes moveFromRight {
+    from { transform: translateX(100%); }
+}
+
+@keyframes moveToRight {
+    to { transform: translateX(100%); }
+}
