@@ -118,7 +118,9 @@ kmom10/proj/res/**
 - kmom10/proj/**
 
 # me/lager
-me/lager/node_modules/**
+lager/node_modules/
+lager/node_modules/*
+lager/node_modules/**
 
 # Redovisa
 redovisa/**
