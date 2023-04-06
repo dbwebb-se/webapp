@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    line-height: 1.4;
+    font-family: sans-serif;
+}
+
+main {
+    padding: 0.7rem;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1.4rem;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 1.4rem;
+}
+
+.map {
+    height: 50vh;
+    width: 100%;
+}
