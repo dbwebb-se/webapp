@@ -43,7 +43,6 @@ export default class MapView extends HTMLElement {
             parseFloat(results[0].lat),
             parseFloat(results[0].lon)
         ]).addTo(this.map);
-
     }
 
     renderLocation() {
