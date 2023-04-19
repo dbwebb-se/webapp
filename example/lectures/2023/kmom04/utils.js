@@ -4,7 +4,7 @@ export default function createElement(hyperscript, options, attributes, eventLis
 
     let element = document.createElement(hyperscriptArray[0]);
 
-    classes.forEach((item, i) => {
+    classes.forEach((item) => {
         element.classList.add(item);
     });
 
