@@ -18,7 +18,7 @@ export default class CameraComponent extends HTMLElement {
         `;
 
         window.addEventListener("load", () => {
-            this.startup()
+            this.startup();
         }, false);
     }
 
@@ -33,8 +33,9 @@ export default class CameraComponent extends HTMLElement {
         console.log(cdnUrl);
     }
 
-    takepicture(width, height) {
+    takepicture(canvas, video, width, height) {
         const context = canvas.getContext("2d");
+
         if (width && height) {
             canvas.width = width;
             canvas.height = height;
@@ -42,12 +43,13 @@ export default class CameraComponent extends HTMLElement {
 
             this.photoData = canvas.toDataURL("image/png");
         } else {
-            clearphoto();
+            this.clearphoto(canvas);
         }
     }
 
-    clearphoto() {
+    clearphoto(canvas) {
         const context = canvas.getContext("2d");
+
         context.fillStyle = "#AAA";
         context.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -76,7 +78,7 @@ export default class CameraComponent extends HTMLElement {
 
         video.addEventListener(
             "canplay",
-            (ev) => {
+            () => {
                 if (!streaming) {
                     height = video.videoHeight / (video.videoWidth / width);
 
@@ -101,7 +103,7 @@ export default class CameraComponent extends HTMLElement {
             "click",
             (ev) => {
                 ev.preventDefault();
-                this.takepicture(width, height);
+                this.takepicture(canvas, video, width, height);
             },
             false
         );
@@ -115,6 +117,6 @@ export default class CameraComponent extends HTMLElement {
             false
         );
 
-        this.clearphoto();
+        this.clearphoto(canvas);
     }
 }
