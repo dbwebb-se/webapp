@@ -1,4 +1,4 @@
-import { UploadClient } from "../uploadcare/index.browser.js";
+import { UploadClient } from "../uploadcare/index.browser.min.js";
 
 export default class CameraComponent extends HTMLElement {
     constructor() {
