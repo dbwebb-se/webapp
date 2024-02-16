@@ -6,39 +6,29 @@
 
 # kmom01
 me/kmom01/typography
-me/kmom01/lager1
 
 # kmom02
 me/kmom02/jq
 me/kmom02/buttons
-me/kmom02/lager2
 
 # kmom03
 me/kmom03/nobel
 me/kmom03/formular
-me/kmom03/lager3
 
 # kmom04
 me/kmom04/tabeller
-me/kmom04/lager4
 
 # kmom05
 me/kmom05/hello
-me/kmom05/lager5
 me/kmom05/animation
 me/kmom05/gps
+me/kmom05/camera
 
 # kmom06
-me/kmom06/animation
-me/kmom06/gps
-me/kmom06/camera
-me/kmom06/lager6
+me/kmom06/chat
 
 # kmom10
 me/kmom10/proj
-
-# redovisa
-me/redovisa
 
 # lager
 me/lager
