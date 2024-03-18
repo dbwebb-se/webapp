@@ -1,7 +1,5 @@
 /* global L */
 
-import "../leaflet/leaflet.min.js";
-
 import getCoordinates from "../models/nominatim.js";
 
 export default class MapView extends HTMLElement {
@@ -47,7 +45,7 @@ export default class MapView extends HTMLElement {
 
     renderLocation() {
         let locationMarker = L.icon({
-            iconUrl:      "leaflet/location.png",
+            iconUrl:      "location.png",
             iconSize:     [24, 24],
             iconAnchor:   [12, 12],
             popupAnchor:  [0, 0]
@@ -57,7 +55,7 @@ export default class MapView extends HTMLElement {
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((position) => {
                 L.marker(
-                    [position.coords.latitude,                  position.coords.longitude],
+                    [position.coords.latitude, position.coords.longitude],
                     {icon: locationMarker}
                 ).addTo(this.map);
             });
