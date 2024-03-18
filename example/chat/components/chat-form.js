@@ -1,3 +1,5 @@
+/* global io */
+
 export default class ChatForm extends HTMLElement {
     constructor() {
         super();
@@ -41,9 +43,3 @@ export default class ChatForm extends HTMLElement {
         });
     }
 }
-
-
-
-
-
-
