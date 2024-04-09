@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Templates and slots</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="main.js" defer></script>
+</head>
+<body>
+    <main>
+        <h2>Rubrik</h2>
+        <p>Med ett stycke.</p>
+        <template id="product-list-template">
+            <style>
+                h2 {
+                    color: blue;
+                }
+
+                p {
+                    color: red;
+                }
+            </style>
+            <h2>Produkt lista</h2>
+            <p>Här visas produkter:</p>
+        </template>
+        <product-list></product-list>
+    </main>
+</body>
+</html>
