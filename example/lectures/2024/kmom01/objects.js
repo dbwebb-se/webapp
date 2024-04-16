@@ -16,12 +16,17 @@ console.log(kenneth, marie);
 let emil = {
     name: "Emil",
     age: 37,
+    adress: {
+        street: "Valfridas väg 13",
+        zip: 37164
+    }
 };
 
-let andreas = emil;
+let andreas = JSON.parse(JSON.stringify(emil));
 
 console.log(emil, andreas);
 
 emil.name = "Emil Folino";
+emil.adress.zip = 3400;
 
 console.log(emil, andreas);

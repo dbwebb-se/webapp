@@ -2,7 +2,7 @@
 
 let fruits = ["Banana", "Melon", "Kiwi", "Lemon"];
 
-let vegetables = fruits;
+let vegetables = fruits.slice();
 
 console.log(fruits, vegetables);
 

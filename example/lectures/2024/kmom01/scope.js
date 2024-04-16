@@ -13,6 +13,12 @@ function printElephant() {
         console.log(elephant);
     }
 
+    {
+        let elephant = "leopard";
+
+        console.log(elephant);
+    }
+
     console.log(elephant);
 }
 
