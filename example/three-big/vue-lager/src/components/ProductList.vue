@@ -1,13 +1,13 @@
 <template>
-    <h2>Produkter</h2>
-    <div v-if="loading" class="loading">Loading...</div>
+  <h2>Produkter</h2>
+  <div v-if="loading" class="loading">Loading...</div>
 
-    <div v-if="error" class="error">{{ error }}</div>
+  <div v-if="error" class="error">{{ error }}</div>
 
-    <div v-if="!loading && products && products.length">
-      <p v-for="product of products">
-        <strong>{{product.name}}</strong> {{product.stock}}
-      </p>
+  <div v-if="!loading && products && products.length">
+    <p v-for="product of products">
+      <strong>{{product.name}}</strong> {{product.stock}}
+    </p>
   </div>
 </template>
 

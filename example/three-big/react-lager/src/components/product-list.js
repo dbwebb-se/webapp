@@ -1,4 +1,4 @@
-import { useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import SingleProduct from "./single-product.js";
 
 function ProductList() {
