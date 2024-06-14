@@ -3,7 +3,7 @@ author: efo
 category: javascript
 revision:
   "2022-02-18": (A, efo) Första utgåvan inför kursen webapp-v4 VT22.
-...
+---
 Introduktion till Lager-API:t
 ==================================
 

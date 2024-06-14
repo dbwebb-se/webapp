@@ -7,7 +7,7 @@ revision:
   "2018-01-30": (C, efo) Första utgåvan för webapp-v3.
   "2017-03-13": (B, efo) Första utgåvan för webapp-v2.
   "2015-11-23": (A, mos) Första utgåvan för kursen.
-...
+---
 Kmom03: Formulär och CRUD
 ==================================
 

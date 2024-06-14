@@ -6,7 +6,7 @@ revision:
     "2023-03-01": (C, efo) Uppdaterad till v5.
     "2018-01-03": (B, mos) Uppdaterad efter kursen databas som mall.
     "2015-09-17": (A, mos) Första utgåvan för kursen.
-...
+---
 Resultat och redovisning
 ==================================
 

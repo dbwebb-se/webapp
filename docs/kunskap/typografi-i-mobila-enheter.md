@@ -4,7 +4,7 @@ category: javascript
 revision:
     "2019-02-14": (B, efo) Genomarbetad inför VT19.
     "2018-01-09": (A, efo) Första utgåvan inför kursen webapp-v3 V18.
-...
+---
 Typografi för mobila enheter
 ==================================
 

@@ -2,7 +2,7 @@
 revision:
     "2022-08-16": "(B, mos) Visual Studio Code är numer standardval."
     "2016-01-01": "(A, mos) Atom är standardvalet."
-...
+---
 Texteditor
 ==================================
 

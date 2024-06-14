@@ -5,7 +5,7 @@ revision:
     "2019-01-16": "(C, mos) Cygwin standardval med tanke på SE och databaskurs, bash som standardval inför ht19."
     "2019-01-08": "(B, mos) Debian/Bash för Windows är nu standard terminal på Windows."
     "2016-01-01": "(A, mos) Första versionen."
-...
+---
 Terminal
 ==================================
 

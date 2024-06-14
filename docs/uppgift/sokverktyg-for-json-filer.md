@@ -10,7 +10,7 @@ revision:
     "2017-04-28": "(C, aar) Förtydligade krav 15, att alla användarnamn ska hittas och inte bara det första."
     "2017-04-05": "(B, mos) Ändrade krav 13 från felaktiga 3 till 7 som facit visar."
     "2015-11-23": "(A, mos) Första utgåvan i samband med kursen webapp."
-...
+---
 Sökverktyg för JSON filer
 ==================================
 

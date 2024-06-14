@@ -8,7 +8,7 @@ revision:
   "2017-03-09": (C, efo) Gjorde om för webapp-v2.
   "2016-02-08": (B, mos) Lade till extrauppgift om detect-swipe-event.
   "2015-10-26": (A, mos) Första utgåvan för kursen.
-...
+---
 Kmom02: En router
 ==================================
 

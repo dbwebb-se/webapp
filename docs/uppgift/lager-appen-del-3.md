@@ -5,7 +5,7 @@ revision:
   "2023-03-24": (C, efo) Uppdaterade uppgiften för webapp v5.
   "2019-03-04": (B, efo) Uppdaterade uppgiften för att passa API v2.
   "2018-01-17": (A, efo) Första utgåvan i samband med kursen webapp v3.
-...
+---
 Lager appen del 3
 ==================================
 

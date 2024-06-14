@@ -9,7 +9,7 @@ revision:
     "2015-11-23": (A, mos) Första utgåvan inför kurs webapp.
 updated: "2015-11-23 16:06:17"
 created: "2015-11-23 16:05:20"
-...
+---
 Installera verktyget jq för att söka i JSON-filer
 ==================================
 

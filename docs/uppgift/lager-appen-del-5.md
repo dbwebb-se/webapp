@@ -5,7 +5,7 @@ revision:
   "2024-02-16": (C, efo) Uppdaterad inför VT24. La ihop 05 och 06.
   "2023-04-03": (B, efo) Uppdaterad för webapp-v5.
   "2018-03-01": (A, efo) Första utgåvan i samband med kursen webapp v3.
-...
+---
 Lager appen del 5
 ==================================
 

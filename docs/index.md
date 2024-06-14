@@ -4,7 +4,7 @@ author:
     - efo
 revision:
     "2023-03-01": (A, efo) Första versionen inför VT23.
-...
+---
 Kursen webapp (v5)
 ==================================
 

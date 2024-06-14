@@ -9,7 +9,7 @@ revision:
   "2015-10-28": (A, mos) Första utgåvan inför kursen webapp.
 updated: "2015-10-28 08:19:23"
 created: "2015-10-27 16:36:50"
-...
+---
 Utvecklingsverktyg för RESTful tjänster
 ==================================
 
@@ -77,7 +77,7 @@ Det gick ungefär som väntat. Vi ser att det finns en kommun (K) med id't 1080.
 
 ```bash
 $ curl http://api.kolada.se/v2/ou?municipality=1080&title=skola
-{"count": 168, "values": [{"id": "V15E108000701", "municipality": "1080", "title": "Rödebyskolan F-9"}, {"id": "V15E108000801", "municipality": "1080", "title": "Nättraby kunskapscentrum 7-9"}, {"id": "V15E108000901", "municipality": "1080", "title": "Fridlevstadsskolan F-6"}, {"id": "V15E108000904", "municipality": "1080", "title": "Tvingskola F-6"}, {"id": "V15E108001101", "municipality": "1080", "title": "Spandelstorpskolan F-6"}, ...
+{"count": 168, "values": [{"id": "V15E108000701", "municipality": "1080", "title": "Rödebyskolan F-9"}, {"id": "V15E108000801", "municipality": "1080", "title": "Nättraby kunskapscentrum 7-9"}, {"id": "V15E108000901", "municipality": "1080", "title": "Fridlevstadsskolan F-6"}, {"id": "V15E108000904", "municipality": "1080", "title": "Tvingskola F-6"}, {"id": "V15E108001101", "municipality": "1080", "title": "Spandelstorpskolan F-6"}, ---
 ```
 
 
@@ -153,7 +153,7 @@ $ curl -s "http://api.kolada.se/v2/ou?municipality=1080&title=skola" | jq "."
       "municipality": "1080",
       "title": "Spandelstorpskolan F-6"
     },
-    ...
+    ---
 ```
 
 Och med jq kan vi sedan plocka ut till exempel count

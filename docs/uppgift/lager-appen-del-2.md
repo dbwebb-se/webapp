@@ -4,7 +4,7 @@ category: javascript
 revision:
   "2023-03-21": (B, efo) Första utgåvan i samband med kursen webapp v3.
   "2018-01-17": (A, efo) Första utgåvan i samband med kursen webapp v3.
-...
+---
 Lager appen del 2
 ==================================
 

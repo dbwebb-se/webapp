@@ -9,7 +9,7 @@ revision:
   "2017-04-21": (C, efo) Ändringar inför släpp av kmom.
   "2017-03-17": (B, efo) Förberedelser för webapp-v2.
   "2015-12-11": (A, mos) Första utgåvan för kursen.
-...
+---
 Kmom05: Mobila enheters styrkor
 ==================================
 

@@ -2,7 +2,7 @@
 author: efo
 revision:
     "2023-03-01": "(A, efo) Första utgåvan."
-...
+---
 Web Components
 ==================================
 

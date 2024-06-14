@@ -1,5 +1,5 @@
 ---
 titleBreadcrumb: Labbmiljö
-...
+---
 Index
 ===============================

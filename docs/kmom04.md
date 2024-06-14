@@ -8,7 +8,7 @@ revision:
   "2017-03-17": (C, efo) Förberedelser för webapp-v2.
   "2015-12-04": (B, mos) lade till läsanvisningar i boken samt rev c av artikeln.
   "2015-11-04": (A, mos) Första utgåvan för kursen.
-...
+---
 Kmom04: Autentisering med JWT
 ==================================
 

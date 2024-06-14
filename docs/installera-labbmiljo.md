@@ -2,7 +2,7 @@
 author: mos
 revision:
     "2018-01-03": (A, mos) Första utgåvan, kopia av databas.
-...
+---
 Installera kursens labbmiljö
 ==================================
 

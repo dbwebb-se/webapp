@@ -4,7 +4,7 @@ author:
 revision:
     "2024-04-12": (B, efo) Enda projekt från och med VT24.
     "2021-02-12": (A, efo) Första versionen av trafik projektet.
-...
+---
 Kmom10: Projekt och examination
 ==================================
 

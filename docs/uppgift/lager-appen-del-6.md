@@ -3,7 +3,7 @@ author: efo
 category: javascript
 revision:
   "2024-02-16": (A, efo) Första utgåvan i samband med kursen webapp VT24.
-...
+---
 Lager appen del 6
 ==================================
 

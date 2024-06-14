@@ -1,5 +1,5 @@
 ---
-...
+---
 Emulator och fysisk enhet
 ==================================
 För att få känslan av att de applikationer vi har utvecklat för mobila enheter är riktiga appar använder vi en emulator och/eller en fysisk enhet för att testa. Nedan finns våra rekommendationer för Mac, Linux och Windows.

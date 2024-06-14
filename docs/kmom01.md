@@ -3,7 +3,7 @@ author:
   - efo
 revision:
   "2023-03-01": (A, efo) Första utgåvan v5.
-...
+---
 Kmom01: Web Components
 ==================================
 

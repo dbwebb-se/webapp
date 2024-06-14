@@ -4,7 +4,7 @@ category: javascript
 revision:
   "2023-03-15": (B, efo) Första utgåvan inför webapp-v5.
   "2018-01-18": (A, efo) Första utgåvan inför kursen linux V18.
-...
+---
 Knappar för mobilen
 ==================================
 

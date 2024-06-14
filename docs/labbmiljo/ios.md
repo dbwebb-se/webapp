@@ -1,5 +1,5 @@
 ---
-...
+---
 iOS Simulator och Device
 ==================================
 [iOS](https://developer.apple.com/ios/) är ett mobilt operativsystem som drivs av Apple.
